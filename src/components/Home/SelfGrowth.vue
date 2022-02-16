@@ -1,7 +1,7 @@
 <template>
-  <div v-resize="onResize">
+  <div v-resize="onResize" style="background-color: #fafafa">
     <v-container class="mt-5">
-      <h1>Phát triển bản thân và sự nghiệp</h1>
+      <h2>Phát triển bản thân và sự nghiệp</h2>
       <v-row class="mt-5">
         <v-col
           sm="12"
@@ -9,12 +9,11 @@
           v-for="(item, i) in selfGrowths"
           :key="i"
           cols="12"
-          class="mt-3"
         >
-          <v-card elevation="2">
+          <v-card class="p-4">
             <v-row>
               <v-col cols="12" md="2">
-                <center >
+                <center>
                   <v-img
                     :width="common.image.width"
                     :height="common.image.height"
@@ -24,9 +23,9 @@
                 </center>
               </v-col>
               <v-col cols="12" md="10">
-                <div style="padding: 0px 20px;">
+                <div style="padding: 0px 20px">
                   <h6 class="font-weight-bold">{{ item.name }}</h6>
-                  <p>
+                  <p style="font-size: 12px">
                     {{ item.description }}
                   </p>
                   <div>
@@ -44,7 +43,6 @@
           </v-card>
         </v-col>
       </v-row>
-      <div style="height: 300px"></div>
     </v-container>
   </div>
 </template>
@@ -101,6 +99,45 @@ export default {
             },
           ],
         },
+        {
+          image: "https://www.topcv.vn/v4/image/welcome/ic3.svg",
+          name: "Quỹ ý tưởng phát triển nghề nghiệp TopCareer",
+          description:
+            "Giúp học sinh, sinh viên hiểu về tầm quan trọng của giáo dục hướng nghiệp, nhận diện nghề và nâng cao năng lực ứng tuyển",
+          chips: [
+            {
+              name: "Tìm hiểu thêm",
+              link: "",
+              active: false,
+            },
+          ],
+        },
+        {
+          image: "https://www.topcv.vn/v4/image/welcome/ic4.svg",
+          name: "TopCV Contest - Cổng học tập và đánh giá năng lực",
+          description:
+            "Cung cấp các khóa học, các kỳ thi giúp ứng viên hiểu rõ về xu hướng việc làm và những tiêu chuẩn mới về Năng lực chuyên môn",
+          chips: [
+            {
+              name: "Tìm hiểu thêm",
+              link: "",
+              active: false,
+            },
+          ],
+        },
+        {
+          image: "https://www.topcv.vn/v4/image/welcome/ic5.svg",
+          name: "Chương trình bệ phóng sự nghiệp 4.0",
+          description:
+            "Cung cấp cho sinh viên thông tin về thị trường tuyển dụng và đào tạo kỹ năng ứng tuyển, kết nối Nhà trường và Doanh nghiệp",
+          chips: [
+            {
+              name: "Tìm hiểu thêm",
+              link: "",
+              active: false,
+            },
+          ],
+        },
       ],
     };
   },
@@ -117,16 +154,16 @@ export default {
           class: "float-start ml-5",
         };
       } else if (this.windowSize.x < 960) {
-          this.common.image = {
+        this.common.image = {
           width: 33,
           height: 33,
           class: "float-start ml-5",
         };
       } else {
-          this.common.image = {
-          width: '100%',
-          height: 80,
-          class: "float-start",
+        this.common.image = {
+          width: 64,
+          height: 64,
+          class: "none",
         };
       }
     },
