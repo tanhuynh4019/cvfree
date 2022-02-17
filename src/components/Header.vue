@@ -11,11 +11,13 @@
         <v-row>
           <v-col sm="5" cols="8" md="3" lg="2">
             <div class="p-2">
-              <img
+              <v-btn text to="/">
+                <img
                 width="100%"
                 height="40"
                 src="https://www.topcv.vn/v3/images/topcv-logo-4.png?v=1.0.1"
               />
+              </v-btn>
             </div>
           </v-col>
           <v-col v-if="common.menu" md="9">
@@ -28,7 +30,7 @@
               offset-y
             >
               <template v-slot:activator="{ on, attrs }">
-                <v-btn class="mt-1" text tile v-bind="attrs" v-on="on">
+                <v-btn class="mt-1" text tile v-bind="attrs" v-on="on" :to="menu.link">
                   {{ menu.name }}
                 </v-btn>
               </template>
@@ -128,6 +130,7 @@ export default {
           name: "Việc làm",
           active: false,
           image: "https://www.topcv.vn/v4/image/nav-job.png?v=1.0.0",
+          link: "/viec-lam",
           list: [
             {
               name: "Tìm việc",

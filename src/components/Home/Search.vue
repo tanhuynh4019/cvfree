@@ -254,8 +254,4 @@ export default {
 .box-search .v-text-field__details {
   min-height: 0px;
 }
-
-.container {
-  max-width: 1200px;
-}
 </style>
