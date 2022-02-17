@@ -1,17 +1,23 @@
 <template>
   <div>
-      <v-container>
-          <h1>Footer</h1>
-      </v-container>
+    <KeywordSeo />
+    <Menu />
+    <Bottom />
   </div>
 </template>
 
 <script>
+import Bottom from "../components/Footer/Bottom.vue";
+import Menu from "../components/Footer/Menu.vue";
+import KeywordSeo from "../components/Footer/KeywordSeo.vue";
 export default {
-    name: 'Footer'
-}
+  name: "Footer",
+  components: {
+    Menu,
+    Bottom,
+    KeywordSeo,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

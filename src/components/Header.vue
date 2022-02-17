@@ -13,10 +13,10 @@
             <div class="p-2">
               <v-btn text to="/">
                 <img
-                width="100%"
-                height="40"
-                src="https://www.topcv.vn/v3/images/topcv-logo-4.png?v=1.0.1"
-              />
+                  width="100%"
+                  height="40"
+                  src="https://www.topcv.vn/v3/images/topcv-logo-4.png?v=1.0.1"
+                />
               </v-btn>
             </div>
           </v-col>
@@ -30,7 +30,14 @@
               offset-y
             >
               <template v-slot:activator="{ on, attrs }">
-                <v-btn class="mt-1" text tile v-bind="attrs" v-on="on" :to="menu.link">
+                <v-btn
+                  class="mt-1"
+                  text
+                  tile
+                  v-bind="attrs"
+                  v-on="on"
+                  :to="menu.link"
+                >
                   {{ menu.name }}
                 </v-btn>
               </template>
@@ -123,7 +130,7 @@ export default {
         logo: true,
         menu: true,
         user: true,
-        headerSub: false
+        headerSub: false,
       },
       menus: [
         {
@@ -252,6 +259,4 @@ export default {
 };
 </script>
 
-<style >
-
-</style>
+<style></style>
