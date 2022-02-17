@@ -2,7 +2,15 @@
   <div>
     <Search />
     <CreateCV />
-    <ListFeatureJobs />
+    <div
+      class="mt-10"
+      style="
+        background: transparent linear-gradient(179deg, #edfff5, #fff) 0 0
+          no-repeat padding-box;
+      "
+    >
+      <ListFeatureJobs />
+    </div>
     <SelfGrowth />
     <Download />
     <AboutUs />
@@ -13,11 +21,11 @@
 <script>
 import Search from "../components/Home/Search.vue";
 import CreateCV from "../components/Home/CreateCV.vue";
-import SelfGrowth from "../components/Home/SelfGrowth.vue"
+import SelfGrowth from "../components/Home/SelfGrowth.vue";
 import Download from "../components/Home/Download.vue";
-import AboutUs from "../components/Home/AboutUs.vue"
-import AchievementAward from "../components/Home/AchievementAward.vue"
-import ListFeatureJobs from "../components/Home/ListFeatureJobs.vue"
+import AboutUs from "../components/Home/AboutUs.vue";
+import AchievementAward from "../components/Home/AchievementAward.vue";
+import ListFeatureJobs from "../components/Job/ListFeatureJobs.vue";
 export default {
   name: "Home",
   components: {
@@ -27,7 +35,7 @@ export default {
     Download,
     AboutUs,
     AchievementAward,
-    ListFeatureJobs
+    ListFeatureJobs,
   },
 };
 </script>
