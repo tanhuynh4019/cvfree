@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Job from '../views/Job.vue'
+import RemoteJob from '../views/Jobs/RemoteJob.vue';
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,11 @@ const routes = [{
         path: '/viec-lam',
         name: 'Job',
         component: Job
+    },
+    {
+        path: '/viec-lam-remote',
+        name: 'RemoteJob',
+        component: RemoteJob
     },
     {
         path: '/about',

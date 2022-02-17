@@ -42,7 +42,7 @@
                       <div class="card-body">
                         <v-list nav dense>
                           <v-list-item-group color="#004D40">
-                            <v-list-item v-for="(sub, i) in menu.list" :key="i">
+                            <v-list-item v-for="(sub, i) in menu.list" :key="i" :to="sub.link">
                               <v-list-item-icon>
                                 <v-icon v-text="sub.icon"></v-icon>
                               </v-list-item-icon>
@@ -136,6 +136,7 @@ export default {
               name: "Tìm việc",
               icon: "mdi-radar",
               status: null,
+              link: "/viec-lam"
             },
             {
               name: "Việc làm phù hợp",
@@ -146,6 +147,7 @@ export default {
               name: "Việc làm từ xa (Remote)",
               icon: "mdi-cloud",
               status: null,
+              link: '/viec-lam-remote'
             },
           ],
         },

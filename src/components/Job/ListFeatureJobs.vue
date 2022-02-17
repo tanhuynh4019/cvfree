@@ -1,12 +1,7 @@
 <template>
-  <div
-    style="
-      background: transparent linear-gradient(179deg, #edfff5, #fff) 0 0
-        no-repeat padding-box;
-    "
-  >
+  <div>
     <v-container>
-      <v-card class="mt-10" style="border-radius: 5px 5px 0px 0px">
+      <v-card style="border-radius: 5px 5px 0px 0px">
         <v-toolbar color="#fafafa">
           <v-toolbar-title class="font-weight-bold">
             <v-icon color="#004D40">mdi-shield-star-outline</v-icon>
@@ -44,7 +39,7 @@
                           </div>
                         </v-col>
                         <v-col cols="7" sm="7">
-                          <h6>Nhân Viên Media (8-12 Triệu)...</h6>
+                          <h6 style="font-size: 14px">Nhân Viên Media (8-12 Triệu)...</h6>
                           <p style="font-size: 12px">
                             CÔNG TY TNHH VJS VIỆT NAM...
                           </p>
