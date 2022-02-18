@@ -209,6 +209,7 @@ export default {
             {
               name: "Trắc nghiệm tính cách MBTI",
               icon: "mdi-message-text",
+              link: '/trac-nghiem-tinh-cach-mbti'
             },
             {
               name: "Trắc nghiệm MI",

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Job from '../views/Job.vue'
 import RemoteJob from '../views/Jobs/RemoteJob.vue';
 import Companies from '../views/Companies/Companies.vue'
+import MBTI from '../views/CareerDevelopment/MBTI.vue';
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,11 @@ const routes = [{
         path: '/cong-ty',
         name: 'Companies',
         component: Companies
+    },
+    {
+        path: '/trac-nghiem-tinh-cach-mbti',
+        name: 'MBTI',
+        component: MBTI
     },
     {
         path: '/about',

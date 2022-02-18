@@ -71,6 +71,15 @@
     <v-container>
       <ListTopCompanies />
     </v-container>
+    <v-container>
+      <Hotline />
+    </v-container>
+    <v-container>
+      <Content />
+    </v-container>
+    <v-container>
+      <Categories />
+    </v-container>
   </div>
 </template>
 
@@ -83,6 +92,9 @@ import ListFeatureJobs from "../components/Job/ListFeatureJobs.vue";
 import ListAttractiveJobs from "../components/Job/ListAttractiveJobs.vue";
 import ListStatusJobs from "../components/Job/ListStatusJobs.vue";
 import ListTopCompanies from "../components/Companies/ListTopCompanies.vue";
+import Hotline from "../components/Contact/Hotline.vue";
+import Content from "../components/Seo/Content.vue";
+import Categories from "../components/Seo/Categories.vue";
 export default {
   name: "Job",
   components: {
@@ -94,6 +106,9 @@ export default {
     BannerRight,
     ListStatusJobs,
     ListTopCompanies,
+    Hotline,
+    Content,
+    Categories
   },
   data() {
     return {};
