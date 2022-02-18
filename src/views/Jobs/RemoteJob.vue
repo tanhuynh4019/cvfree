@@ -97,34 +97,110 @@
         </div>
       </v-card>
       <v-card style="border-radius: 0px 0px 0px 0px">
-        <div class="p-3">
-          <v-card>
-            <v-row>
-              <v-col sm="2">
+        <v-row>
+          <v-col sm="9">
+            <div class="p-3">
+              <v-card
+                color="#f2fbf6"
+                v-for="(n, i) in 10"
+                :key="n"
+                :class="i != 0 ? 'mt-6' : ''"
+              >
+                <v-row>
+                  <v-col sm="2">
+                    <div class="p-2">
+                      <center>
+                        <v-img
+                          width="70%"
+                          height="70"
+                          src="https://cdn.topcv.vn/80/company_logos/197da107841bf0b3ca67db3c5bf07571-61dfd5470d712.jpg"
+                        ></v-img>
+                      </center>
+                    </div>
+                  </v-col>
+                  <v-col sm="6">
+                    <div class="p-2">
+                      <h6>
+                        Cộng Tác Viên Tìm Kiếm Khách Hàng - Phát Triển Thị
+                        Trường
+                      </h6>
+                      <p>CÔNG TY TNHH TRUYỀN THÔNG F.WORLD</p>
+                      <div>
+                        <v-chip small label>7-10 triệu</v-chip>
+                        <v-chip small class="ml-1" label>19 phút trước</v-chip>
+                      </div>
+                    </div>
+                  </v-col>
+                  <v-col sm="4">
+                    <v-row>
+                      <v-col sm="12">
+                        <div class="p-2">
+                          <div class="float-end">
+                            Còn <b>8</b> ngày để ứng tuyển
+                          </div>
+                        </div>
+                      </v-col>
+                      <v-col sm="12">
+                        <div class="float-end p-2">
+                          <v-btn icon>
+                            <v-icon>mdi-heart</v-icon>
+                          </v-btn>
+                        </div>
+                      </v-col>
+                    </v-row>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </div>
+
+            <div class="text-center mt-2">
+              <v-pagination
+                color="#004D40"
+                v-model="page"
+                :length="6"
+              ></v-pagination>
+            </div>
+          </v-col>
+          <v-col sm="3">
+            <div class="p-2">
+              <h6>Có thể bạn quan tâm</h6>
+              <v-card>
+                <v-img
+                  height="140"
+                  width="100%"
+                  src="https://cdn.topcv.vn/247/company_covers/cong-ty-cho-thue-tai-chinh-tnhh-mtv-quoc-te-chailease-00121a41a78a2428cb9f0d12d8b94de9-61656bb084659.jpg"
+                ></v-img>
                 <div class="p-2">
-                  <center>
-                    <v-img
-                      width="70%"
-                      height="90"
-                      src="https://cdn.topcv.vn/80/company_logos/197da107841bf0b3ca67db3c5bf07571-61dfd5470d712.jpg"
-                    ></v-img>
-                  </center>
+                  <b>Công ty Cho thuê tài chính TNHH MTV Quốc tế Chailease</b>
+                  <div>
+                    <v-divider></v-divider>
+                    <h6>Chuyên Viên Hỗ Trợ Tín Dụng</h6>
+                    <v-row>
+                      <v-col sm="6"> Trên 10 triệu </v-col>
+                      <v-col sm="6"> 31/03/2022 </v-col>
+                    </v-row>
+                  </div>
+                  <div>
+                    <v-divider></v-divider>
+                    <h6>Chuyên Viên Hỗ Trợ Tín Dụng</h6>
+                    <v-row>
+                      <v-col sm="6"> Trên 10 triệu </v-col>
+                      <v-col sm="6"> 31/03/2022 </v-col>
+                    </v-row>
+                  </div>
+                  <div class="text-center">
+                    <v-btn class="mt-2" color="#004D40" dark>Tìm hiểu ngay</v-btn>
+                  </div>
                 </div>
-              </v-col>
-              <v-col sm="8">
-                <div class="p-2">
-                  <h5>
-                    Cộng Tác Viên Tìm Kiếm Khách Hàng - Phát Triển Thị Trường
-                  </h5>
-                  <p>CÔNG TY TNHH TRUYỀN THÔNG F.WORLD</p>
-                </div>
-              </v-col>
-              <v-col sm="2"> 
-                  Còn <b>8</b> ngày để ứng tuyển
-              </v-col>
-            </v-row>
-          </v-card>
-        </div>
+              </v-card>
+              <v-card class="mt-5">
+                <v-img
+                  src="https://static.topcv.vn/manual/cv-tim-viec-topcv.png"
+                ></v-img>
+              </v-card>
+            </div>
+          </v-col>
+        </v-row>
       </v-card>
     </v-container>
   </div>
@@ -135,6 +211,7 @@ export default {
   name: "RemoteJob",
   data() {
     return {
+      page: 1,
       common: {
         imageRight: true,
       },
