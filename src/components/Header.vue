@@ -228,6 +228,7 @@ export default {
             {
               name: "Tính Bảo hiểm thất nghiệp",
               icon: "mdi-calculator-variant",
+              link: '/cong-cu-tinh-muc-huong-bao-hiem-that-nghiep'
             },
             {
               name: "Mobile App TopCV",
