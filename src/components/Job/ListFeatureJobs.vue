@@ -26,7 +26,7 @@
             <div class="p-4">
               <v-row>
                 <v-col cols="12" sm="6" md="4" lg="4" class="mt-2" v-for="n in 18" :key="n">
-                  <v-card>
+                  <v-card link :to="{ name: 'DetailsJob', params: { slug: 'thuc-tap-sinh-tai-chinh-thu-nhap-tu-10-trieu' } }">
                     <div class="p-3">
                       <v-row>
                         <v-col cols="3" sm="3">
