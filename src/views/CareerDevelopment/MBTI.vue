@@ -54,21 +54,25 @@
             <v-col sm="12">
               <v-row>
                 <v-col
+                  class="col-sm-padding"
                   v-for="(items, j) in item.listSub"
                   :key="j"
-                  class="background-gray"
                   sm="6"
                 >
-                  <div class="form-size">
+                  <div class="form-size box-gray">
                     <div class="form-size-text">
                       <p>
                         <a :href="items.link" :title="items.title">
-                          <img :src="items.image" alt="" class="img-bot" />
+                          <img
+                            :src="items.image"
+                            :title="items.titleimg"
+                            class="img-bot"
+                          />
                         </a>
                       </p>
                       <h4>
                         <a :href="items.link" :title="items.title">
-                          ISTJ - Người trách nhiệm
+                          {{ items.name }}
                         </a>
                       </h4>
                       <span class="text-gray">
@@ -166,6 +170,8 @@ export default {
               image: "https://www.topcv.vn/images/mbti/web-v1.1/istj.png",
               link: "https://www.topcv.vn/mbti/nhom-tinh-cach-istj.html",
               title: "Phân tích nhóm tính cách ISTJ - Người trách nhiệm",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ISTJ",
               content:
                 "Đây là nhóm tính cách phổ biến nhất, có đến 13% dân số trên thế giới thuộc nhóm tính cách này. Phương châm sống của họ là “Chỉ có sự thật”, tính cách của ISTJ là rất tôn trọng sự thật, họ có xu hướng tiếp thu rất nhiều thông tin và nhớ rất lâu. Một trong những yếu tố góp phần quan trọng làm cho ISTJ có khả năng phân tích các sự vật, hiện tượng, con người ở môi trường xung quanh rất tốt đó là nhờ đặc tính S.",
             },
@@ -174,40 +180,150 @@ export default {
               image: "https://www.topcv.vn/images/mbti/web-v1.1/isfj.png",
               link: "https://www.topcv.vn/mbti/nhom-tinh-cach-isfj.html",
               title: "Phân tích nhóm tính cách ISFJ - Người nuôi dưỡng",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ISFJ",
+              content:
+                "Trong tất cả các loại tính cách thì ISFJ là loại tính cách có lòng vị tha nhất. Có khoảng 12.5% dân số trên thế giới mang loại tính cách này. Nhiều ISFJ tìm kiếm sự nghiệp trong lĩnh vực học thuật, y học, công tác xã hội hoặc tư vấn; đặc điểm tính cách của họ cũng tỏa sáng trong vai trò hành chính - văn phòng, hoặc thậm chí trong các lĩnh vực có phần bất ngờ như thiết kế nội thất.",
+            },
+            {
+              name: "ISFP - Người nghệ sĩ",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/isfp.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-isfp.html",
+              title: "Phân tích nhóm tính cách ISFP - Người nghệ sĩ",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ISFP",
+              content:
+                "Có khoảng 8% dân số mang tính cách này. Tính cách ISFP này thường được xem như là tự phát nhất và không thể đoán trước của tất cả các loại hướng nội. Đặc tính nổi bậc của họ đó là sự thay đổi",
+            },
+            {
+              name: "ISTP - Nhà kỹ thuật",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/istp.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-istp.html",
+              title: "Phân tích nhóm tính cách ISTP - Nhà kỹ thuật",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ISTP",
+              content:
+                "Có khoảng 5% dân số mang tính cách này, ISTP sở hữu nhiều đặc điểm thú vị có thể dễ dàng ngăn chặn người ngoài cuộc thăm dò họ. Họ thường rất lý trí và suy nghĩ logic, nhưng cũng có thể làm ngạc nhiên mọi người bằng cách đột nhiên trở nên tự phát và nhiệt tình nhiều hơn.",
+            },
+            {
+              name: "INFP - Người lý tưởng hóa",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/infp.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-infp.html",
+              title: "Phân tích nhóm tính cách INFP - Người lý tưởng hóa",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách INFP",
+              content:
+                "Có khoảng 4,5% dân số mang tính cách này, các INFP thường được coi là điềm tĩnh, kín đáo hoặc thậm chí nhút nhát. Tuy nhiên, đừng để vẻ bề ngoài đánh lừa. Dù các INFP có thể hơi thận trọng, nhưng không thể xem thường ngọn lửa và sự đam mê bên trong họ. Những người có loại tính cách này là thực sự rất trìu mến, một đặc điểm không thường thấy ở các loại tính cách khác.",
+            },
+            {
+              name: "INFJ - Người che chở",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/infj.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-infj.html",
+              title: "Phân tích nhóm tính cách INFJ - Người che chở",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách INFJ",
+              content:
+                "Có rất ít người mang tính cách này, chỉ chiếm khoảng 1% dân số và họ mang trong mình khá nhiều đặc điểm bất thường. Mặc dù sự hiện diện của họ có thể được miêu tả như là rất yên tĩnh, nhưng các INFJ lại thường có nhiều ý kiến ​​mạnh mẽ, đặc biệt là khi nói đến các vấn đề mà họ cho là thực sự quan trọng trong cuộc sống.",
+            },
+            {
+              name: "INTJ - Nhà khoa học",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/intj.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-intj.html",
+              title: "Phân tích nhóm tính cách INTJ - Nhà khoa học",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách INTJ",
+              content:
+                "INTJ là một trong những loại tính cách hiếm nhất và thú vị nhất - chỉ chiếm khoảng 2% dân số Hoa Kỳ (INTJ nữ là đặc biệt hiếm - chỉ 0,8%), Các INTJ thường được xem là rất thông minh và bí ẩn một cách khó hiểu. Những người mang tính cách INTJ thường tỏa ra sự tự tin, dựa trên kho lưu trữ khổng lồ của họ về kiến thức bao trùm nhiều lĩnh vực và phạm vi khác nhau.",
+            },
+            {
+              name: "INTP - Nhà tư duy",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/intp.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-intp.html",
+              title: "Phân tích nhóm tính cách INTP - Nhà tư duy",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách INTP",
               content:
                 "Trong tất cả các loại tính cách thì ISFJ là loại tính cách có lòng vị tha nhất. Có khoảng 12.5% dân số trên thế giới mang loại tính cách này. Nhiều ISFJ tìm kiếm sự nghiệp trong lĩnh vực học thuật, y học, công tác xã hội hoặc tư vấn",
             },
             {
-              name: "ISTJ - Người trách nhiệm",
+              name: "ENFJ - Người cho đi",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/enfj.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-enfj.html",
+              title: "Phân tích nhóm tính cách ENFJ - Người cho đi",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ENFJ",
+              content:
+                "Có khoảng 2% dân số mang loại tính cách này, ENFJ là loại tính cách có sức ảnh hưởng rất lớn. Các ENFJ thường rất lôi cuốn và có tài hùng biện, họ dễ dàng truyền đạt ý tưởng, quan điểm của họ với mọi người. ENFJ quan tâm đến mọi người một cách chân thành, những người xung quanh ENFJ thường thấy chúng rất truyền cảm và dễ thương.",
+            },
+            {
+              name: "ENFP - Người truyền cảm hứng",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/enfp.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-enfp.html",
+              title: "Phân tích nhóm tính cách ENFP - Người truyền cảm hứng",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ENFP",
+              content:
+                "Có khoảng 7% dân số mang loại tính cách này. Những người mang tính cách ENFP thường rất tò mò, hiếu kỳ, duy tâm và khá bí ẩn. Họ tìm kiếm ý nghĩa và rất quan tâm đến động cơ của người khác, họ thấy cuộc sống thật rộng lớn, nhiều câu đố phức tạp ở những nơi mà mọi thứ được kết nối.",
+            },
+            {
+              name: "ENTJ - Nhà điều hành",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/entj.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-entj.html",
+              title: "Phân tích nhóm tính cách ENTJ - Nhà điều hành",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ENTJ",
+              content:
+                "Có khoảng 3% dân số mang tính cách này, ENTJ có cá tính rất lôi cuốn, lý trí và nhạy bén. Họ rất giỏi lãnh đạo và truyền cảm hứng cho người khác. ENTJ là loại tính cách có khả năng lãnh đạo tốt nhất trong các loại tính cách. Theo ENTJ thì 'Không có gì là không thể nếu bạn quyết tâm'.",
+            },
+            {
+              name: "ENTP - Người nhìn xa",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/entp.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-entp.html",
+              title: "Phân tích nhóm tính cách ENTP - Người nhìn xa",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ENTP",
+              content:
+                "Có khoảng 3% dân số mang loại tính cách này, các ENTP rất thích tranh luận, họ không quan tâm đang tranh luận về cái gì, miễn là nó thú vị. Họ có thể không thực sự ủng hộ ý tưởng họ đang tranh cãi, nhưng có thể quyết định đi ngược lại quan điểm hiện hành, họ xem điều này như là một bài tập tinh thần.",
+            },
+            {
+              name: "ESFJ - Người quan tâm",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/esfj.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-esfj.html",
+              title: "Phân tích nhóm tính cách ESFJ - Người quan tâm",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ESFJ",
+              content:
+                "3 tính cách đặc trưng của ESFJ là: Thực tế, vị tha và hòa đồng. Có khoảng 12% dân số mang tính cách này. Các ESFJ muốn được phục vụ người khác và họ rất nghiêm túc khi đưa ra các cam kết. Các ESFJ rất giỏi làm việc nhóm, họ luôn cảm nhận được sự căng thẳng và không hòa hợp. Họ rất truyền thống, làm hết sức mình để hỗ trợ và bảo vệ quyền và pháp luật.",
+            },
+            {
+              name: "ESFP - Người trình diễn",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/esfp.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-isfj.html",
+              title: "Phân tích nhóm tính cách ESFP - Người trình diễn",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách IESFP",
+              content:
+                "Có khoảng 7.5% dân số mang tính cách này, Các ESFP thích được ở trung tâm của sự chú ý và họ cũng thích cả những điều đơn giản nhất - Sự vui vẻ và bản chất bốc đồng của họ thường rất hấp dẫn những người khác. Những người có loại cá tính này không bao giờ hết những ý tưởng và sự tò mò của họ là không giới hạn - họ sẽ luôn luôn là một trong những người đầu tiên thử một cái gì đó mới và hấp dẫn.",
+            },
+            {
+              name: "ESTJ - Người giám hộ",
               image: "https://www.topcv.vn/images/mbti/web-v1.1/istj.png",
-              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-istj.html",
-              title: "Phân tích nhóm tính cách ISTJ - Người trách nhiệm",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-estj.html",
+              title: "Phân tích nhóm tính cách ESTJ - Người giám hộ",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ESTJ",
               content:
-                "Đây là nhóm tính cách phổ biến nhất, có đến 13% dân số trên thế giới thuộc nhóm tính cách này. Phương châm sống của họ là “Chỉ có sự thật”, tính cách của ISTJ là rất tôn trọng sự thật, họ có xu hướng tiếp thu rất nhiều thông tin và nhớ rất lâu. Một trong những yếu tố góp phần quan trọng làm cho ISTJ có khả năng phân tích các sự vật, hiện tượng, con người ở môi trường xung quanh rất tốt đó là nhờ đặc tính S.",
+                "Có khoảng 11,5% dân số mang tính cách này, những người mang loại tính cách ESTJ cảm thấy cần phải gắn kết với một điều gì đó - nó có thể là một gia đình, một cộng đồng hay một số nhóm xã hội khác. Họ thích 'việc tổ chức' của người khác và đảm bảo rằng họ sẽ tuân thủ các quy tắc truyền thống hoặc đưa ra bởi những người có thẩm quyền.",
             },
             {
-              name: "ISFJ - Người nuôi dưỡng",
-              image: "https://www.topcv.vn/images/mbti/web-v1.1/isfj.png",
-              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-isfj.html",
-              title: "Phân tích nhóm tính cách ISFJ - Người nuôi dưỡng",
+              name: "ESTP - Người thực thi",
+              image: "https://www.topcv.vn/images/mbti/web-v1.1/estp.png",
+              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-estp.html",
+              title: "Phân tích nhóm tính cách ESTP - Người thực thi",
+              titleimg:
+                "Tổng quan &amp; sự nghiệp dành cho nhóm tính cách ESTP",
               content:
-                "Trong tất cả các loại tính cách thì ISFJ là loại tính cách có lòng vị tha nhất. Có khoảng 12.5% dân số trên thế giới mang loại tính cách này. Nhiều ISFJ tìm kiếm sự nghiệp trong lĩnh vực học thuật, y học, công tác xã hội hoặc tư vấn",
-            },
-            {
-              name: "ISTJ - Người trách nhiệm",
-              image: "https://www.topcv.vn/images/mbti/web-v1.1/istj.png",
-              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-istj.html",
-              title: "Phân tích nhóm tính cách ISTJ - Người trách nhiệm",
-              content:
-                "Đây là nhóm tính cách phổ biến nhất, có đến 13% dân số trên thế giới thuộc nhóm tính cách này. Phương châm sống của họ là “Chỉ có sự thật”, tính cách của ISTJ là rất tôn trọng sự thật, họ có xu hướng tiếp thu rất nhiều thông tin và nhớ rất lâu. Một trong những yếu tố góp phần quan trọng làm cho ISTJ có khả năng phân tích các sự vật, hiện tượng, con người ở môi trường xung quanh rất tốt đó là nhờ đặc tính S.",
-            },
-            {
-              name: "ISFJ - Người nuôi dưỡng",
-              image: "https://www.topcv.vn/images/mbti/web-v1.1/isfj.png",
-              link: "https://www.topcv.vn/mbti/nhom-tinh-cach-isfj.html",
-              title: "Phân tích nhóm tính cách ISFJ - Người nuôi dưỡng",
-              content:
-                "Trong tất cả các loại tính cách thì ISFJ là loại tính cách có lòng vị tha nhất. Có khoảng 12.5% dân số trên thế giới mang loại tính cách này. Nhiều ISFJ tìm kiếm sự nghiệp trong lĩnh vực học thuật, y học, công tác xã hội hoặc tư vấn",
+                "Có khoảng 4% dân số mang tính cách này, những người có các loại tính cách ESTP rất tập thể, tự phát và thẳng thắn. Đôi khi họ bị xem là thô lỗ hoặc thiếu thận trọng, nhưng thực sự các ESTP yêu thích hành động và luôn luôn nhảy ngay vào trung tâm của 'cơn bão'.",
             },
           ],
         },
@@ -265,7 +381,7 @@ export default {
 b,
 span {
   font-size: 13px;
-  text-align: justify;
+  text-align: justify !important;
 }
 
 .image-padd {
@@ -288,6 +404,11 @@ span {
 .text-font .img-bot {
   float: left;
   margin: 15px;
+  width: 90px;
+  height: 90px;
+  border: 1px solid #dfdfdf;
+  padding: 3px;
+  border-radius: 50%;
 }
 
 .text-font .text-gray {
@@ -295,12 +416,17 @@ span {
   text-align: justify;
   font-size: 13px;
 }
-.personali-size {
-  padding: 0 15px;
-}
 .form-size {
-  max-height: 176px;
-  overflow: hidden;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.col-sm-padding {
+  padding: 2px;
+}
+
+.box-gray {
+  background-color: #fafafafa;
 }
 .form-size-text {
   max-height: 154px;
