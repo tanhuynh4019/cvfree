@@ -6,6 +6,8 @@ import RemoteJob from '../views/Jobs/RemoteJob.vue';
 import Companies from '../views/Companies/Companies.vue'
 import MBTI from '../views/CareerDevelopment/MBTI.vue';
 import DetailsJob from '../views/Jobs/DetailsJob.vue';
+import MI from '../views/CareerDevelopment/MI.vue';
+import BHTN from '../views/Tools/BHTN.vue';
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,16 @@ const routes = [{
         path: '/trac-nghiem-tinh-cach-mbti',
         name: 'MBTI',
         component: MBTI
+    },
+    {
+        path: '/trac-nghiem-da-tri-thong-minh-multiple-intelligences-test',
+        name: 'MI',
+        component: MI
+    },
+    {
+        path: '/cong-cu-tinh-muc-huong-bao-hiem-that-nghiep',
+        name: 'BHTN',
+        component: BHTN
     },
     {
         path: '/vieclam/:slug',
