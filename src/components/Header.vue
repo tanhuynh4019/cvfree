@@ -184,10 +184,12 @@ export default {
         {
           name: "Công ty",
           active: false,
+          link: '/cong-ty',
           list: [
             {
               name: "Danh sách công ty",
               icon: "mdi-office-building",
+              link: '/cong-ty'
             },
             {
               name: "Top công ty",
