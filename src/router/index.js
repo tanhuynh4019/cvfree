@@ -8,6 +8,7 @@ import MBTI from '../views/CareerDevelopment/MBTI.vue';
 import DetailsJob from '../views/Jobs/DetailsJob.vue';
 import MI from '../views/CareerDevelopment/MI.vue';
 import BHTN from '../views/Tools/BHTN.vue';
+import CV from '../views/CVs/CV.vue';
 
 Vue.use(VueRouter)
 
@@ -50,6 +51,11 @@ const routes = [{
         path: '/vieclam/:slug',
         name: 'DetailsJob',
         component: DetailsJob
+    },
+    {
+        path: '/mau-cv',
+        name: 'CV',
+        component: CV
     },
     {
         path: '/about',

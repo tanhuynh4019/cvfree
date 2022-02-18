@@ -3,7 +3,7 @@
     <v-container>
       <v-form ref="searchForm" v-model="searchForm.valid" class="box-search">
         <v-row>
-          <v-col sm="3" cols="12">
+          <v-col sm="4" cols="12">
             <v-text-field
               v-model="searchForm.value.key"
               placeholder="Tên công việc, vị trí bạn muốn ứng tuyển ..."
@@ -45,7 +45,7 @@
               solo
             ></v-autocomplete>
           </v-col>
-          <v-col sm="2">
+          <v-col sm="2" cols="12">
             <v-btn class="w-100" dark depressed color="#004D40" height="48">
               <v-icon>mdi-card-search</v-icon>
               <span class="ml-1">Tìm kiếm</span>

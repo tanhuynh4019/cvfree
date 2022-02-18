@@ -166,6 +166,7 @@ export default {
             {
               name: "Mẫu CV",
               icon: "mdi-account-box-outline",
+              link: '/mau-cv'
             },
             {
               name: "Mẫu Cover Letter",
