@@ -209,6 +209,7 @@ export default {
             {
               name: "Trắc nghiệm tính cách MBTI",
               icon: "mdi-message-text",
+              link: '/trac-nghiem-tinh-cach-mbti'
             },
             {
               name: "Trắc nghiệm MI",
@@ -227,6 +228,7 @@ export default {
             {
               name: "Tính Bảo hiểm thất nghiệp",
               icon: "mdi-calculator-variant",
+              link: '/cong-cu-tinh-muc-huong-bao-hiem-that-nghiep'
             },
             {
               name: "Mobile App TopCV",
