@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Job from '../views/Job.vue'
 import RemoteJob from '../views/Jobs/RemoteJob.vue';
+import Companies from '../views/Companies/Companies.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,11 @@ const routes = [{
         path: '/viec-lam-remote',
         name: 'RemoteJob',
         component: RemoteJob
+    },
+    {
+        path: '/cong-ty',
+        name: 'Companies',
+        component: Companies
     },
     {
         path: '/about',
