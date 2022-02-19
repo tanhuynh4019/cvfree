@@ -2,8 +2,8 @@
   <div v-resize="onResize">
     <v-system-bar app v-if="common.headerSub">
       <v-spacer></v-spacer>
-      <v-btn text x-small>Đăng nhập</v-btn>
-      <v-btn text x-small>Đăng ký</v-btn>
+      <v-btn text x-small :to="url.login">Đăng nhập</v-btn>
+      <v-btn text x-small :to="url.signup">Đăng ký</v-btn>
       <v-btn text x-small>Đăng tuyển & tìm hồ sơ</v-btn>
     </v-system-bar>
     <v-app-bar app clipped-right flat height="78">
@@ -49,7 +49,11 @@
                       <div class="card-body">
                         <v-list nav dense>
                           <v-list-item-group color="#004D40">
-                            <v-list-item v-for="(sub, i) in menu.list" :key="i" :to="sub.link">
+                            <v-list-item
+                              v-for="(sub, i) in menu.list"
+                              :key="i"
+                              :to="sub.link"
+                            >
                               <v-list-item-icon>
                                 <v-icon v-text="sub.icon"></v-icon>
                               </v-list-item-icon>
@@ -90,8 +94,8 @@
 
       <v-responsive max-width="500">
         <div class="float-right" v-if="common.user">
-          <v-btn depressed outlined color="#004D40"> Đăng nhập </v-btn>
-          <v-btn depressed dark color="#004D40" class="ml-1"> Đăng ký </v-btn>
+          <v-btn :to="url.login" depressed outlined color="#004D40"> Đăng nhập </v-btn>
+          <v-btn :to="url.signup" depressed dark color="#004D40" class="ml-1"> Đăng ký </v-btn>
           <v-btn depressed dark color="#263238" class="ml-1">
             Đăng tuyển & tìm hồ sơ
           </v-btn>
@@ -103,15 +107,52 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app width="300">
-      <v-sheet color="grey lighten-5" height="128" width="100%"></v-sheet>
+      <v-sheet color="grey lighten-5" height="40" width="100%">
+        <div class="p-3">
+          <a>
+            <img
+              width="100px"
+              height="40"
+              src="https://www.topcv.vn/v3/images/topcv-logo-4.png?v=1.0.1"
+            />
+          </a>
+        </div>
+      </v-sheet>
 
-      <v-list class="pl-14" shaped>
-        <v-list-item v-for="n in 5" :key="n" link>
+      
+      <div class="p-2 mt-3">
+        <v-btn :to="url.login" class="w-100" depressed outlined color="#004D40">
+          Đăng nhập
+        </v-btn>
+        <v-btn :to="url.signup" class="w-100 mt-1" depressed dark color="#004D40">
+          Đăng ký
+        </v-btn>
+        <v-btn class="w-100 mt-1" depressed dark color="#263238">
+          Đăng tuyển & tìm hồ sơ
+        </v-btn>
+      </div>
+
+      <v-list shaped>
+        <v-list-item v-for="(menu, i) in menus" :key="i" link :to="menu.link">
           <v-list-item-content>
-            <v-list-item-title>Item {{ n }}</v-list-item-title>
+            <v-list-item-title>{{ menu.name }}</v-list-item-title>
+            <v-list shaped class="mt-3">
+              <v-list-item
+                v-for="(sub, j) in menu.list"
+                :key="j"
+                link
+                :to="sub.link"
+              >
+                <v-list-item-content>
+                  <v-list-item-title>
+                  <v-icon>{{sub.icon}}</v-icon><span class="mt-1">{{ sub.name }}</span></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
     </v-navigation-drawer>
   </div>
 </template>
@@ -121,6 +162,10 @@ export default {
   name: "Header",
   data() {
     return {
+      url: {
+        login: '/login',
+        signup: '/sign-up'
+      },
       drawer: false,
       windowSize: {
         x: 0,
@@ -143,7 +188,7 @@ export default {
               name: "Tìm việc",
               icon: "mdi-radar",
               status: null,
-              link: "/viec-lam"
+              link: "/viec-lam",
             },
             {
               name: "Việc làm phù hợp",
@@ -154,7 +199,7 @@ export default {
               name: "Việc làm từ xa (Remote)",
               icon: "mdi-cloud",
               status: null,
-              link: '/viec-lam-remote'
+              link: "/viec-lam-remote",
             },
           ],
         },
@@ -166,7 +211,7 @@ export default {
             {
               name: "Mẫu CV",
               icon: "mdi-account-box-outline",
-              link: '/mau-cv'
+              link: "/mau-cv",
             },
             {
               name: "Mẫu Cover Letter",
@@ -185,12 +230,12 @@ export default {
         {
           name: "Công ty",
           active: false,
-          link: '/cong-ty',
+          link: "/cong-ty",
           list: [
             {
               name: "Danh sách công ty",
               icon: "mdi-office-building",
-              link: '/cong-ty'
+              link: "/cong-ty",
             },
             {
               name: "Top công ty",
@@ -210,7 +255,7 @@ export default {
             {
               name: "Trắc nghiệm tính cách MBTI",
               icon: "mdi-message-text",
-              link: '/trac-nghiem-tinh-cach-mbti'
+              link: "/trac-nghiem-tinh-cach-mbti",
             },
             {
               name: "Trắc nghiệm MI",
@@ -225,11 +270,12 @@ export default {
             {
               name: "Tính lương GROSS - NET",
               icon: "mdi-calculator-variant",
+              link: '/tinh-luong-gross-net'
             },
             {
               name: "Tính Bảo hiểm thất nghiệp",
               icon: "mdi-calculator-variant",
-              link: '/cong-cu-tinh-muc-huong-bao-hiem-that-nghiep'
+              link: "/cong-cu-tinh-muc-huong-bao-hiem-that-nghiep",
             },
             {
               name: "Mobile App TopCV",

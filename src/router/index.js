@@ -1,14 +1,29 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '../views/Home.vue'
-import Job from '../views/Job.vue'
-import RemoteJob from '../views/Jobs/RemoteJob.vue';
-import Companies from '../views/Companies/Companies.vue'
-import MBTI from '../views/CareerDevelopment/MBTI.vue';
-import DetailsJob from '../views/Jobs/DetailsJob.vue';
-import MI from '../views/CareerDevelopment/MI.vue';
-import BHTN from '../views/Tools/BHTN.vue';
+//! Companies
+import Companies from '../views/Companies/Companies.vue';
+
+//! Cvs
 import CV from '../views/CVs/CV.vue';
+
+//! Jobs
+import Job from '../views/Job.vue'
+import DetailsJob from '../views/Jobs/DetailsJob.vue';
+import RemoteJob from '../views/Jobs/RemoteJob.vue';
+
+//! Career Development
+import MI from '../views/CareerDevelopment/MI.vue';
+import MBTI from '../views/CareerDevelopment/MBTI.vue';
+
+//! Tools
+import BHTN from '../views/Tools/BHTN.vue';
+import GrossNet from '../views/Tools/GrossNet.vue';
+
+//!Users
+import Login from '../views/Users/Login.vue';
+import Signup from '../views/Users/SingUp.vue';
 
 Vue.use(VueRouter)
 
@@ -56,6 +71,21 @@ const routes = [{
         path: '/mau-cv',
         name: 'CV',
         component: CV
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
+    },
+    {
+        path: '/sign-up',
+        name: 'Signup',
+        component: Signup
+    },
+    {
+        path: '/tinh-luong-gross-net',
+        name: 'GrossNet',
+        component: GrossNet
     },
     {
         path: '/about',
