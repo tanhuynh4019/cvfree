@@ -48,16 +48,17 @@
       <v-card class="box-search" style="border-radius: 0px 0px 0px 0px">
         <div class="p-3">
           <v-row>
-            <v-col sm="8">
+            <v-col cols="12" sm="12" md="6">
               <v-text-field
+                dense
                 placeholder="Tên công việc, vị trí bạn muốn ứng tuyển ..."
                 prepend-inner-icon="mdi-search-web"
                 solo
-                height="44"
               ></v-text-field>
             </v-col>
-            <v-col sm="2">
+            <v-col cols="8" sm="8" md="4">
               <v-autocomplete
+                dense
                 :items="selected.careers"
                 prepend-inner-icon="mdi-office-building"
                 clearable
@@ -66,15 +67,28 @@
                 solo
               ></v-autocomplete>
             </v-col>
-            <v-col sm="2">
-              <v-btn class="w-100" dark depressed color="#004D40" height="48">
+            <v-col cols="4" sm="4" md="2">
+              <v-btn
+                dense
+                class="w-100"
+                dark
+                depressed
+                color="#004D40"
+                height="40"
+              >
                 <v-icon>mdi-card-search</v-icon>
                 <span class="ml-1">Tìm kiếm</span>
               </v-btn>
             </v-col>
             <v-col sm="12">
-              <v-chip-group style="margin-top: -20px">
-                <v-chip v-for="item in keywords" :key="item._id" width="100">
+              <div style="margin-top: -10px">
+                <v-chip
+                  sm="3"
+                  class="ml-1 mt-1"
+                  v-for="item in keywords"
+                  :key="item._id"
+                  width="100"
+                >
                   {{ item.name }}
                   <v-avatar
                     right
@@ -83,7 +97,7 @@
                     {{ item.count }}
                   </v-avatar>
                 </v-chip>
-              </v-chip-group>
+              </div>
             </v-col>
           </v-row>
         </div>
@@ -98,27 +112,29 @@
       </v-card>
       <v-card style="border-radius: 0px 0px 0px 0px">
         <v-row>
-          <v-col sm="9">
+          <v-col cols="12" sm="12" md="9">
             <div class="p-3">
               <v-card
+                link
+                :to="{ name: 'DetailsJob', params: { slug: 'details'} }"
                 color="#f2fbf6"
                 v-for="(n, i) in 10"
                 :key="n"
                 :class="i != 0 ? 'mt-6' : ''"
               >
                 <v-row>
-                  <v-col sm="2">
+                  <v-col cols="4" sm="3" md="2" lg="2">
                     <div class="p-2">
                       <center>
-                        <v-img
+                        <img
                           width="70%"
                           height="70"
                           src="https://cdn.topcv.vn/80/company_logos/197da107841bf0b3ca67db3c5bf07571-61dfd5470d712.jpg"
-                        ></v-img>
+                        />
                       </center>
                     </div>
                   </v-col>
-                  <v-col sm="6">
+                  <v-col cols="8" sm="6" md="8" lg="7">
                     <div class="p-2">
                       <h6>
                         Cộng Tác Viên Tìm Kiếm Khách Hàng - Phát Triển Thị
@@ -126,12 +142,12 @@
                       </h6>
                       <p>CÔNG TY TNHH TRUYỀN THÔNG F.WORLD</p>
                       <div>
-                        <v-chip small label>7-10 triệu</v-chip>
+                        <v-chip small class="ml-1" label>7-10 triệu</v-chip>
                         <v-chip small class="ml-1" label>19 phút trước</v-chip>
                       </div>
                     </div>
                   </v-col>
-                  <v-col sm="4">
+                  <v-col cols="12" sm="3" md="2" lg="3">
                     <v-row>
                       <v-col sm="12">
                         <div class="p-2">
@@ -161,7 +177,7 @@
               ></v-pagination>
             </div>
           </v-col>
-          <v-col sm="3">
+          <v-col cols="12" sm="12" md="3">
             <div class="p-2">
               <h6>Có thể bạn quan tâm</h6>
               <v-card>
@@ -189,7 +205,9 @@
                     </v-row>
                   </div>
                   <div class="text-center">
-                    <v-btn class="mt-2" color="#004D40" dark>Tìm hiểu ngay</v-btn>
+                    <v-btn class="mt-2" color="#004D40" dark
+                      >Tìm hiểu ngay</v-btn
+                    >
                   </div>
                 </div>
               </v-card>

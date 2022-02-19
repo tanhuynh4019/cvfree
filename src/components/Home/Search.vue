@@ -18,7 +18,7 @@
             >
               <div class="p-3">
                 <v-row>
-                  <v-col cols="12" lg="8">
+                  <v-col cols="12" sm="8">
                     <v-text-field
                       @click="isSearchAdvanced"
                       v-model="searchForm.value.key"
@@ -28,7 +28,7 @@
                       height="44"
                     ></v-text-field>
                   </v-col>
-                  <v-col cols="12" lg="4">
+                  <v-col cols="12" sm="4">
                     <v-btn
                       dark
                       depressed
@@ -126,14 +126,14 @@
               </h6>
               <v-row>
                 <v-col
-                  cols="4"
-                  sm="3"
+                  cols="3"
+                  sm="2"
                   md="2"
                   v-for="company in companys.top"
                   :key="company._id"
                 >
                   <div class="p-3">
-                    <img height="28" width="100%" :src="company.image" />
+                    <img height="35" width="100%" :src="company.image" />
                   </div>
                 </v-col>
               </v-row>

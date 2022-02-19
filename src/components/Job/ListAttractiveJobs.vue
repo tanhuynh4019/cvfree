@@ -29,7 +29,10 @@
                 v-for="n in 10"
                 :key="n"
               >
-                <v-card>
+                <v-card
+                  link
+                  :to="{ name: 'DetailsJob', params: { slug: 'details' } }"
+                >
                   <div class="p-3">
                     <v-row>
                       <v-col cols="3" sm="3">
@@ -55,7 +58,7 @@
                         </v-btn>
                       </v-col>
                       <v-col cols="12" sm="12" style="margin-top: -35px">
-                        <v-chip label small>Trên 40 triệu</v-chip>
+                        <v-chip label class="ml-1" small>Trên 40 triệu</v-chip>
                         <v-chip label small class="ml-1">Hồ Chí Minh</v-chip>
                       </v-col>
                     </v-row>
