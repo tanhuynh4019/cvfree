@@ -22,7 +22,7 @@
               Tra cứu thông tin công ty và tìm kiếm nơi làm việc tốt nhất dành
               cho bạn
             </p>
-            <form class="form-search" v-if="common.searchBottom">
+            <form class="form-search" :style="common.inputSearch.style">
               <i class="mdi mdi-search-web"></i>
               <input
                 class="form-control"
@@ -49,8 +49,8 @@
         <v-container>
           <v-row>
             <v-col md="4" sm="6" v-for="item in company" :key="item._id">
-              <v-card>
-                <v-img height="150px" :src="item.img"> </v-img>
+              <v-card link>
+                <v-img height="150px" :src="item.banner"> </v-img>
                 <v-card-title class="white--text mt-8">
                   <v-avatar size="62">
                     <img alt="user" :src="item.logo" />
@@ -58,7 +58,7 @@
                 </v-card-title>
                 <v-card-text>
                   <div class="name" v-text="item.title"></div>
-                  <p v-text="item.content"></p>
+                  <p class="text-dark" v-text="item.content"></p>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -78,6 +78,9 @@ export default {
     return {
       common: {
         imageRight: true,
+        inputSearch: {
+          style: "width: 50%",
+        },
       },
       windowSize: {
         x: 0,
@@ -86,27 +89,30 @@ export default {
       company: [
         {
           _id: 1,
-          img: "https://cdn.pixabay.com/photo/2020/07/12/07/47/bee-5396362_1280.jpg",
-          logo: "https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg",
+          banner:
+            "https://static.topcv.vn/company_covers/iBFOjYmzKzY9i37pWMEk.jpg",
+          logo: "https://cdn.topcv.vn/140/company_logos/cong-ty-tnhh-khu-du-lich-vinh-thien-duong-alma-591a6f04eae05_rs.jpg",
           title: "CÔNG TY TNHH KHU DU LỊCH VỊNH THIÊN ĐƯỜNG (ALMA)",
           content:
-            "VỀ CÔNG TYCông ty TNHH Khu Du Lịch Vịnh Thiên Đường (ALMA) hoạt động trong lĩnh vực du lịch nghỉ dưỡng. Chính thức ra mắt với công chúng từ năm 2013, trải qua quá trình phát triển, Công ty TNHH Khu Du Lịch Vịnh Thiên Đường – Công ty ALMA bao gồm 4 chi nhánh hoạt động tại các thành phố lớn là Hà Nội, Hồ Chí Minh và Nha...",
+            '"VỀ CÔNG TYCông ty TNHH Khu Du Lịch Vịnh Thiên Đường (ALMA) hoạt động trong lĩnh vực du lịch nghỉ dưỡng. Chính thức ra mắt với công chúng từ năm 2013, trải qua quá trình phát triển, Công ty TNHH Khu Du Lịch Vịnh Thiên Đường – Công ty ALMA bao gồm 4 chi nhánh hoạt động tại các thành phố lớn là Hà Nội, Hồ Chí Minh và Nha..."',
         },
         {
           _id: 2,
-          img: "https://cdn.pixabay.com/photo/2020/07/12/07/47/bee-5396362_1280.jpg",
-          logo: "https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg",
-          title: "CÔNG TY TNHH KHU DU LỊCH VỊNH THIÊN ĐƯỜNG (ALMA)",
+          banner:
+            "https://static.topcv.vn/company_covers/cong-ty-co-phan-tap-doan-hoa-sen-7bef20231b5608ec54165567c1aba4c5-606d650d0d14c.jpg",
+          logo: "https://cdn.topcv.vn/140/company_logos/cong-ty-co-phan-tap-doan-hoa-sen-5abef8f2b83d1_rs.jpg",
+          title: "Công ty Cổ phần Tập đoàn Hoa Sen",
           content:
-            "VỀ CÔNG TYCông ty TNHH Khu Du Lịch Vịnh Thiên Đường (ALMA) hoạt động trong lĩnh vực du lịch nghỉ dưỡng. Chính thức ra mắt với công chúng từ năm 2013, trải qua quá trình phát triển, Công ty TNHH Khu Du Lịch Vịnh Thiên Đường – Công ty ALMA bao gồm 4 chi nhánh hoạt động tại các thành phố lớn là Hà Nội, Hồ Chí Minh và Nha...",
+            '" Công ty Cổ Phần Tập Đoàn Hoa Sen là một Doanh nghiệp chuyên sản xuất và kinh doanh Tôn – Thép – Ống Nhựa - Sản phẩm Thương mại với hơn 600 chi nhánh trải dài trên cả nước. Quy mô: Từ 5.000-10.000 người. Chúng tôi tự hào về một nền văn hóa Doanh nghiệp đặc biệt gắn liền với sự phát triển bản thân và chia sẻ lợi ích..."',
         },
         {
           _id: 3,
-          img: "https://cdn.pixabay.com/photo/2020/07/12/07/47/bee-5396362_1280.jpg",
-          logo: "https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg",
-          title: "CÔNG TY TNHH KHU DU LỊCH VỊNH THIÊN ĐƯỜNG (ALMA)",
+          banner:
+            "https://static.topcv.vn/company_covers/cong-ty-tnhh-cmc-global-5e3dc09f007df09930dcb7b36f9cbd11-60c33177cb4c7.jpg",
+          logo: "https://cdn.topcv.vn/140/company_logos/cong-ty-tnhh-cmc-global-1d94bf2be044cc832cd72d2f4f8fad66-5e72d0edadcfb.jpg",
+          title: "CÔNG TY TNHH CMC GLOBAL",
           content:
-            "VỀ CÔNG TYCông ty TNHH Khu Du Lịch Vịnh Thiên Đường (ALMA) hoạt động trong lĩnh vực du lịch nghỉ dưỡng. Chính thức ra mắt với công chúng từ năm 2013, trải qua quá trình phát triển, Công ty TNHH Khu Du Lịch Vịnh Thiên Đường – Công ty ALMA bao gồm 4 chi nhánh hoạt động tại các thành phố lớn là Hà Nội, Hồ Chí Minh và Nha...",
+            '" CMC Global ra đời từ kinh nghiệm 25 năm trong lĩnh vực ICT và hơn 10 năm kinh nghiệm trong lĩnh vực Outsourcing của Tập đoàn công nghệ CMC, với sứ mệnh trở thành đơn vị cung cấp nhân lực kỹ sư phần mềm chất lượng cao, cung cấp các giải pháp, dịch vụ CNTT cho thị trường quốc tế. Hiện CMC Global đang sở hữu đến 700++ nhân viên,..."',
         },
       ],
     };
@@ -119,10 +125,19 @@ export default {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight };
       if (this.windowSize.x < 600) {
         this.common.imageRight = false;
+        this.common.inputSearch = {
+          style: "width: 100%",
+        };
       } else if (this.windowSize.x < 960) {
         this.common.imageRight = true;
+        this.common.inputSearch = {
+          style: "width: 100%",
+        };
       } else {
         this.common.imageRight = true;
+        this.common.inputSearch = {
+          style: "width: 50%",
+        };
       }
     },
   },
@@ -174,6 +189,7 @@ export default {
   padding-top: 33px;
   padding-bottom: 12px;
   text-align: left;
+  font-weight: 400;
 }
 
 .company .company-header .form-search {
@@ -244,5 +260,11 @@ export default {
 
 .company .company-body .name {
   margin-bottom: 12px;
+  font-weight: 600;
+  color: black;
+}
+
+.company .company-body .name:hover {
+  text-decoration: underline;
 }
 </style>

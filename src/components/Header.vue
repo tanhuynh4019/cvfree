@@ -1,6 +1,6 @@
 <template>
   <div v-resize="onResize">
-    <v-system-bar app v-if="common.headerSub">
+    <v-system-bar app v-if="common.headerSub && !user">
       <v-spacer></v-spacer>
       <v-btn text x-small :to="url.login">Đăng nhập</v-btn>
       <v-btn text x-small :to="url.signup">Đăng ký</v-btn>
@@ -11,13 +11,17 @@
         <v-row>
           <v-col sm="5" cols="8" md="3" lg="2">
             <div class="p-2">
-              <v-btn text to="/">
+              <router-link
+                style="color: #004d40"
+                class="font-weight-bold"
+                to="/"
+              >
                 <img
                   width="100%"
                   height="40"
                   src="https://www.topcv.vn/v3/images/topcv-logo-4.png?v=1.0.1"
                 />
-              </v-btn>
+              </router-link>
             </div>
           </v-col>
           <v-col v-if="common.menu" md="9">
@@ -31,7 +35,7 @@
             >
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
-                  class="mt-1"
+                  class="mt-1 font-weight-bold"
                   text
                   tile
                   v-bind="attrs"
@@ -77,11 +81,11 @@
                     </div>
 
                     <div class="col-md-4" v-if="menu.image != null">
-                      <v-img
+                      <img
                         :src="menu.image"
                         class="mt-2 img-fluid rounded-start"
                         alt="..."
-                        height="200px"
+                        height="250px"
                       />
                     </div>
                   </div>
@@ -94,14 +98,91 @@
 
       <v-responsive max-width="500">
         <div class="float-right" v-if="common.user">
-          <v-btn :to="url.login" depressed outlined color="#004D40"> Đăng nhập </v-btn>
-          <v-btn :to="url.signup" depressed dark color="#004D40" class="ml-1"> Đăng ký </v-btn>
-          <v-btn depressed dark color="#263238" class="ml-1">
-            Đăng tuyển & tìm hồ sơ
-          </v-btn>
+          <div v-if="!user">
+            <v-btn :to="url.login" depressed outlined color="#004D40">
+              Đăng nhập
+            </v-btn>
+            <v-btn :to="url.signup" depressed dark color="#004D40" class="ml-1">
+              Đăng ký
+            </v-btn>
+            <v-btn depressed dark color="#263238" class="ml-1">
+              Đăng tuyển & tìm hồ sơ
+            </v-btn>
+          </div>
         </div>
+
         <div class="float-right" v-if="!common.user">
           <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+        </div>
+        <div v-if="user" class="float-end">
+          <v-btn icon>
+            <v-icon color="#004D40">mdi-chat-processing</v-icon>
+          </v-btn>
+          <v-btn icon>
+            <v-icon color="#004D40">mdi-bell</v-icon>
+          </v-btn>
+          <v-menu
+            open-on-hover
+            :close-on-content-click="false"
+            :nudge-width="100"
+            offset-y
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn text v-bind="attrs" v-on="on">
+                <v-avatar size="30">
+                  <img
+                    src="https://cdn.vuetifyjs.com/images/john.jpg"
+                    alt="John"
+                  />
+                </v-avatar>
+                <h6 class="mt-2 ml-2" v-if="common.user">Tấn Huỳnh</h6>
+              </v-btn>
+            </template>
+
+            <v-card>
+              <v-list>
+                <v-list-item>
+                  <v-list-item-avatar>
+                    <img
+                      src="https://cdn.vuetifyjs.com/images/john.jpg"
+                      alt="John"
+                    />
+                  </v-list-item-avatar>
+
+                  <v-list-item-content>
+                    <v-list-item-title>Tấn Huỳnh</v-list-item-title>
+                    <v-list-item-subtitle
+                      >MÃ ỨNG VIÊN: <b>#2517654</b></v-list-item-subtitle
+                    >
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+              <v-list nav dense>
+                <v-list-item-group color="#004D40">
+                  <v-list-item
+                    v-for="(navMenu, i) in navMenus"
+                    :key="i"
+                    link
+                    :to="navMenu.link"
+                  >
+                    <v-list-item-icon>
+                      <v-icon
+                        :style="navMenu.style"
+                        v-text="navMenu.icon"
+                      ></v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                      <v-list-item-title
+                        :style="navMenu.style"
+                        v-text="navMenu.name"
+                      ></v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-card>
+          </v-menu>
         </div>
       </v-responsive>
     </v-app-bar>
@@ -109,27 +190,40 @@
     <v-navigation-drawer v-model="drawer" app width="300">
       <v-sheet color="grey lighten-5" height="40" width="100%">
         <div class="p-3">
-          <a>
+          <router-link to="/">
             <img
               width="100px"
               height="40"
               src="https://www.topcv.vn/v3/images/topcv-logo-4.png?v=1.0.1"
             />
-          </a>
+          </router-link>
         </div>
       </v-sheet>
 
-      
       <div class="p-2 mt-3">
-        <v-btn :to="url.login" class="w-100" depressed outlined color="#004D40">
-          Đăng nhập
-        </v-btn>
-        <v-btn :to="url.signup" class="w-100 mt-1" depressed dark color="#004D40">
-          Đăng ký
-        </v-btn>
-        <v-btn class="w-100 mt-1" depressed dark color="#263238">
-          Đăng tuyển & tìm hồ sơ
-        </v-btn>
+        <div v-if="!user">
+          <v-btn
+            :to="url.login"
+            class="w-100"
+            depressed
+            outlined
+            color="#004D40"
+          >
+            Đăng nhập
+          </v-btn>
+          <v-btn
+            :to="url.signup"
+            class="w-100 mt-1"
+            depressed
+            dark
+            color="#004D40"
+          >
+            Đăng ký
+          </v-btn>
+          <v-btn class="w-100 mt-1" depressed dark color="#263238">
+            Đăng tuyển & tìm hồ sơ
+          </v-btn>
+        </div>
       </div>
 
       <v-list shaped>
@@ -145,14 +239,15 @@
               >
                 <v-list-item-content>
                   <v-list-item-title>
-                  <v-icon>{{sub.icon}}</v-icon><span class="mt-1">{{ sub.name }}</span></v-list-item-title>
+                    <v-icon>{{ sub.icon }}</v-icon
+                    ><span class="mt-1">{{ sub.name }}</span></v-list-item-title
+                  >
                 </v-list-item-content>
               </v-list-item>
             </v-list>
           </v-list-item-content>
         </v-list-item>
       </v-list>
-
     </v-navigation-drawer>
   </div>
 </template>
@@ -160,11 +255,60 @@
 <script>
 export default {
   name: "Header",
+  async created() {
+    this.user = {
+      fullname: "Tấn Huỳnh",
+    };
+  },
   data() {
     return {
+      user: null,
+      navMenus: [
+        {
+          icon: "mdi-arrow-up-bold-hexagon-outline",
+          name: "Nâng cấp tài khoản VIP",
+          link: "/tai-khoan/nang-cap",
+        },
+        {
+          icon: "mdi-gift-outline",
+          name: "Kích hoạt quà tặng",
+          link: "/qua-tang",
+        },
+        {
+          icon: "mdi-file-eye-outline",
+          name: "Nhà tuyển dụng xem hồ sơ",
+          link: "/xem-ho-so",
+        },
+        {
+          icon: "mdi-format-list-checks",
+          name: "Cài đặt gợi ý việc làm",
+          link: "/cai-dat-goi-y-viec-lam",
+        },
+        {
+          icon: "mdi-gmail",
+          name: "Cài đặt nhận email",
+          link: "/tai-khoan/cai-dat-thong-bao",
+        },
+        {
+          icon: "mdi-shield-check-outline",
+          name: "Cài đặt bảo mật",
+          link: "/tai-khoan/bao-mat",
+        },
+        {
+          icon: "mdi-shield-key-outline",
+          name: "Đổi mật khẩu",
+          link: "/tai-khoan/mat-khau",
+        },
+        {
+          icon: "mdi-arrow-collapse-left",
+          name: "Đăng xuất",
+          link: "",
+          style: "color: #e74c3c",
+        },
+      ],
       url: {
-        login: '/login',
-        signup: '/sign-up'
+        login: "/login",
+        signup: "/sign-up",
       },
       drawer: false,
       windowSize: {
@@ -270,7 +414,7 @@ export default {
             {
               name: "Tính lương GROSS - NET",
               icon: "mdi-calculator-variant",
-              link: '/tinh-luong-gross-net'
+              link: "/tinh-luong-gross-net",
             },
             {
               name: "Tính Bảo hiểm thất nghiệp",
@@ -286,10 +430,44 @@ export default {
       ],
     };
   },
+  components: {},
   mounted() {
     this.onResize();
+    this.pustMenuLogin();
   },
   methods: {
+    pustMenuLogin() {
+      let that = this;
+      if (that.user) {
+        that.menus[0].list.splice(1, 0, {
+          name: "Việc làm đã ứng tuyển",
+          icon: "mdi-briefcase-account-outline",
+          status: null,
+          link: "/lich-su-ung-tuyen",
+        });
+
+        that.menus[0].list.splice(2, 0, {
+          name: "Việc làm đã lưu",
+          icon: "mdi-heart-outline",
+          status: null,
+          link: "/viec-lam-da-luu",
+        });
+
+        that.menus[1].list.unshift({
+          name: "Quản lý CV",
+          icon: "mdi-folder-account-outline",
+          status: null,
+          link: "/quan-ly-cv",
+        });
+
+        that.menus[1].list.splice(1, 0, {
+          name: "Quản lý Cover Letter",
+          icon: "mdi-file-document-multiple-outline",
+          status: null,
+          link: "/quan-ly-cover-letter",
+        });
+      }
+    },
     onResize() {
       let that = this;
       that.windowSize = { x: window.innerWidth, y: window.innerHeight };
