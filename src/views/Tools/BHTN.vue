@@ -809,12 +809,7 @@ export default {
   user-select: none;
 }
 
-.bhtn .v-text-field--filled > .v-input__control > .v-input__slot,
-.v-text-field--full-width > .v-input__control > .v-input__slot,
-.v-text-field--outlined > .v-input__control > .v-input__slot {
-  align-items: stretch;
-  min-height: 0px !important;
-}
+
 
 .bhtn .mdi-cash::before {
   margin-top: -90%;
@@ -1064,3 +1059,13 @@ export default {
   font-size: 14px;
 }
 </style>
+
+<style >
+.bhtn .v-text-field--filled > .v-input__control > .v-input__slot,
+.v-text-field--full-width > .v-input__control > .v-input__slot,
+.v-text-field--outlined > .v-input__control > .v-input__slot {
+  align-items: stretch;
+  min-height: 0px !important;
+}
+</style>
+
