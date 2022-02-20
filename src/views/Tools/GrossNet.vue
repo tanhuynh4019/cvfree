@@ -2,81 +2,209 @@
   <div v-resize="onResize" class="grossnet-font">
     <v-container>
       <v-row>
-        <v-col sm="8">
-          <div class="box-gray">
-            <h4>
-              Công cụ tính lương Gross sang Net / Net sang Gross chuẩn 2022
+        <v-col cols="12" sm="8" xs="6" lg="8">
+          <div v-for="(item, i) in listForm" :key="i" class="box-gray">
+            <h4 style="color: #004d40">
+              {{ item.name }}
             </h4>
-            <span>
-              Áp dụng mức giảm trừ gia cảnh mới nhất 11 triệu đồng/tháng (132
-              triệu đồng/năm) với nguời nộp thuế và 4,4 triệu đồng/tháng với mỗi
-              người phụ thuộc (Theo Nghị quyết số 954/2020/UBTVQH14) Áp dụng mức
-              lương <span>tối thiểu vùng</span> mới nhất có hiệu lực từ ngày
-              1/1/2020 (Theo điều 3, Nghị định 90/2019/NĐ-CP)
-            </span>
-            <form class="salary-calculate-box" action="">
-              <div>
-                <b class="mr-12 float-left">Áp dụng quy định:</b>
-                <v-radio-group class="radio-style" v-model="row" row>
-                  <v-radio
-                    label="Từ 1/7/2020"
-                    color="#004D40"
-                    value="radio-1"
-                  ></v-radio>
-                  <span class="custom-box-span">
-                    (Mới nhất)
-                    <v-btn icon small>
-                      <v-icon style="font-size: 16px; margin-right: 15px"
-                        >mdi-help-circle</v-icon
-                      >
-                    </v-btn>
-                  </span>
-                  <v-radio
-                    label="Từ 1/1/2020 - 30/6/2020"
-                    color="#004D40"
-                    value="radio-2"
-                  ></v-radio>
-                  <v-btn icon small>
-                    <v-icon style="font-size: 16px; margin-left: -15px"
-                      >mdi-help-circle</v-icon
-                    >
-                  </v-btn>
+            <div v-for="(items, j) in item.listContent" :key="j">
+              <i>
+                {{ items.content }}
+              </i>
+            </div>
+            <v-form class="salary-calculate-box" action="">
+              <div v-for="(item, i) in listContentForm" :key="i">
+                <b class="mr-12 float-left">{{ item.name }}</b>
+                <v-radio-group class="radio-style" v-model="row_rule" row>
+                  <div v-for="(items, j) in item.radio" :key="j">
+                    <v-radio
+                      :label="items.label"
+                      color="#004D40"
+                      :value="items.value"
+                      class="float-left"
+                    ></v-radio>
+                    <span class="custom-box-span">
+                      {{ items.text }}
+                      <v-btn icon small>
+                        <v-icon style="font-size: 16px" class="mr-3">
+                          {{ items.icon }}
+                        </v-icon>
+                      </v-btn>
+                    </span>
+                  </div>
                 </v-radio-group>
               </div>
               <hr />
               <div class="mb-2">
-                <table class="table-items">
-                  <thead>
-                    <tr>
-                      <th>Lương cơ sở:</th>
-                      <th>Giảm trừ gia cảnh bản thân:</th>
-                      <th>Người phụ thuộc:</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1,490,000đ</td>
-                      <td>11,000,000đ</td>
-                      <td>4,400,000đ</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <v-row>
+                  <v-col v-for="(item, i) in listTable" :key="i" sm="4">
+                    <b>{{ item.name }}</b>
+                    <p style="color: #004d40">{{ item.cost }}</p>
+                  </v-col>
+                </v-row>
               </div>
-              <div>
+              <div class="mt-5 mb-5">
                 <v-row>
                   <v-col sm="6">
+                    <b class="mr-5 float-left">Thu nhập:</b>
                     <v-text-field
-                      label="Thu thập"
+                      label="VD: 10.000.000 VNĐ"
                       prepend-inner-icon="mdi-cash"
                       color="#004D40"
+                      class="text-field-form"
                     ></v-text-field>
                   </v-col>
                 </v-row>
               </div>
-            </form>
+              <div class="mt-5">
+                <b class="mr-5 mt-2 float-left">Mức lương bảo hiểm:</b>
+                <v-radio-group v-model="row_insurance" row>
+                  <v-row>
+                    <v-col sm="5">
+                      <v-radio
+                        label="Trên lương chính thức"
+                        value="insurance_1"
+                        color="#004D40"
+                      ></v-radio>
+                    </v-col>
+                    <v-col sm="7">
+                      <v-row>
+                        <v-col sm="3">
+                          <v-radio
+                            color="#004D40"
+                            label="Khác:"
+                            value="radio-2"
+                          ></v-radio>
+                        </v-col>
+                        <v-col sm="9">
+                          <v-text-field
+                            label="(VNĐ)"
+                            prepend-inner-icon="mdi-cash"
+                            color="#004D40"
+                            class="text-field-form"
+                          ></v-text-field>
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                </v-radio-group>
+              </div>
+              <div class="mt-5">
+                <b class="mr-5 float-left">
+                  Vùng:
+                  <span class="custom-box-text">(Giải thích)</span>
+                </b>
+                <v-radio-group class="radio-insurance" v-model="row_line" row>
+                  <v-radio label="Option 1" value="radio-1"></v-radio>
+                  <v-radio label="Option 2" value="radio-2"></v-radio>
+                  <v-radio label="Option 1" value="radio-1"></v-radio>
+                  <v-radio label="Option 2" value="radio-2"></v-radio>
+                </v-radio-group>
+              </div>
+              <div class="mt-5">
+                <v-row>
+                  <v-col sm="6">
+                    <b class="mr-5 float-left">Số người:</b>
+                    <v-text-field
+                      label="Người"
+                      prepend-inner-icon="mdi-account-multiple"
+                      color="#004D40"
+                      class="text-field-form"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </div>
+              <div class="mt-9 text-center">
+                <v-btn color="#004D40" class="mr-4 span-btn" @click="validate">
+                  GROSS → NET
+                </v-btn>
+                <v-btn outlined color="#004D40" class="mr-4" @click="validate">
+                  NET → GROSS
+                </v-btn>
+              </div>
+            </v-form>
+          </div>
+          <div class="box-gray">
+            <div>
+              <v-btn
+                rounded
+                color="#004D40"
+                x-small
+                class="mr-1 span-btn btn-span"
+              >
+                <v-icon style="font-size: 12px" class="mr-1">mdi-bell</v-icon>
+                Thông báo mới nhất
+              </v-btn>
+            </div>
+            <div class="text-des-notice mt-3">
+              <h5>Mức lương cơ sở năm 2021 của cán bộ, công chức, viên chức</h5>
+              <p>
+                Ngày 12/11/2020, tại kỳ họp thứ 10, Quốc hội khóa XIV, Quốc hội
+                đã chính thức thông qua Nghị quyết về dự toán ngân sách Nhà nước
+                năm 2021. Một trong điểm nội dung đáng chú ý trong Nghị quyết
+                lần này là trong năm 2021 sẽ
+                <b>không tăng lương cơ sở cho cán bộ, công chức, viên chức.</b>
+              </p>
+              <p>
+                Cụ thể,
+                <b>lương cơ sở năm 2021 vẫn là 1,49 triệu đồng/tháng</b> như
+                hiện nay, căn cứ theo
+                <a href="#" class="">Nghị định số 38 năm 2019 của Chính phủ</a>.
+                Ngoài ra, lương và phụ cấp theo lương của cán bộ, công chức,
+                viên chức cũng không thay đổi.
+              </p>
+            </div>
+          </div>
+          <div class="box-gray">
+            <div class="btn-header mb-5">
+              <v-btn color="primary" x-small class="mr-1 btn-span span-btn">
+                <v-icon style="font-size: 12px" class="mr-1"
+                  >mdi-facebook</v-icon
+                >
+                Khuyên dùng 709
+              </v-btn>
+              <v-btn color="primary" x-small class="mr-1 btn-span">
+                Chia sẻ
+              </v-btn>
+            </div>
+            <div v-for="(item, i) in listPageContent" :key="i">
+              <h5>{{ item.name }}</h5>
+              <a :href="item.link">
+                <img :src="item.image" width="100%" alt="" class="mb-3" />
+              </a>
+              <p v-for="(items, j) in item.listContent" :key="j">
+                <b>{{ items.name }}</b> {{ items.content }}
+              </p>
+              <p :class="item.class">
+                {{ item.description }}
+                <i style="color: rgb(132, 133, 132); font-size: 0.9em">{{
+                  item.time
+                }}</i>
+              </p>
+            </div>
+            <div
+              v-for="(item, i) in listLicenseTable"
+              :key="i"
+              class="text-licensetable"
+            >
+              <span>
+                {{ item.name }} <a :href="item.link">{{ item.text }}</a>
+              </span>
+            </div>
+            <div class="btn-bottom mb-3 mt-3">
+              <v-btn color="primary" x-small class="mr-1 btn-span">
+                <v-icon style="font-size: 12px" class="mr-1"
+                  >mdi-facebook</v-icon
+                >
+                Khuyên dùng 709
+              </v-btn>
+              <v-btn color="primary" x-small class="mr-1 btn-span">
+                Chia sẻ
+              </v-btn>
+            </div>
           </div>
         </v-col>
-        <v-col sm="4">
+        <v-col cols="12" sm="4" xs="6" lg="4">
           <div class="box-img">
             <a
               href="https://tuyendung.topcv.vn/?utm_source=tool-tinh-luong-gross-net&utm_campaign=refer-kenh-tuyendung&utm_medium=topcv-seo"
@@ -127,6 +255,60 @@ export default {
         x: 0,
         y: 0,
       },
+      listForm: [
+        {
+          name: "Công cụ tính lương Gross sang Net / Net sang Gross chuẩn 2022",
+          listContent: [
+            {
+              content:
+                "Áp dụng mức giảm trừ gia cảnh mới nhất 11 triệu đồng/tháng (132 triệu đồng/năm) với nguời nộp thuế và 4,4 triệu đồng/tháng với mỗi người phụ thuộc (Theo Nghị quyết số 954/2020/UBTVQH14)",
+              type: "1",
+              text: "",
+              link: "",
+            },
+            {
+              content:
+                "Áp dụng mức lương tối thiểu vùng mới nhất có hiệu lực từ ngày 1/1/2020 (Theo điều 3, Nghị định 90/2019/NĐ-CP)",
+              type: "2",
+              text: "tối thiểu vùng",
+              link: "https://www.topcv.vn/tinh-luong-gross-net#",
+            },
+          ],
+        },
+      ],
+      listTable: [
+        {
+          name: "Lương cơ sở:",
+          cost: "1,490,000đ",
+        },
+        {
+          name: "Giảm trừ gia cảnh bản thân:",
+          cost: "11,000,000đ",
+        },
+        {
+          name: "Người phụ thuộc:",
+          cost: "4,400,000đ",
+        },
+      ],
+      listContentForm: [
+        {
+          name: "Áp dụng quy định:",
+          radio: [
+            {
+              label: "Từ 1/7/2020",
+              value: "rule_1",
+              text: "(Mới nhất)",
+              icon: "mdi-help-circle",
+            },
+            {
+              label: "Từ 1/1/2020 - 30/6/2020",
+              value: "rule_2",
+              text: "",
+              icon: "mdi-help-circle",
+            },
+          ],
+        },
+      ],
       listBoxRelated: [
         {
           name: "Bài viết liên quan",
@@ -181,7 +363,100 @@ export default {
           ],
         },
       ],
-      row: null,
+      listPageContent: [
+        {
+          name: "Lương Gross là gì? Lương Net là gì?",
+          image: "",
+          link: "",
+          listContent: [
+            {
+              name: "Lương Gross",
+              content:
+                "là tổng thu nhập của người lao động, bao gồm cả các khoản đóng bảo hiểm và thuế. Mức lương thực nhận của bạn thuờng sẽ thấp hơn mức này vì bạn phải trích ra một phần để đóng bảo hiểm và nộp thuế thu nhập cá nhân.",
+            },
+            {
+              name: "Lương Net",
+              content:
+                "là lương thực nhận của bạn sau khi đã trừ hết các khoản chi phí bảo hiểm và thuế thu nhập cá nhân, hiểu đơn giản nó chính là số tiền bạn có thể bỏ túi.",
+            },
+            {
+              name: "Diễn giải quan hệ giữa lương Gross và lương Net bằng công thức:",
+              content: "",
+            },
+          ],
+          description:
+            "LUƠNG NET = LƯƠNG GROSS - (BHXH + BHYT + BHTN + THUẾ TNCN)",
+          time: "",
+          class: "content-dash-center",
+        },
+        {
+          name: "Lương Gross hay lương Net có lợi hơn cho người lao động?",
+          image: "",
+          link: "",
+          listContent: [
+            {
+              name: "",
+              content:
+                "Nếu thoạt nhìn có thể bạn cho rằng lương Net có lợi hơn vì đó chính là số tiền bạn nhận được, còn lương Gross thì bạn có cảm giác bị mất đi một khoản khi nhận lương.",
+            },
+            {
+              name: "",
+              content:
+                "Trên thực tế khi bạn quy đổi lương Net sang Gross hay từ Gross sang Net thì số tiền bạn nhận được không đổi, dù bạn đàm phàn với nhà tuyển dụng bằng cách nào nào thì nhà tuyển dụng sẽ tính toán để lương Net và lương Gross ở mức tương đương nhau.",
+            },
+          ],
+          description:
+            "Ví dụ: Mức lương Gross là 15,000,000 VND sẽ tương đương với mức lương Net 13,303,750 VND trong trường hợp đóng bảo hiểm trên lương chính thức Vậy nên khi nhà tuyển dụng quyết định trả bạn mức lương Gross là 15,000,000 VND, nếu bạn đàm phán mức lương Net thì lương của bạn sẽ là 13,303,750 VND và ngược lại. Về cơ bản lương bạn nhận được vẫn không đổi dù bạn đàm phán lương Net hay Gross.",
+          time: "Theo quy định mới nhất (Từ 1/7/2020)",
+          class: "content-dash",
+        },
+        {
+          name: "",
+          image: "",
+          link: "",
+          listContent: [
+            {
+              name: "",
+              content:
+                "Tuy nhiên nếu tinh ý, bạn sẽ thấy rằng khi sử dụng lương Gross mức lương bạn nhận được sẽ minh bạch hơn. Với mức lương Gross bạn sẽ chủ động tính toán được mức lương Net của mình và biết được các khoản bảo hiểm, thuế mà công ty đóng cho bạn, nguợc lại với lương Net có thể bạn sẽ không biết được mức bảo hiểm công ty đóng cho mình là bao nhiêu.",
+            },
+          ],
+          description:
+            "Ví dụ: Mức lương Net là 13,500,000 VND - Trường hợp đóng bảo hiểm trên mức lương chính thức lương Gross sẽ là 15,230,815 VND - Trường hợp đóng bảo hiểm ở mức 5,000,000 VND lương Gross sẽ là 14,156,579 VND Như ví dụ trên, bạn có thể thấy cùng một mức lương Net nhưng với mức đóng bảo hiểm khác nhau mức lương Gross bạn nhận được chênh nhau khá nhiều, lương Gross sẽ thể hiện chính xác quyền lợi bạn nhận được hơn là lương Net.",
+          time: "Theo quy định mới nhất (Từ 1/7/2020)",
+          class: "content-dash",
+        },
+        {
+          name: "Cách chuyển đổi lương Gross sang Net / Lương Net sang Gross",
+          image:
+            "https://static.topcv.vn/manual/cong-cu-tinh-luong-gross-net-topcv.png",
+          link: "http://localhost:8080/tinh-luong-gross-net#",
+          listContent: [
+            {
+              name: "",
+              content:
+                "Cách đơn giản nhất là các bạn có thể sử dụng công cụ chuyển đổi lương Net sang Gross và Gross sang Net của TopCV. Bạn chỉ cần cung cấp các thông số: Lương, mức đóng bảo hiểm, vùng và số người phụ thuộc, công cụ sẽ tính toán và phân tích diễn giải từng loại chi phí để bạn hiểu rõ nhất mức lương của mình.",
+            },
+          ],
+          description: "",
+          time: "",
+          class: "",
+        },
+      ],
+      listLicenseTable: [
+        {
+          name: "Bản quyền nội dung thuộc về TopCV.vn, được bảo vệ bởi Luật bảo vệ bản quyền tác giả",
+          link: "https://www.dmca.com/Protection/Status.aspx?ID=1b16a667-a95e-4730-846f-46f962522fce",
+          text: "DMCA.",
+        },
+        {
+          name: "Vui lòng không trích dẫn nội dung trang web khi chưa được sự cho phép của TopCV.",
+          link: "",
+          text: "",
+        },
+      ],
+      row_rule: "rule_1",
+      row_insurance: "insurance_1",
     };
   },
   mounted() {
@@ -219,8 +494,13 @@ export default {
 .radio-style {
   padding-top: 0 !important;
 }
-.radio-style label {
+.radio-style label,
+.radio-insurance label {
   font-size: 14px;
+}
+.radio-insurance {
+  margin-top: -35px !important;
+  padding-top: 0 !important;
 }
 .box-gray {
   background: #fafafa;
@@ -249,6 +529,11 @@ export default {
   color: red;
   font-size: 12px;
   margin-left: -15px;
+}
+.custom-box-text {
+  color: red;
+  font-size: 12px;
+  font-weight: normal;
 }
 .float-left {
   float: left;
@@ -284,5 +569,51 @@ export default {
 .box-list-gray-2 a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+.text-field-form {
+  padding-top: 0px !important;
+  margin-top: -4px;
+}
+.span-btn {
+  color: #fff !important;
+  font-weight: normal;
+}
+.btn-span span {
+  font-size: 10px !important;
+}
+.content-dash-center {
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px dashed rgb(102, 102, 102);
+}
+.content-dash {
+  padding: 20px;
+  text-align: justify;
+  font-size: 14px;
+  border: 1px dashed rgb(102, 102, 102);
+}
+.text-des-notice a {
+  text-decoration: none;
+  color: #999999 !important;
+}
+.text-des-notice h5 {
+  font-weight: normal;
+}
+.text-licensetable span {
+  color: red;
+  font-size: 14px;
+  line-height: 1.6em;
+  text-align: justify;
+  margin: 0 0 10px;
+}
+.text-licensetable a {
+  color: red !important;
+  text-decoration: none;
+  font-weight: bold;
+}
+.text-licensetable a:hover {
+  color: red;
+  text-decoration: underline;
 }
 </style>
