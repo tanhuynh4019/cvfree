@@ -16,7 +16,13 @@
       max-height="630"
       style="border-radius: 0px 0px 0px 0px"
     >
-      <v-card v-for="n in 10" :key="n" class="mt-1">
+      <v-card
+        v-for="(n, i) in 10"
+        :key="i"
+        class="mt-1"
+        link
+        :to="{ name: 'DetailsJob', params: { slug: 'details' } }"
+      >
         <div class="p-3">
           <v-row>
             <v-col cols="3" sm="3">

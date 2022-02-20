@@ -14,12 +14,12 @@
             <v-row>
               <v-col cols="12" md="2">
                 <center>
-                  <v-img
+                  <img
                     :width="common.image.width"
                     :height="common.image.height"
                     :src="item.image"
                     :class="common.image.class"
-                  ></v-img>
+                  />
                 </center>
               </v-col>
               <v-col cols="12" md="10">
@@ -29,13 +29,11 @@
                     {{ item.description }}
                   </p>
                   <div>
-                    <v-chip
-                      :class="j == 0 ? '' : 'ml-1'"
-                      label
-                      v-for="(chip, j) in item.chips"
-                      :key="j"
-                      >{{ chip.name }}</v-chip
-                    >
+                    <v-row>
+                      <v-col cols="12" sm="4" md="6" v-for="(chip, j) in item.chips" :key="j">
+                        <v-chip label class="w-100" small>{{ chip.name }}</v-chip>
+                      </v-col>
+                    </v-row>
                   </div>
                 </div>
               </v-col>

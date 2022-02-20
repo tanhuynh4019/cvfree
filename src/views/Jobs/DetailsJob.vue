@@ -70,91 +70,90 @@
           <v-container>
             <h4>Chi tiết tin tuyển dụng</h4>
             <v-row>
-              <v-col sm="8">
-                <v-card class="mt-5" color="#00b14f0d">
+              <v-col cols="12" sm="12" md="8">
+                <v-card color="#00b14f0d">
                   <div class="p-2">
                     <h6><u>Thông tin chung</u></h6>
                     <v-row>
-                      <v-col sm="6">
+                      <v-col sm="6" cols="12" md="6">
                         <v-row>
-                          <v-col sm="2">
+                          <v-col cols="2" sm="2">
                             <img
                               width="100%"
                               src="https://www.topcv.vn/v4/image/job-detail/icon/1.svg"
                             />
                           </v-col>
-                          <v-col sm="10">
+                          <v-col cols="10" sm="10">
                             <h6>Mức lương</h6>
                             <p>8-15 triệu</p>
                           </v-col>
                         </v-row>
                       </v-col>
-                      <v-col sm="6">
+                      <v-col sm="6" cols="12" md="6">
                         <v-row>
-                          <v-col sm="2">
+                          <v-col cols="2" sm="2">
                             <img
                               width="100%"
                               src="https://www.topcv.vn/v4/image/job-detail/icon/5.svg"
                             />
                           </v-col>
-                          <v-col sm="10">
+                          <v-col cols="10" sm="10">
                             <h6>Số lượng tuyển</h6>
                             <p>10 người</p>
                           </v-col>
                         </v-row>
                       </v-col>
-                      <v-col sm="6">
+                      <v-col sm="6" cols="12" md="6">
                         <v-row>
-                          <v-col sm="2">
+                          <v-col cols="2" sm="2">
                             <img
                               width="100%"
                               src="https://www.topcv.vn/v4/image/job-detail/icon/2.svg"
                             />
                           </v-col>
-                          <v-col sm="10">
+                          <v-col cols="10" sm="10">
                             <h6>Hình thức làm việc</h6>
                             <p>Bán thời gian</p>
                           </v-col>
                         </v-row>
                       </v-col>
-
-                      <v-col sm="6">
+                      <v-col sm="6" cols="12" md="6">
                         <v-row>
-                          <v-col sm="2">
+                          <v-col cols="2" sm="2">
                             <img
                               width="100%"
                               src="https://www.topcv.vn/v4/image/job-detail/icon/6.svg"
                             />
                           </v-col>
-                          <v-col sm="10">
+                          <v-col cols="10" sm="10">
                             <h6>Cấp bậc</h6>
                             <p>Nhân viên</p>
                           </v-col>
                         </v-row>
                       </v-col>
-                      <v-col sm="6">
+                      <v-col sm="6" cols="12" md="6">
                         <v-row>
-                          <v-col sm="2">
+                          <v-col cols="2" sm="2">
                             <img
                               width="100%"
                               src="https://www.topcv.vn/v4/image/job-detail/icon/3.svg"
                             />
                           </v-col>
-                          <v-col sm="10">
+                          <v-col cols="10" sm="10">
                             <h6>Giới tính</h6>
                             <p>Không yêu cầu</p>
                           </v-col>
                         </v-row>
                       </v-col>
-                      <v-col sm="6">
+                      <v-col sm="6" cols="12" md="6">
                         <v-row>
-                          <v-col sm="2">
+                          <v-col cols="2" sm="2">
                             <img
                               width="100%"
                               src="https://www.topcv.vn/v4/image/job-detail/icon/7.svg"
                             />
                           </v-col>
-                          <v-col sm="10">
+                          <v-col cols="10" sm="10">
                             <h6>Kinh nghiệm</h6>
                             <p>Không yêu cầu kinh nghiệm</p>
                           </v-col>
@@ -240,19 +239,19 @@
                   </div>
                 </div>
               </v-col>
-              <v-col sm="4">
+              <v-col cols="12" sm="12" md="4">
                 <v-card>
                   <div class="p-2">
                     <h6>Chia sẻ tin tuyển dụng</h6>
                     <p>Sao chép đường dẫn</p>
                     <div>
                       <v-row>
-                        <v-col sm="10">
-                          <v-chip label
+                        <v-col cols="10" sm="10">
+                          <v-chip label class="w-100"
                             >https://www.topcv.vn/viec-lam/thuc-tap</v-chip
                           >
                         </v-col>
-                        <v-col sm="2">
+                        <v-col cols="2" sm="2">
                           <v-btn class="w-100" icon
                             ><v-icon>mdi-content-copy</v-icon></v-btn
                           >
@@ -261,19 +260,19 @@
                     </div>
                     <p class="mt-2">Chia sẻ qua mạng xã hội</p>
                     <v-row>
-                      <v-col sm="2">
+                      <v-col cols="2" sm="1" md="2">
                         <img
                           src="https://www.topcv.vn/v4/image/job-detail/share/facebook.png"
                           width="100%"
                         />
                       </v-col>
-                      <v-col sm="2">
+                      <v-col cols="2" sm="1" md="2">
                         <img
                           src="https://www.topcv.vn/v4/image/job-detail/share/twitter.png"
                           width="100%"
                         />
                       </v-col>
-                      <v-col sm="2">
+                      <v-col cols="2" sm="1" md="2">
                         <img
                           src="https://www.topcv.vn/v4/image/job-detail/share/linkedin.png"
                           width="100%"
@@ -289,7 +288,7 @@
                       Nếu bạn thấy rằng tin tuyển dụng này không đúng, hãy phản
                       ánh với chúng tôi
                     </p>
-                    <v-btn plain outlined>
+                    <v-btn plain outlined width="100%">
                       Báo cáo tin tuyển dụng không chính xác
                     </v-btn>
                   </div>
@@ -309,30 +308,32 @@
         <v-card class="mt-5">
           <div class="p-2">
             <v-row>
-              <v-col sm="10">
+              <v-col cols="12" sm="9" md="10">
                 <h4>
                   Thông tin CÔNG TY TÀI CHÍNH TRÁCH NHIỆM HỮU HẠN MỘT THÀNH VIÊN
                   SHINHAN VIỆT NAM
                 </h4>
               </v-col>
-              <v-col sm="2">
-                <v-btn text width="100%">
-                  Xem trang công ty
-                  <v-icon class="ml-1">mdi-eye</v-icon>
-                </v-btn>
+              <v-col cols="12" sm="3" md="2">
+                <div class="p-2">
+                  <v-btn text width="100%">
+                    Xem trang công ty
+                    <v-icon class="ml-1">mdi-eye</v-icon>
+                  </v-btn>
+                </div>
               </v-col>
             </v-row>
             <v-row>
-              <v-col sm="12">
+              <v-col cols="12">
                 <v-row>
-                  <v-col sm="1">
+                  <v-col cols="2" sm="1" md="1">
                     <img
                       src="https://www.topcv.vn/v4/image/job-detail/icon/8.svg"
                       class="w-100"
                       height="40"
                     />
                   </v-col>
-                  <v-col sm="11">
+                  <v-col cols="10" sm="11" md="11">
                     <h6>Giới thiệu</h6>
                     <p>
                       Tập đoàn Tài chính Shinhan
@@ -353,31 +354,31 @@
                   </v-col>
                 </v-row>
               </v-col>
-              <v-col sm="12">
+              <v-col cols="12">
                 <v-row>
-                  <v-col sm="1">
+                  <v-col cols="2" sm="1" md="1">
                     <img
                       src="https://www.topcv.vn/v4/image/job-detail/icon/9.svg"
                       class="w-100"
                       height="40"
                     />
                   </v-col>
-                  <v-col sm="11">
+                  <v-col cols="10" sm="11" md="11">
                     <h6>Quy mô</h6>
                     <p>100-499 nhân viên</p>
                   </v-col>
                 </v-row>
               </v-col>
-              <v-col sm="12">
+              <v-col cols="12">
                 <v-row>
-                  <v-col sm="1">
+                  <v-col cols="2" sm="1" md="1">
                     <img
                       src="https://www.topcv.vn/v4/image/job-detail/icon/10.svg"
                       class="w-100"
                       height="40"
                     />
                   </v-col>
-                  <v-col sm="11">
+                  <v-col cols="10" sm="11" md="11">
                     <h6>Địa điểm</h6>
                     <p>
                       Tầng 14 toà nhà PicoPlaza số 20 Cộng Hoà quận Tân Bình
@@ -396,7 +397,7 @@
           </div>
           <div>
             <v-row>
-              <v-col sm="9">
+              <v-col cols="12" sm="12" md="8">
                 <div class="p-3">
                   <v-card
                     v-for="(n, i) in 10"
@@ -404,18 +405,18 @@
                     :class="i != 0 ? 'mt-6' : ''"
                   >
                     <v-row>
-                      <v-col sm="2">
+                      <v-col cols="4" sm="2">
                         <div class="p-2">
                           <center>
-                            <v-img
-                              width="70%"
-                              height="70"
+                            <img
+                              width="60%"
+                              height="60"
                               src="https://cdn.topcv.vn/80/company_logos/197da107841bf0b3ca67db3c5bf07571-61dfd5470d712.jpg"
-                            ></v-img>
+                            />
                           </center>
                         </div>
                       </v-col>
-                      <v-col sm="6">
+                      <v-col cols="8" sm="7">
                         <div class="p-2">
                           <h6>
                             Cộng Tác Viên Tìm Kiếm Khách Hàng - Phát Triển Thị
@@ -430,16 +431,16 @@
                           </div>
                         </div>
                       </v-col>
-                      <v-col sm="4">
+                      <v-col cols="12" sm="3">
                         <v-row>
-                          <v-col sm="12">
+                          <v-col cols="6" sm="12">
                             <div class="p-2">
                               <div class="float-end">
                                 Còn <b>8</b> ngày để ứng tuyển
                               </div>
                             </div>
                           </v-col>
-                          <v-col sm="12">
+                          <v-col cols="6" sm="12">
                             <div class="float-end p-2">
                               <v-btn icon>
                                 <v-icon>mdi-heart</v-icon>
@@ -460,7 +461,7 @@
                   ></v-pagination>
                 </div>
               </v-col>
-              <v-col sm="3">
+              <v-col cols="12" sm="12" md="4">
                 <div class="p-2">
                   <h6>Có thể bạn quan tâm</h6>
                   <v-card>
@@ -517,7 +518,7 @@
             <v-carousel-item v-for="n in 4" :key="n">
               <div class="p-2">
                 <v-row>
-                  <v-col sm="3"  v-for="n in 4" :key="n">
+                  <v-col sm="3" v-for="n in 4" :key="n">
                     <v-card height="236">
                       <v-img
                         src="https://www.topcv.vn/v3/images/funix-course/D10.jpg"

@@ -2,7 +2,7 @@
   <div class="mt-5">
     <v-container>
       <v-row>
-        <v-col sm="6" v-for="(item, i) in createCVs" :key="i">
+        <v-col cols="12" sm="12" md="6" v-for="(item, i) in createCVs" :key="i">
           <v-card
             style="
               background: transparent linear-gradient(67deg, #e5fff1, #f5f2ff) 0
@@ -11,11 +11,11 @@
           >
             <div class="p-4">
               <v-row>
-                <v-col cols="7">
+                <v-col cols="6" sm="7">
                   <h5>{{ item.name }}</h5>
-                  <v-card-text>
+                  <p>
                     {{ item.description }}
-                  </v-card-text>
+                  </p>
                   <v-btn
                     :disabled="!item.active"
                     color="#004D40"
@@ -25,8 +25,8 @@
                     <span class="mt-1">{{ item.textBtn }}</span>
                   </v-btn>
                 </v-col>
-                <v-col cols="5">
-                  <v-img width="100%" height="200px" :src="item.image"></v-img>
+                <v-col cols="6" sm="5">
+                  <img width="100%" height="200px" :src="item.image" />
                 </v-col>
               </v-row>
             </div>
