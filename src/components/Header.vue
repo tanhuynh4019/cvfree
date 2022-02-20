@@ -11,7 +11,11 @@
         <v-row>
           <v-col sm="5" cols="8" md="3" lg="2">
             <div class="p-2">
-              <router-link style="color: #004D40" class="font-weight-bold" to="/">
+              <router-link
+                style="color: #004d40"
+                class="font-weight-bold"
+                to="/"
+              >
                 <img
                   width="100%"
                   height="40"
@@ -131,7 +135,7 @@
                     alt="John"
                   />
                 </v-avatar>
-                <h6 class="mt-2 ml-2">Tấn Huỳnh</h6>
+                <h6 class="mt-2 ml-2" v-if="common.user">Tấn Huỳnh</h6>
               </v-btn>
             </template>
 
@@ -186,13 +190,13 @@
     <v-navigation-drawer v-model="drawer" app width="300">
       <v-sheet color="grey lighten-5" height="40" width="100%">
         <div class="p-3">
-          <a>
+          <router-link to="/">
             <img
               width="100px"
               height="40"
               src="https://www.topcv.vn/v3/images/topcv-logo-4.png?v=1.0.1"
             />
-          </a>
+          </router-link>
         </div>
       </v-sheet>
 
@@ -252,9 +256,9 @@
 export default {
   name: "Header",
   async created() {
-    this.user = {
-      fullname: "Tấn Huỳnh",
-    };
+    // this.user = {
+    //   fullname: "Tấn Huỳnh",
+    // };
   },
   data() {
     return {
@@ -435,14 +439,14 @@ export default {
     pustMenuLogin() {
       let that = this;
       if (that.user) {
-        that.menus[0].list.splice(1,0,{
+        that.menus[0].list.splice(1, 0, {
           name: "Việc làm đã ứng tuyển",
           icon: "mdi-briefcase-account-outline",
           status: null,
           link: "/lich-su-ung-tuyen",
         });
 
-        that.menus[0].list.splice(2,0,{
+        that.menus[0].list.splice(2, 0, {
           name: "Việc làm đã lưu",
           icon: "mdi-heart-outline",
           status: null,
@@ -456,7 +460,7 @@ export default {
           link: "/quan-ly-cv",
         });
 
-        that.menus[1].list.splice(1,0,{
+        that.menus[1].list.splice(1, 0, {
           name: "Quản lý Cover Letter",
           icon: "mdi-file-document-multiple-outline",
           status: null,

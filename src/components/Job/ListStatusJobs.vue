@@ -17,8 +17,8 @@
       style="border-radius: 0px 0px 0px 0px"
     >
       <v-card
-        v-for="n in 10"
-        :key="n"
+        v-for="(n, i) in 10"
+        :key="i"
         class="mt-1"
         link
         :to="{ name: 'DetailsJob', params: { slug: 'details' } }"
