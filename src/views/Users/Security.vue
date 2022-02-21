@@ -91,6 +91,11 @@
               <ProfileUser />
             </div>
           </v-card>
+          <v-card class="mt-5">
+            <div style="padding: 20px">
+              <NoteCv />
+            </div>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
@@ -99,10 +104,12 @@
 
 <script>
 import ProfileUser from "../../components/Users/ProfileUser.vue";
+import NoteCv from "../../components/CVs/NoteCv.vue";
 export default {
   name: "Security",
   components: {
     ProfileUser,
+    NoteCv,
   },
 };
 </script>
