@@ -84,7 +84,7 @@
                                                 </div>
                                             </v-col>
                                             <v-col sm="9">
-                                                <v-select v-model="formJobSuggestionSettings.level" outlined  :items="selected.levels" placeholder="--Chọn trình đồ--" dense></v-select>
+                                                <v-select v-model="formJobSuggestionSettings.level" outlined :items="selected.levels" placeholder="--Chọn trình đồ--" dense></v-select>
                                             </v-col>
                                         </v-row>
                                     </v-col>
@@ -96,7 +96,7 @@
                                                 </div>
                                             </v-col>
                                             <v-col sm="9">
-                                                <v-select v-model="formJobSuggestionSettings.englishLevel" outlined  :items="selected.englishLevel" placeholder="--Chọn trình đồ--" dense></v-select>
+                                                <v-select v-model="formJobSuggestionSettings.englishLevel" outlined :items="selected.englishLevel" placeholder="--Chọn trình đồ--" dense></v-select>
                                             </v-col>
                                         </v-row>
                                     </v-col>
@@ -108,7 +108,7 @@
                                                 </div>
                                             </v-col>
                                             <v-col sm="9">
-                                                <v-select v-model="formJobSuggestionSettings.dob" outlined  :items="selected.dobs" placeholder="--Chọn năm sinh--" dense></v-select>
+                                                <v-select v-model="formJobSuggestionSettings.dob" outlined :items="selected.dobs" placeholder="--Chọn năm sinh--" dense></v-select>
                                             </v-col>
                                         </v-row>
                                     </v-col>
@@ -120,7 +120,7 @@
                                                 </div>
                                             </v-col>
                                             <v-col sm="9">
-                                                <v-select v-model="formJobSuggestionSettings.gender" outlined  :items="selected.gender" placeholder="--Chọn giới tính--" dense></v-select>
+                                                <v-select v-model="formJobSuggestionSettings.gender" outlined :items="selected.gender" placeholder="--Chọn giới tính--" dense></v-select>
                                             </v-col>
                                         </v-row>
                                     </v-col>
@@ -132,19 +132,53 @@
                                                 </div>
                                             </v-col>
                                             <v-col sm="9">
-                                                <v-select v-model="formJobSuggestionSettings.hometown" outlined  :items="selected.hometown" placeholder="--Chọn giới tính--" dense></v-select>
+                                                <v-select v-model="formJobSuggestionSettings.hometown" outlined :items="selected.hometown" placeholder="--Chọn quê quán--" dense></v-select>
                                             </v-col>
                                         </v-row>
                                     </v-col>
                                 </v-row>
                                 <h6>MONG MUỐN CỦA BẠN</h6>
                                 <v-row>
-                                  <v-col sm="3">
-
-                                  </v-col>
-                                  <v-col sm="9">
-
-                                  </v-col>
+                                    <v-col sm="12">
+                                        <v-row>
+                                            <v-col sm="3">
+                                                CV chính của bạn *
+                                            </v-col>
+                                            <v-col sm="9">
+                                                <v-select v-model="formJobSuggestionSettings.primaryCVId" outlined :items="selected.primaryCVs" placeholder="-- Chọn cv bạn muốn dùng để ứng tuyển --" dense></v-select>
+                                            </v-col>
+                                        </v-row>
+                                    </v-col>
+                                    <v-col sm="12">
+                                        <v-row>
+                                            <v-col sm="3">
+                                               Công việc *
+                                            </v-col>
+                                            <v-col sm="9">
+                                                <v-select v-model="formJobSuggestionSettings.jobType" outlined :items="selected.type" placeholder="-- Chọn hình thức làm việc mong muốn --" dense></v-select>
+                                            </v-col>
+                                        </v-row>
+                                    </v-col>
+                                    <v-col sm="12">
+                                        <v-row>
+                                            <v-col sm="3">
+                                              Mức lương *
+                                            </v-col>
+                                            <v-col sm="9">
+                                                <v-select v-model="formJobSuggestionSettings.salary" outlined :items="selected.salary" placeholder="-- Chọn mức lương mong muốn--" dense></v-select>
+                                            </v-col>
+                                        </v-row>
+                                    </v-col>
+                                     <v-col sm="12">
+                                        <v-row>
+                                            <v-col sm="3">
+                                             Địa điểm làm việc *
+                                            </v-col>
+                                            <v-col sm="9">
+                                                <v-select v-model="formJobSuggestionSettings.salary" outlined :items="selected.salary" placeholder="-- Chọn mức lương mong muốn--" dense></v-select>
+                                            </v-col>
+                                        </v-row>
+                                    </v-col>
                                 </v-row>
                             </div>
                         </div>
@@ -171,17 +205,19 @@ export default {
             selected: {
                 careers: ["An toàn lao động", "Bán hàng kỷ thuật", "Bán lẻ/ bán sỉ"],
                 companyFields: ["Bất động sản", "Cơ khí", "Cơ quan nhà nước"],
-                exps: ['1 năm kinh nghiệm', 'Dưới 1 năm kinh nghiệm'],
-                levels: ['Sinh viên', 'Mới ra trường'],
-                skiills: [".NET", 'NodeJS'],
+
+                exps: ["1 năm kinh nghiệm", "Dưới 1 năm kinh nghiệm"],
+                levels: ["Sinh viên", "Mới ra trường"],
+                skiills: [".NET", "NodeJS"],
                 city: ["Hồ Chí Minh", "Bình Dương", "Hà Nội"],
                 position: ["Nhân viên", "Trưởng nhóm", "Quản lý/ Giám sát"],
                 type: ["Toàn thời gian", "Bán thời gian", "Thực tập"],
                 salary: ["Dưới 3 triệu", "3 - 5 triệu", "5 - 7 triệu"],
-                englishLevel: ['Không biết', 'Đọc hiểu cơ bản'],
-                gender: ['Nam', 'Nữ'],
-                dobs: [1999,2000],
-                hometown: ['Bình Dương']
+                englishLevel: ["Không biết", "Đọc hiểu cơ bản"],
+                gender: ["Nam", "Nữ"],
+                dobs: [1999, 2000],
+                hometown: ["Bình Dương"],
+                primaryCVs: ["Tan huynh (Cập nhật: 21/02/2022)"],
             },
             formJobSuggestionSettings: {
                 fullname: "",
@@ -193,8 +229,8 @@ export default {
                 dob: "",
                 gender: "",
                 hometown: "",
-                primary_cv_id: "",
-                job_type: "",
+                primaryCVId: "",
+                jobType: "",
                 salary: "",
                 location_selector: "",
                 note: "",
