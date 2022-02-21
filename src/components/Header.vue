@@ -6,7 +6,7 @@
       <v-btn text x-small :to="url.signup">Đăng ký</v-btn>
       <v-btn text x-small>Đăng tuyển & tìm hồ sơ</v-btn>
     </v-system-bar>
-    <v-app-bar app clipped-right flat height="78">
+    <v-app-bar app clipped-right flat height="78" color="white" style="border-bottom: 1px solid #dee2e6 !important;">
       <v-spacer>
         <v-row>
           <v-col sm="5" cols="8" md="3" lg="2">
