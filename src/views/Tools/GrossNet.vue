@@ -18,7 +18,7 @@
                 v-for="(item, i) in listContentForm"
                 :key="i"
               >
-                <b class="mr-12 float-left">{{ item.name }}</b>
+                <b class="mr-12 float-left mt-4">{{ item.name }}</b>
                 <v-radio-group class="radio-style" v-model="row_rule" row>
                   <div v-for="(items, j) in item.radio" :key="j">
                     <v-radio
