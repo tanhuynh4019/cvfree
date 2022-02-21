@@ -50,8 +50,9 @@
               <div class="mt-5 text-field-box">
                 <v-row>
                   <v-col sm="6">
-                    <b class="mr-5 float-left">Thu nhập:</b>
+                    <b class="mr-5 mt-2 float-left">Thu nhập:</b>
                     <v-text-field
+                      dense
                       outlined
                       placeholder="VD: 10,000,000"
                       suffix="(VNĐ)"
@@ -83,6 +84,7 @@
                         </v-col>
                         <v-col class="text-field-box" sm="8">
                           <v-text-field
+                            dense
                             outlined
                             suffix="(VNĐ)"
                             prepend-inner-icon="mdi-cash"
@@ -112,8 +114,9 @@
               <div class="mt-5 text-field-box">
                 <v-row>
                   <v-col sm="6">
-                    <b class="mr-5 float-left">Số người:</b>
+                    <b class="mr-5 float-left mt-2">Số người:</b>
                     <v-text-field
+                      dense
                       outlined
                       placeholder="Người"
                       prepend-inner-icon="mdi-account-multiple"
@@ -666,16 +669,6 @@ export default {
 .text-licensetable a:hover {
   color: red;
   text-decoration: underline;
-}
-.text-field-box .v-text-field--enclosed .v-input__prepend-inner {
-  margin-top: 3px;
-}
-.text-field-box .v-text-field__suffix {
-  margin-bottom: 5px;
-}
-
-.text-field-box .v-text-field input {
-  padding: 12px 0px 18px;
 }
 .v-radio label {
   font-size: 14px !important;
