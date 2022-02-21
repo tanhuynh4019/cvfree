@@ -12,8 +12,12 @@
                 {{ items.content }}
               </i>
             </div>
-            <v-form class="salary-calculate-box" action="">
-              <div v-for="(item, i) in listContentForm" :key="i">
+            <v-form action="">
+              <div
+                class="salary-calculate-box"
+                v-for="(item, i) in listContentForm"
+                :key="i"
+              >
                 <b class="mr-12 float-left">{{ item.name }}</b>
                 <v-radio-group class="radio-style" v-model="row_rule" row>
                   <div v-for="(items, j) in item.radio" :key="j">
@@ -33,30 +37,32 @@
                     </span>
                   </div>
                 </v-radio-group>
+                <hr />
+                <div class="mb-2">
+                  <v-row>
+                    <v-col v-for="(item, i) in listTable" :key="i" sm="4">
+                      <b>{{ item.name }}</b>
+                      <p style="color: #004d40">{{ item.cost }}</p>
+                    </v-col>
+                  </v-row>
+                </div>
               </div>
-              <hr />
-              <div class="mb-2">
-                <v-row>
-                  <v-col v-for="(item, i) in listTable" :key="i" sm="4">
-                    <b>{{ item.name }}</b>
-                    <p style="color: #004d40">{{ item.cost }}</p>
-                  </v-col>
-                </v-row>
-              </div>
-              <div class="mt-5 mb-5">
+              <div class="mt-5 text-field-box">
                 <v-row>
                   <v-col sm="6">
-                    <b class="mr-5 float-left">Thu nhập:</b>
+                    <b class="mr-5 mt-2 float-left">Thu nhập:</b>
                     <v-text-field
-                      label="VD: 10.000.000 VNĐ"
+                      dense
+                      outlined
+                      placeholder="VD: 10,000,000"
+                      suffix="(VNĐ)"
                       prepend-inner-icon="mdi-cash"
                       color="#004D40"
-                      class="text-field-form"
                     ></v-text-field>
                   </v-col>
                 </v-row>
               </div>
-              <div class="mt-5">
+              <div class="mt-3">
                 <b class="mr-5 mt-2 float-left">Mức lương bảo hiểm:</b>
                 <v-radio-group v-model="row_insurance" row>
                   <v-row>
@@ -69,19 +75,20 @@
                     </v-col>
                     <v-col sm="7">
                       <v-row>
-                        <v-col sm="3">
+                        <v-col sm="4">
                           <v-radio
                             color="#004D40"
                             label="Khác:"
-                            value="radio-2"
+                            value="insurance_2"
                           ></v-radio>
                         </v-col>
-                        <v-col sm="9">
+                        <v-col class="text-field-box" sm="8">
                           <v-text-field
-                            label="(VNĐ)"
+                            dense
+                            outlined
+                            suffix="(VNĐ)"
                             prepend-inner-icon="mdi-cash"
                             color="#004D40"
-                            class="text-field-form"
                           ></v-text-field>
                         </v-col>
                       </v-row>
@@ -92,35 +99,54 @@
               <div class="mt-5">
                 <b class="mr-5 float-left">
                   Vùng:
-                  <span class="custom-box-text">(Giải thích)</span>
+                  <a class="custom-box-text"> (Giải thích) </a>
                 </b>
                 <v-radio-group class="radio-insurance" v-model="row_line" row>
-                  <v-radio label="Option 1" value="radio-1"></v-radio>
-                  <v-radio label="Option 2" value="radio-2"></v-radio>
-                  <v-radio label="Option 1" value="radio-1"></v-radio>
-                  <v-radio label="Option 2" value="radio-2"></v-radio>
+                  <v-radio
+                    v-for="item in radioWage"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                    color="#004d40"
+                  ></v-radio>
                 </v-radio-group>
               </div>
-              <div class="mt-5">
+              <div class="mt-5 text-field-box">
                 <v-row>
                   <v-col sm="6">
-                    <b class="mr-5 float-left">Số người:</b>
+                    <b class="mr-5 float-left mt-2">Số người:</b>
                     <v-text-field
-                      label="Người"
+                      dense
+                      outlined
+                      placeholder="Người"
                       prepend-inner-icon="mdi-account-multiple"
                       color="#004D40"
-                      class="text-field-form"
                     ></v-text-field>
                   </v-col>
                 </v-row>
               </div>
-              <div class="mt-9 text-center">
-                <v-btn color="#004D40" class="mr-4 span-btn" @click="validate">
-                  GROSS → NET
-                </v-btn>
-                <v-btn outlined color="#004D40" class="mr-4" @click="validate">
-                  NET → GROSS
-                </v-btn>
+              <div class="mt-5 text-center">
+                <v-row>
+                  <v-col cols="12" sm="6" xs="12" md="6">
+                    <v-btn
+                      color="#004D40"
+                      class="mr-4 span-btn"
+                      @click="validate"
+                    >
+                      GROSS → NET
+                    </v-btn>
+                  </v-col>
+                  <v-col cols="12" sm="6" xs="12" md="6">
+                    <v-btn
+                      outlined
+                      color="#004D40"
+                      class="mr-4"
+                      @click="validate"
+                    >
+                      NET → GROSS
+                    </v-btn>
+                  </v-col>
+                </v-row>
               </div>
             </v-form>
           </div>
@@ -149,9 +175,14 @@
                 Cụ thể,
                 <b>lương cơ sở năm 2021 vẫn là 1,49 triệu đồng/tháng</b> như
                 hiện nay, căn cứ theo
-                <a href="#" class="">Nghị định số 38 năm 2019 của Chính phủ</a>.
-                Ngoài ra, lương và phụ cấp theo lương của cán bộ, công chức,
-                viên chức cũng không thay đổi.
+                <a
+                  href="https://luatvietnam.vn/lao-dong/nghi-dinh-ve-tang-luong-co-so-172634-d1.html"
+                  >Nghị định số 38 năm 2019 của Chính phủ</a
+                >.
+                <span
+                  >Ngoài ra, lương và phụ cấp theo lương của cán bộ, công chức,
+                  viên chức cũng không thay đổi.</span
+                >
               </p>
             </div>
           </div>
@@ -455,8 +486,27 @@ export default {
           text: "",
         },
       ],
+      radioWage: [
+        {
+          label: "I",
+          value: "wage-1",
+        },
+        {
+          label: "II",
+          value: "wage-2",
+        },
+        {
+          label: "III",
+          value: "wage-3",
+        },
+        {
+          label: "IV",
+          value: "wage-4",
+        },
+      ],
       row_rule: "rule_1",
       row_insurance: "insurance_1",
+      row_line: "wage-1",
     };
   },
   mounted() {
@@ -488,7 +538,7 @@ export default {
 </script>
 
 <style>
-.grossnet-font {
+.grossnet-font label {
   font-size: 14px;
 }
 .radio-style {
@@ -531,9 +581,14 @@ export default {
   margin-left: -15px;
 }
 .custom-box-text {
-  color: red;
+  color: red !important;
   font-size: 12px;
   font-weight: normal;
+  text-decoration: none;
+}
+.custom-box-text:hover {
+  text-decoration: underline;
+  color: red;
 }
 .float-left {
   float: left;
@@ -570,10 +625,6 @@ export default {
   text-decoration: underline;
   cursor: pointer;
 }
-.text-field-form {
-  padding-top: 0px !important;
-  margin-top: -4px;
-}
 .span-btn {
   color: #fff !important;
   font-weight: normal;
@@ -597,6 +648,9 @@ export default {
   text-decoration: none;
   color: #999999 !important;
 }
+.text-des-notice a:hover {
+  text-decoration: underline;
+}
 .text-des-notice h5 {
   font-weight: normal;
 }
@@ -615,5 +669,11 @@ export default {
 .text-licensetable a:hover {
   color: red;
   text-decoration: underline;
+}
+.v-radio label {
+  font-size: 14px !important;
+}
+.float-right {
+  float: right;
 }
 </style>
