@@ -7,11 +7,9 @@
             <v-list-item three-line>
               <v-list-item-content>
                 <div class="text-overline mb-4">
-                  <h1 class="header">
-                    <strong
-                      >Công cụ tính mức hưởng bảo hiểm thất nghiệp chính xác
-                      nhất 2022</strong
-                    >
+                  <h1 class="header font-weight-bold">
+                    Công cụ tính mức hưởng bảo hiểm thất nghiệp chính xác nhất
+                    2022
                   </h1>
                 </div>
                 <v-list-item-title class="text-h5">
@@ -54,119 +52,117 @@
                       </v-col>
                     </v-row>
                     <div v-if="radios == 'radio-1'">
-                      <label class="mt-4">
-                        <strong style="font-size: 14px">
-                          Tiền lương đóng BHTN:
-                        </strong>
-                        <v-text-field
-                          outlined
-                          placeholder="6,000,000"
-                          prepend-inner-icon="mdi mdi-cash"
-                          suffix="(VNĐ)"
-                          class="mt-4"
-                        ></v-text-field>
-                        <p style="font-weight: 400; font-size: 13px">
-                          (Bình quân tiền lương tháng đóng BHTN của 06 tháng
-                          liền kề trước khi thất nghiệp)
-                        </p>
-                      </label>
+                      <div class="mt-4">
+                        <v-row>
+                          <v-col cols="12">
+                            <label class="font-weight-bold mb-3">
+                              Tiền lương đóng BHTN:
+                            </label>
+                            <v-text-field
+                              dense
+                              outlined
+                              placeholder="6,000,000"
+                              prepend-inner-icon="mdi mdi-cash"
+                              suffix="(VNĐ)"
+                              width="50"
+                            ></v-text-field>
+                            <p style="font-weight: 400; font-size: 13px">
+                              (Bình quân tiền lương tháng đóng BHTN của 06 tháng
+                              liền kề trước khi thất nghiệp)
+                            </p>
+                          </v-col>
+                        </v-row>
+                      </div>
                     </div>
                     <div v-if="radios == 'radio-2'" class="bhtn-month">
-                      <v-row>
-                        <v-col md="4">
-                          <label class="mt-4">
-                            <strong style="font-size: 14px">
+                      <div class="mt-4">
+                        <v-row>
+                          <v-col sm="4" cols="6">
+                            <label class="font-weight-bold mb-3">
                               BHTN tháng 1:
-                            </strong>
+                            </label>
                             <v-text-field
+                              dense
                               outlined
                               placeholder="6,000,000"
                               prepend-inner-icon="mdi mdi-cash"
                               suffix="(VNĐ)"
-                              class="mt-4"
                               width="100%"
                             ></v-text-field>
-                          </label>
-                        </v-col>
-                        <v-col md="4">
-                          <label class="mt-4">
-                            <strong style="font-size: 14px">
+                          </v-col>
+                          <v-col sm="4" cols="6">
+                            <label class="font-weight-bold mb-3">
                               BHTN tháng 2:
-                            </strong>
+                            </label>
                             <v-text-field
+                              dense
                               outlined
                               placeholder="6,000,000"
                               prepend-inner-icon="mdi mdi-cash"
                               suffix="(VNĐ)"
-                              class="mt-4"
-                            ></v-text-field>
-                          </label>
-                        </v-col>
-                        <v-col md="4">
-                          <label class="mt-4">
-                            <strong style="font-size: 14px">
-                              BHTN tháng 3:
-                            </strong>
-                            <v-text-field
-                              outlined
-                              placeholder="6,000,000"
-                              prepend-inner-icon="mdi mdi-cash"
-                              suffix="(VNĐ)"
-                              class="mt-4"
-                            ></v-text-field>
-                          </label>
-                        </v-col>
-                        <v-col md="4">
-                          <label>
-                            <strong style="font-size: 14px">
-                              BHTN tháng 4:
-                            </strong>
-                            <v-text-field
-                              outlined
-                              placeholder="6,000,000"
-                              prepend-inner-icon="mdi mdi-cash"
-                              suffix="(VNĐ)"
-                              class="mt-4"
                               width="100%"
                             ></v-text-field>
-                          </label>
-                        </v-col>
-                        <v-col md="4">
-                          <label>
-                            <strong style="font-size: 14px">
+                          </v-col>
+                          <v-col sm="4" cols="6">
+                            <label class="font-weight-bold mb-3">
+                              BHTN tháng 3:
+                            </label>
+                            <v-text-field
+                              dense
+                              outlined
+                              placeholder="6,000,000"
+                              prepend-inner-icon="mdi mdi-cash"
+                              suffix="(VNĐ)"
+                              width="100%"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col sm="4" cols="6">
+                            <label class="font-weight-bold mb-3">
+                              BHTN tháng 4:
+                            </label>
+                            <v-text-field
+                              dense
+                              outlined
+                              placeholder="6,000,000"
+                              prepend-inner-icon="mdi mdi-cash"
+                              suffix="(VNĐ)"
+                              width="100%"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col sm="4" cols="6">
+                            <label class="font-weight-bold mb-3">
                               BHTN tháng 5:
-                            </strong>
+                            </label>
                             <v-text-field
+                              dense
                               outlined
                               placeholder="6,000,000"
                               prepend-inner-icon="mdi mdi-cash"
                               suffix="(VNĐ)"
-                              class="mt-4"
+                              width="100%"
                             ></v-text-field>
-                          </label>
-                        </v-col>
-                        <v-col md="4">
-                          <label>
-                            <strong style="font-size: 14px">
+                          </v-col>
+                          <v-col sm="4" cols="6">
+                            <label class="font-weight-bold mb-3">
                               BHTN tháng 6:
-                            </strong>
+                            </label>
                             <v-text-field
+                              dense
                               outlined
                               placeholder="6,000,000"
                               prepend-inner-icon="mdi mdi-cash"
                               suffix="(VNĐ)"
-                              class="mt-4"
+                              width="100%"
                             ></v-text-field>
-                          </label>
-                        </v-col>
-                      </v-row>
+                          </v-col>
+                        </v-row>
+                      </div>
                     </div>
                     <div class="bhtn-ch mt-4">
                       <label>
-                        <strong style="font-size: 14px">
-                          Tổng thời gian đóng BHTN chưa hưởng:
-                        </strong>
+                        <strong> Tổng thời gian đóng BHTN chưa hưởng: </strong>
                         <v-text-field
+                          dense
                           outlined
                           placeholder="12"
                           prepend-inner-icon="mdi mdi-calendar-blank-outline"
@@ -184,9 +180,7 @@
                         <v-col md="6" cols="12" sm="6">
                           <v-radio-group mandatory v-model="salarys">
                             <label class="mb-3">
-                              <strong style="font-size: 14px">
-                                Chế độ tiền lương
-                              </strong>
+                              <strong> Chế độ tiền lương </strong>
                             </label>
                             <v-radio
                               label="Doanh nghiệp nhà nước"
@@ -201,7 +195,7 @@
                         <v-col md="6" cols="12" sm="6">
                           <div v-if="salarys == 'salary-1'">
                             <label class="salary1">
-                              <strong style="font-size: 14px"
+                              <strong
                                 >Vùng
                                 <span class="gt">(Giải thích):</span></strong
                               >
@@ -249,14 +243,12 @@
           </v-card>
           <v-card class="mx-auto mt-4" outlined>
             <div class="bhtn-box">
-              <h2>
-                <strong
-                  >Bảo hiểm thất nghiệp là gì? Cách tính bảo hiểm thất nghiệp
-                  mới nhất 2022</strong
-                >
+              <h2 class="font-weight-bold">
+                Bảo hiểm thất nghiệp là gì? Cách tính bảo hiểm thất nghiệp mới
+                nhất 2022
               </h2>
               <div class="content">
-                <h2><strong>Bảo hiểm thất nghiệp là gì?</strong></h2>
+                <h2 class="font-weight-bold">Bảo hiểm thất nghiệp là gì?</h2>
                 <p>
                   Bảo hiểm thất nghiệp là hình thức bảo hiểm bắt buộc với mục
                   đích xã hội và không vì lợi nhuận. Theo Điều 42 Luật Việc làm
@@ -266,10 +258,9 @@
                 <p>- Hỗ trợ học nghề;</p>
                 <p>- Hỗ trợ tư vấn và giới thiệu việc làm;</p>
                 <p>- Hỗ trợ giúp đào tạo, nâng cao trình độ của nghề.</p>
-                <h2>
-                  <strong
-                    >Công cụ tính bảo hiểm thất nghiệp mới nhất 2022</strong
-                  >
+                <h2 class="font-weight-bold">
+                  Bảo hiểm thất nghiệp là gì? Công cụ tính bảo hiểm thất nghiệp
+                  mới nhất 2022
                 </h2>
                 <p>
                   Vậy
@@ -316,7 +307,7 @@
                   cơ bản tối thiểu của vùng đối với người lao động thực hiện chế
                   độ lương do bên người sử dụng lao động đưa ra.
                 </p>
-                <p><strong>Ví dụ 1:</strong></p>
+                <b>Ví dụ 1:</b>
                 <p>
                   <i
                     >Ông A làm nhà nước, đóng bảo hiểm thất nghiệp được 12 tháng
@@ -346,7 +337,7 @@
                     tháng.</i
                   >
                 </p>
-                <p><strong>Ví dụ 2:</strong></p>
+                <b>Ví dụ 2:</b>
                 <p>
                   <i
                     >Bà B đóng bảo hiểm thất nghiệp được 62 tháng khi làm việc
@@ -371,7 +362,7 @@
                     hưởng mỗi tháng là 6 * 60% = 3,6 triệu đồng/tháng</i
                   >
                 </p>
-                <p><strong>Ví dụ 3:&nbsp;</strong></p>
+                <b>Ví dụ 3:&nbsp;</b>
                 <p>
                   <i
                     >Ông C đóng bảo hiểm thất nghiệp được 15 tháng khi làm việc
@@ -424,11 +415,9 @@
                   Công cụ sẽ tính toán và phân tích diễn giải từng loại chi phí
                   để bạn hiểu rõ nhất mức lương của mình.
                 </p>
-                <h2>
-                  <strong
-                    >Một số thông tin liên quan tới bảo hiểm thất nghiệp mới
-                    nhất 2022 bạn cần nắm rõ</strong
-                  >
+                <h2 class="font-weight-bold">
+                  Một số thông tin liên quan tới bảo hiểm thất nghiệp mới nhất
+                  2022 bạn cần nắm rõ
                 </h2>
                 <h3>
                   <strong>Thời gian được hưởng bảo hiểm thất nghiệp</strong>
@@ -652,11 +641,11 @@
                 </span>
                 Hỗ trợ
               </h3>
-              <p style="font-size: 14px">
+              <p>
                 Bạn có chia sẻ hay cần tư vấn về cách tính
                 <a href="#" class="bhtn-email">Bảo hiểm thất nghiệp?</a>
               </p>
-              <p style="font-size: 14px">
+              <p>
                 Hãy gửi email đề xuất tới
                 <a href="#" class="bhtn-email">hotro@topcv.vn.</a>
               </p>
@@ -690,33 +679,24 @@ export default {
 </script>
 
 <style>
-.v-application .text-overline {
+.bhtn {
+  background-color: #e5e5e5;
+}
+
+.bhtn label {
+  font-size: 14px;
+}
+
+.bhtn p {
+  font-size: 14px;
+}
+.bhtn .v-application .text-overline {
   font-size: 0rem !important;
   font-weight: 500;
   line-height: 2rem;
   letter-spacing: 0.1666666667em !important;
   font-family: "Roboto", sans-serif !important;
   text-transform: uppercase !important;
-}
-
-.v-application--is-ltr .v-text-field__suffix {
-  padding-left: 4px;
-  font-size: 12px;
-  color: #ccc;
-}
-
-.bhtn {
-  background-color: #e5e5e5;
-}
-
-.bhtn .v-text-field input {
-  flex: 1 1 auto;
-  line-height: 20px;
-  padding: 8px 0 8px;
-  max-width: 100%;
-  min-width: 0px;
-  width: 100%;
-  font-size: 14px;
 }
 
 .bhtn .v-label {
@@ -766,7 +746,7 @@ export default {
 
 .bhtn .header {
   text-transform: initial;
-  color: #00b14f;
+  color: #004d40;
   font-size: 20px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -777,7 +757,7 @@ export default {
 
 .bhtn .region {
   font-style: initial;
-  color: #00b14f;
+  color: #004d40;
   font-weight: 300;
 }
 
@@ -792,81 +772,11 @@ export default {
 }
 
 .bhtn .v-icon.v-icon {
-  align-items: center;
-  display: inline-flex;
-  font-feature-settings: "liga";
-  font-size: 19px;
-  justify-content: center;
-  letter-spacing: normal;
-  line-height: 1;
-  position: relative;
-  text-indent: 0;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), visibility 0s;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.bhtn .v-text-field--filled > .v-input__control > .v-input__slot,
-.v-text-field--full-width > .v-input__control > .v-input__slot,
-.v-text-field--outlined > .v-input__control > .v-input__slot {
-  align-items: stretch;
-  min-height: 0px !important;
-}
-
-.bhtn .mdi-cash::before {
-  margin-top: -90%;
-}
-
-.bhtn
-  .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded)
-  > .v-input__control
-  > .v-input__slot,
-.v-text-field.v-text-field--enclosed .v-text-field__details {
-  padding: 0 12px;
-  width: 60%;
-}
-
-.bhtn .v-text-field.v-text-field--enclosed .v-text-field__details {
-  padding-top: 0px;
-  margin-bottom: -11px;
-}
-
-.bhtn .bhtn-month .v-text-field.v-text-field--enclosed .v-text-field__details {
-  padding-top: 0px;
-  margin-bottom: -11px;
-}
-
-.bhtn
-  .bhtn-month
-  .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded)
-  > .v-input__control
-  > .v-input__slot,
-.v-text-field.v-text-field--enclosed .v-text-field__details {
-  padding: 0 12px;
-  width: 100%;
-}
-
-.bhtn
-  .bhtn-ch
-  .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded)
-  > .v-input__control
-  > .v-input__slot,
-.v-text-field.v-text-field--enclosed .v-text-field__details {
-  padding: 0 12px;
-  width: 60%;
-}
-
-.bhtn .bhtn-ch .mdi-calendar-blank-outline::before {
-  margin-top: -125%;
+  font-size: 20px;
+  color: #004d40;
 }
 
 .bhtn .bhtn-ch .v-icon.v-icon {
-  align-items: center;
-  display: inline-flex;
-  font-feature-settings: "liga";
   font-size: 15px;
   justify-content: center;
   letter-spacing: normal;
@@ -900,26 +810,12 @@ export default {
 }
 
 .bhtn .bhtn-salary .gt {
-  color: #00b14f;
+  color: #004d40;
   font-weight: 400;
 }
 
 .bhtn .bhtn-salary .gt:hover {
   text-decoration: underline;
-}
-
-.bhtn
-  .bhtn-salary
-  .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded)
-  > .v-input__control
-  > .v-input__slot,
-.v-text-field.v-text-field--enclosed .v-text-field__details {
-  padding: 0 12px;
-  width: 100%;
-}
-
-.bhtn .mdi-map-marker::before {
-  margin-top: -17%;
 }
 
 .bhtn .bhtn-salary .v-select__selection--comma {
@@ -928,17 +824,6 @@ export default {
   text-overflow: ellipsis;
   width: 100px;
   font-size: 14px;
-}
-
-.bhtn
-  .bhtn-salary
-  .salary1
-  .v-text-field
-  > .v-input__control
-  > .v-input__slot:before {
-  border-color: inherit;
-  border-style: none;
-  border-width: thin 0 0 0;
 }
 
 .bhtn .bhtn-salary .salary1 .v-select > .v-input__control > .v-input__slot {
@@ -953,21 +838,6 @@ export default {
   border-radius: 5px;
 }
 
-.bhtn
-  .bhtn-salary
-  .salary2
-  .v-text-field
-  > .v-input__control
-  > .v-input__slot:before,
-.v-text-field > .v-input__control > .v-input__slot:after {
-  bottom: -1px;
-  content: "";
-  left: 0;
-  position: absolute;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-  width: 0;
-}
-
 .bhtn .bhtn-button {
   border-top: 1px solid #eee;
   padding-top: 24px;
@@ -976,7 +846,7 @@ export default {
 }
 
 .bhtn .bhtn-button .btn-bhtn-primary {
-  background: #00b14f;
+  background: #004d40;
   border-radius: 3px;
   color: #fff;
   padding: 8px 24px;
@@ -995,7 +865,7 @@ export default {
 .bhtn .bhtn-box .title {
   align-items: center;
   border-bottom: 1px solid #eee;
-  color: #00b14f;
+  color: #004d40;
   display: flex;
   font-size: 19px;
   margin: initial;
@@ -1037,7 +907,7 @@ export default {
 
 .bhtn .bhtn-box .bhtn-email {
   text-decoration: none;
-  color: #00b14f;
+  color: #004d40;
   font-weight: 400;
   font-size: 14px;
 }
@@ -1058,6 +928,10 @@ export default {
   font-weight: 700;
   line-height: 1.3em;
   margin-bottom: 24px;
+}
+
+.bhtn .bhtn-box li {
+  font-size: 15px;
 }
 
 .bhtn .bhtn-box .content p {
