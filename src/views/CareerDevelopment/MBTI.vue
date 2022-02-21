@@ -4,9 +4,13 @@
       <v-row class="mbti-padding">
         <v-col cols="12" sm="8" xs="12">
           <v-row>
-            <v-col class="background-gray font-mbti mt-3 mb-3" sm="12">
+            <v-col
+              cols="12"
+              class="background-gray font-mbti mt-3 mb-3"
+              sm="12"
+            >
               <v-row v-for="(item, i) in reviewBox" :key="i">
-                <v-col sm="7">
+                <v-col cols="12" sm="7" xs="12">
                   <h4 class="mb-5 style-font">{{ item.name }}</h4>
                   <div v-for="(items, j) in item.list" :key="j">
                     <p>
@@ -20,16 +24,16 @@
                     </p>
                   </div>
                 </v-col>
-                <v-col sm="5">
+                <v-col cols="12" sm="5" xs="0">
                   <div class="image-padd">
                     <img :src="item.image" width="100%" height="" alt="" />
                   </div>
                 </v-col>
               </v-row>
               <div class="text-center">
-                <v-btn class="ma-2" color="#00b14f">
+                <v-btn small class="ma-2" color="#00b14f">
                   <span style="color: #ffff">
-                    <v-icon>mdi-pencil</v-icon>
+                    <v-icon small>mdi-pencil</v-icon>
                     Khám phá tính cách của bạn ngay
                   </span>
                 </v-btn>
@@ -54,10 +58,13 @@
             <v-col sm="12">
               <v-row>
                 <v-col
+                  cols="12"
                   class="col-sm-padding"
                   v-for="(items, j) in item.listSub"
                   :key="j"
                   sm="6"
+                  xs="12"
+                  lg="6"
                 >
                   <div class="form-size box-gray">
                     <div class="form-size-text">
@@ -351,12 +358,12 @@ export default {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight };
       if (this.windowSize.x < 600) {
         this.common.image = {
-          width: "75%",
+          width: "100%",
           height: "75%",
         };
       } else if (this.windowSize.x < 960) {
         this.common.image = {
-          width: "90%",
+          width: "100%",
           height: "90%",
         };
       } else {
@@ -422,7 +429,8 @@ span {
 }
 
 .col-sm-padding {
-  padding: 2px;
+  padding: 10px;
+  text-align: justify;
 }
 
 .box-gray {

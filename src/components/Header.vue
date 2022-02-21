@@ -404,6 +404,7 @@ export default {
             {
               name: "Trắc nghiệm MI",
               icon: "mdi-message-text",
+              link: '/trac-nghiem-da-tri-thong-minh-multiple-intelligences-test'
             },
           ],
         },
