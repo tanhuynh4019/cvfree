@@ -538,7 +538,7 @@ export default {
 </script>
 
 <style>
-.grossnet-font {
+.grossnet-font label {
   font-size: 14px;
 }
 .radio-style {
