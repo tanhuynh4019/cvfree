@@ -54,7 +54,7 @@
                     <div v-if="radios == 'radio-1'">
                       <div class="mt-4">
                         <v-row>
-                          <v-col cols="12">
+                          <v-col cols="9" sm="6" md="5">
                             <label class="font-weight-bold mb-3">
                               Tiền lương đóng BHTN:
                             </label>
@@ -64,14 +64,13 @@
                               placeholder="6,000,000"
                               prepend-inner-icon="mdi mdi-cash"
                               suffix="(VNĐ)"
-                              width="50"
                             ></v-text-field>
-                            <p style="font-weight: 400; font-size: 13px">
-                              (Bình quân tiền lương tháng đóng BHTN của 06 tháng
-                              liền kề trước khi thất nghiệp)
-                            </p>
                           </v-col>
                         </v-row>
+                        <p style="font-weight: 400; font-size: 13px">
+                          (Bình quân tiền lương tháng đóng BHTN của 06 tháng
+                          liền kề trước khi thất nghiệp)
+                        </p>
                       </div>
                     </div>
                     <div v-if="radios == 'radio-2'" class="bhtn-month">
@@ -159,28 +158,32 @@
                       </div>
                     </div>
                     <div class="bhtn-ch mt-4">
-                      <label>
-                        <strong> Tổng thời gian đóng BHTN chưa hưởng: </strong>
-                        <v-text-field
-                          dense
-                          outlined
-                          placeholder="12"
-                          prepend-inner-icon="mdi mdi-calendar-blank-outline"
-                          suffix="(Tháng)"
-                          class="mt-4"
-                        ></v-text-field>
-                        <p style="font-weight: 400; font-size: 13px">
-                          (Thời gian đóng bảo hiểm thất nghiệp – Thời gian đã
-                          hưởng trợ cấp thất nghiệp)
-                        </p>
-                      </label>
+                      <v-row>
+                        <v-col cols="9" sm="6" md="5">
+                          <label class="font-weight-bold">
+                            Tổng thời gian đóng BHTN chưa hưởng:
+                          </label>
+                          <v-text-field
+                            dense
+                            outlined
+                            placeholder="12"
+                            prepend-inner-icon="mdi mdi-calendar-blank-outline"
+                            suffix="(Tháng)"
+                            class="mt-4"
+                          ></v-text-field>
+                        </v-col>
+                      </v-row>
+                      <p style="font-weight: 400; font-size: 13px">
+                        (Thời gian đóng bảo hiểm thất nghiệp – Thời gian đã
+                        hưởng trợ cấp thất nghiệp)
+                      </p>
                     </div>
                     <div class="bhtn-salary">
                       <v-row>
                         <v-col md="6" cols="12" sm="6">
                           <v-radio-group mandatory v-model="salarys">
-                            <label class="mb-3">
-                              <strong> Chế độ tiền lương </strong>
+                            <label class="mb-3 font-weight-bold">
+                              Chế độ tiền lương
                             </label>
                             <v-radio
                               label="Doanh nghiệp nhà nước"
@@ -194,39 +197,35 @@
                         </v-col>
                         <v-col md="6" cols="12" sm="6">
                           <div v-if="salarys == 'salary-1'">
-                            <label class="salary1">
-                              <strong
-                                >Vùng
-                                <span class="gt">(Giải thích):</span></strong
-                              >
-                              <v-select
-                                v-model="select"
-                                :items="items"
-                                item-text="state"
-                                return-object
-                                single-line
-                                prepend-inner-icon="mdi-map-marker"
-                                style="cursor: not-allowed"
-                                disabled
-                              ></v-select>
+                            <label class="salary1 font-weight-bold"
+                              >Vùng
+                              <span class="gt">(Giải thích):</span>
                             </label>
+                            <v-select
+                              v-model="select"
+                              :items="items"
+                              item-text="state"
+                              return-object
+                              single-line
+                              prepend-inner-icon="mdi-map-marker"
+                              style="cursor: not-allowed"
+                              disabled
+                            ></v-select>
                           </div>
                           <div v-if="salarys == 'salary-2'" cols="12">
-                            <label class="salary2">
-                              <strong style="font-size: 14px"
-                                >Vùng
-                                <span class="gt">(Giải thích):</span></strong
-                              >
-                              <v-select
-                                v-model="select"
-                                :items="items"
-                                item-text="state"
-                                return-object
-                                single-line
-                                prepend-inner-icon="mdi-map-marker"
-                                style="cursor: not-allowed"
-                              ></v-select>
+                            <label class="salary2"
+                              >Vùng
+                              <span class="gt">(Giải thích):</span>
                             </label>
+                            <v-select
+                              v-model="select"
+                              :items="items"
+                              item-text="state"
+                              return-object
+                              single-line
+                              prepend-inner-icon="mdi-map-marker"
+                              style="cursor: not-allowed"
+                            ></v-select>
                           </div>
                         </v-col>
                       </v-row>
@@ -419,8 +418,8 @@
                   Một số thông tin liên quan tới bảo hiểm thất nghiệp mới nhất
                   2022 bạn cần nắm rõ
                 </h2>
-                <h3>
-                  <strong>Thời gian được hưởng bảo hiểm thất nghiệp</strong>
+                <h3 class="font-weight-bold">
+                  Thời gian được hưởng bảo hiểm thất nghiệp
                 </h3>
                 <p>Thời gian được hưởng BHTN như sau:</p>
                 <p>
@@ -442,8 +441,8 @@
                   Hỗ trợ học nghề: Thời gian hỗ trợ không quá 6 tháng, tối đa
                   được hỗ trợ 1 triệu đồng/tháng/người
                 </p>
-                <h3>
-                  <strong>Đối tượng được nhận bảo hiểm thất nghiệp</strong>
+                <h3 class="font-weight-bold">
+                  Đối tượng được nhận bảo hiểm thất nghiệp
                 </h3>
                 <p>
                   Các đối tượng sau đây sẽ được hưởng bảo hiểm, trợ cấp thất
@@ -467,7 +466,9 @@
                   dụng sẽ được tính trợ cấp thất nghiệp theo hợp đồng lao động
                   được ký sớm nhất, có tham gia BHTN.
                 </p>
-                <h3><strong>Điều kiện hưởng bảo hiểm thất nghiệp</strong></h3>
+                <h3 class="font-weight-bold">
+                  Điều kiện hưởng bảo hiểm thất nghiệp
+                </h3>
                 <p>
                   Đối với BHTN, điều kiện để được hưởng trợ cấp thất nghiệp sẽ
                   được quy định như sau:
@@ -521,7 +522,9 @@
                   buộc;
                 </p>
                 <p>- Chết.</p>
-                <h3><strong>Hồ sơ hưởng bảo hiểm thất nghiệp</strong></h3>
+                <h3 class="font-weight-bold">
+                  Hồ sơ hưởng bảo hiểm thất nghiệp
+                </h3>
                 <p>
                   Theo
                   <a
@@ -554,7 +557,9 @@
                   - Thông báo/thỏa thuận chấm dứt hợp đồng làm việc/hợp đồng lao
                   động.
                 </p>
-                <h3><strong>Thủ tục nhận bảo hiểm thất nghiệp</strong></h3>
+                <h3 class="font-weight-bold">
+                  Thủ tục nhận bảo hiểm thất nghiệp
+                </h3>
                 <p>
                   Thủ tục hưởng bảo hiểm thất nghiệp sẽ bao gồm 4 bước sau đây:
                 </p>
