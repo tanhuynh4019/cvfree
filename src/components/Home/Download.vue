@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div v-resize="onResize">
       <v-container class="mt-5">
           <v-row>
-                <v-col md="6" sm="12" cols="12">
+                <v-col cols="12" md="8" sm="8" xs="12">
                   <h2 class="font-weight-bold">Cơ hội vàng nằm gọn trong tay bạn</h2>
                   <div class="mt-5">
                         <p>
@@ -21,15 +21,24 @@
                   <div class="mt-10">
                       <b>Tải ứng dụng tìm làm việc ngay</b>
                       <div class="mt-5">
-                            <img src="https://www.topcv.vn/v4/image/welcome/download/app_store.png?v=1.0.0"/>
-                            <img src="https://www.topcv.vn/v4/image/welcome/download/chplay.png?v=1.0.0" />
+                          <v-row>
+                              <v-col cols="4" sm="6" md="4">
+                                  <img class="w-100" src="https://www.topcv.vn/v4/image/welcome/download/app_store.png?v=1.0.0"/>
+                              </v-col>
+                              <v-col cols="4" sm="6" md="4">
+                                  <img class="w-100" src="https://www.topcv.vn/v4/image/welcome/download/chplay.png?v=1.0.0" />
+                              </v-col>
+                          </v-row>
+                            
                       </div>
                   </div>
               </v-col>
 
-              <v-col md="6" class="p-0">
+              <v-col cols="12" md="4" sm="4" xs="12" :class="common.mt_imgae_cls">
                   <center>
-                      <img src="https://www.topcv.vn/v4/image/welcome/app-download.png" />
+                      <img
+                        :width="common.image.width"
+                        :src="common.image.src" />
                   </center>
               </v-col>
           </v-row>
@@ -42,7 +51,17 @@ export default {
     name: 'Download',
     data(){
         return{
-
+            common: {
+                image: {
+                    src:"https://www.topcv.vn/v4/image/welcome/app-download.png",
+                    width: "100%",
+                },
+                mt_imgae_cls: '',
+            },
+            windowSize: {
+                x: 0,
+                y: 0,
+            },
         }
     },
     mounted(){
@@ -50,7 +69,25 @@ export default {
     },
     methods: {
         onResize() {
-
+            this.windowSize = { x: window.innerWidth, y: window.innerHeight};
+            if(this.windowSize.x < 600){
+                this.common.image = {
+                    src: ''
+                };
+            }
+            else if(this.windowSize.x < 960){
+                this.common.image = {
+                    src:"https://www.topcv.vn/v4/image/welcome/app-download.png",
+                    width: 200,
+                };
+                this.common.mt_imgae_cls ="mt-10";
+            }
+            else{
+                this.common.image = {
+                    src:"https://www.topcv.vn/v4/image/welcome/app-download.png",
+                    width: "100%",
+                };
+            }
         }
     }
 }
