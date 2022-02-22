@@ -256,9 +256,9 @@
 export default {
   name: "Header",
   async created() {
-    this.user = {
-      fullname: "Tấn Huỳnh",
-    };
+    // this.user = {
+    //   fullname: "Tấn Huỳnh",
+    // };
   },
   data() {
     return {
