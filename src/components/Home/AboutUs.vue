@@ -6,15 +6,15 @@
     "
   >
     <v-container>
-      <center>
-        <h3 color="green">Về chúng tôi</h3>
+      <center class="mt-10">
+        <h3 style="color: #00b14f">Về chúng tôi</h3>
         <div class="mt-5">
           <p>
             {{aboutUs}}
           </p>
         </div>
       </center>
-      <v-card class="mt-5 rounded-xl" color="white">
+      <v-card class="mt-5 rounded-xl mb-5" color="white">
         <div class="p-5">
           <v-row>
             <v-col
@@ -24,7 +24,7 @@
               v-for="(item, i) in statistical"
               :key="i"
             >
-              <h4>{{ item.Amount }}</h4>
+              <h4 style="color: #3d6089">{{ item.Amount }}</h4>
               <p>{{ item.Descibe }}</p>
             </v-col>
           </v-row>
