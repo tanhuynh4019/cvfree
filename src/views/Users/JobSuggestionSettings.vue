@@ -142,7 +142,9 @@
                                     <v-col sm="12">
                                         <v-row>
                                             <v-col sm="3">
-                                                CV chính của bạn *
+                                                <div class="float-end mt-2">
+                                                    CV chính của bạn *
+                                                </div>
                                             </v-col>
                                             <v-col sm="9">
                                                 <v-select v-model="formJobSuggestionSettings.primaryCVId" outlined :items="selected.primaryCVs" placeholder="-- Chọn cv bạn muốn dùng để ứng tuyển --" dense></v-select>
@@ -152,7 +154,9 @@
                                     <v-col sm="12">
                                         <v-row>
                                             <v-col sm="3">
-                                               Công việc *
+                                                <div class="float-end mt-2">
+                                                    Công việc *
+                                                </div>
                                             </v-col>
                                             <v-col sm="9">
                                                 <v-select v-model="formJobSuggestionSettings.jobType" outlined :items="selected.type" placeholder="-- Chọn hình thức làm việc mong muốn --" dense></v-select>
@@ -162,20 +166,65 @@
                                     <v-col sm="12">
                                         <v-row>
                                             <v-col sm="3">
-                                              Mức lương *
+                                                <div class="float-end mt-2">
+                                                    Mức lương *
+                                                </div>
                                             </v-col>
                                             <v-col sm="9">
                                                 <v-select v-model="formJobSuggestionSettings.salary" outlined :items="selected.salary" placeholder="-- Chọn mức lương mong muốn--" dense></v-select>
                                             </v-col>
                                         </v-row>
                                     </v-col>
+                                    <v-col sm="12">
+                                        <v-row>
+                                            <v-col sm="3">
+                                                <div class="float-end mt-2">
+                                                    Địa điểm làm việc *
+                                                </div>
+                                            </v-col>
+                                            <v-col sm="9">
+                                                <v-select v-model="formJobSuggestionSettings.locationSelector" multiple outlined :items="selected.hometown" placeholder="-- Lựa chọn địa điểm bạn có thể làm việc--" dense></v-select>
+                                                <div>Có thể ghi rõ Quận / Huyện bạn mong muốn làm việc.</div>
+                                            </v-col>
+                                        </v-row>
+                                    </v-col>
+                                    <v-col sm="12">
+                                        <v-row>
+                                            <v-col sm="3">
+                                                <div class="float-end mt-2">
+                                                    Mong muốn làm việc tại nước ngoài
+                                                    Không
+                                                </div>
+                                            </v-col>
+                                            <v-col sm="9">
+                                                <v-select v-model="formJobSuggestionSettings.wishOverseaWork" multiple outlined :items="selected.hometown" placeholder="-- Lựa chọn địa điểm bạn có thể làm việc--" dense></v-select>
+                                                <div>Có thể ghi rõ Quận / Huyện bạn mong muốn làm việc.</div>
+                                            </v-col>
+                                        </v-row>
+                                    </v-col>
                                      <v-col sm="12">
                                         <v-row>
                                             <v-col sm="3">
-                                             Địa điểm làm việc *
+                                                <div class="float-end mt-2">
+                                                    Về bạn
+                                                </div>
                                             </v-col>
                                             <v-col sm="9">
-                                                <v-select v-model="formJobSuggestionSettings.salary" outlined :items="selected.salary" placeholder="-- Chọn mức lương mong muốn--" dense></v-select>
+                                                <v-select v-model="formJobSuggestionSettings.locationSelector" multiple outlined :items="selected.hometown" placeholder="-- Lựa chọn địa điểm bạn có thể làm việc--" dense></v-select>
+                                                <div>Có thể ghi rõ Quận / Huyện bạn mong muốn làm việc.</div>
+                                            </v-col>
+                                        </v-row>
+                                    </v-col>
+                                     <v-col sm="12">
+                                        <v-row>
+                                            <v-col sm="3">
+                                                <div class="float-end mt-2">
+                                                    Mong muốn
+                                                </div>
+                                            </v-col>
+                                            <v-col sm="9">
+                                                <v-select v-model="formJobSuggestionSettings.locationSelector" multiple outlined :items="selected.hometown" placeholder="-- Lựa chọn địa điểm bạn có thể làm việc--" dense></v-select>
+                                                <div>Có thể ghi rõ Quận / Huyện bạn mong muốn làm việc.</div>
                                             </v-col>
                                         </v-row>
                                     </v-col>
@@ -204,7 +253,6 @@ export default {
         return {
             selected: {
                 careers: ["An toàn lao động", "Bán hàng kỷ thuật", "Bán lẻ/ bán sỉ"],
-                companyFields: ["Bất động sản", "Cơ khí", "Cơ quan nhà nước"],
 
                 exps: ["1 năm kinh nghiệm", "Dưới 1 năm kinh nghiệm"],
                 levels: ["Sinh viên", "Mới ra trường"],
@@ -232,9 +280,10 @@ export default {
                 primaryCVId: "",
                 jobType: "",
                 salary: "",
-                location_selector: "",
+                locationSelector: [],
                 note: "",
                 expectation: "",
+                wishOverseaWork: true
             },
         };
     },

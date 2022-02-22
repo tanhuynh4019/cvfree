@@ -425,6 +425,7 @@ export default {
             {
               name: "Mobile App TopCV",
               icon: "mdi-cellphone",
+              link: '/app'
             },
           ],
         },

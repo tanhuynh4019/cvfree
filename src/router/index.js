@@ -20,6 +20,7 @@ import MBTI from '../views/CareerDevelopment/MBTI.vue';
 //! Tools
 import BHTN from '../views/Tools/BHTN.vue';
 import GrossNet from '../views/Tools/GrossNet.vue';
+import App from '../views/Tools/App.vue';
 
 //!Users
 import Login from '../views/Users/Login.vue';
@@ -88,6 +89,11 @@ const routes = [{
         path: '/tinh-luong-gross-net',
         name: 'GrossNet',
         component: GrossNet
+    },
+    {
+        path: '/app',
+        name: 'App',
+        component: App
     },
     //! Cvs
     {
