@@ -160,6 +160,10 @@ export default {
   font-weight: 400;
 }
 
+.notification .title a:hover {
+  color: #004d40;
+}
+
 .notification .checkbox {
   margin-bottom: -8px;
   font-weight: 400;

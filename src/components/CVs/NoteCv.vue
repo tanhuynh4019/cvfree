@@ -5,13 +5,13 @@
       Bao nhiêu NTD đang quan tâm tới Hồ sơ của bạn?
     </p>
     <v-row>
-      <v-col cols="4">
+      <v-col cols="12" md="4">
         <div class="cv-count">
           <div class="cv-count-number">0</div>
           <div>lượt</div>
         </div>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="12" md="8">
         <p class="cv-content">
           Mỗi lượt Nhà tuyển dụng xem CV mang đến một cơ hội để bạn gần hơn với
           công việc phù hợp.
