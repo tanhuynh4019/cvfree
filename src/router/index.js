@@ -7,6 +7,7 @@ import Companies from '../views/Companies/Companies.vue';
 
 //! Cvs
 import CV from '../views/CVs/CV.vue';
+import Profile from '../views/CVs/Profile.vue';
 
 //! Jobs
 import Job from '../views/Job.vue'
@@ -100,6 +101,11 @@ const routes = [{
         path: '/mau-cv',
         name: 'CV',
         component: CV
+    },
+    {
+        path: '/profile',
+        name: 'Profile',
+        component: Profile
     },
     //! Users
     {

@@ -368,6 +368,7 @@ export default {
             {
               name: "TopCV Profile",
               icon: "mdi-card-account-details-star-outline",
+              link: '/profile'
             },
           ],
         },
