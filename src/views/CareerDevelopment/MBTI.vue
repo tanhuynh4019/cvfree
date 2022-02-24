@@ -383,8 +383,7 @@ export default {
   padding: 0 15px;
 }
 .text-font p,
-b,
-span {
+b {
   font-size: 13px;
   text-align: justify !important;
 }

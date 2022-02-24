@@ -341,11 +341,11 @@ export default {
   text-transform: uppercase;
 }
 .app-cv-font b {
-  font-size: 14px;
+  font-size: 16px;
 }
 .app-cv-font span,
 p {
-  font-size: 12px;
+  font-size: 14px;
   text-align: justify;
 }
 .dowload-app-CV {
