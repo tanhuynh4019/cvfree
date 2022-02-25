@@ -3,16 +3,17 @@
     <v-container>
       <v-form ref="searchForm" v-model="searchForm.valid" class="box-search">
         <v-row>
-          <v-col sm="4" cols="12">
+          <v-col sm="12" cols="12" md="8" lg="4">
             <v-text-field
               v-model="searchForm.value.key"
               placeholder="Tên công việc, vị trí bạn muốn ứng tuyển ..."
               prepend-inner-icon="mdi-search-web"
               solo
-              height="44"
+              dense
+              color="#004D40"
             ></v-text-field>
           </v-col>
-          <v-col sm="2" cols="12">
+          <v-col sm="4" cols="6" md="4" lg="2">
             <v-autocomplete
               :items="selected.careers"
               v-model="searchForm.value.careers"
@@ -21,9 +22,10 @@
               placeholder="Nghành nghề"
               label="Nghành nghề"
               solo
+              dense
             ></v-autocomplete>
           </v-col>
-          <v-col sm="2" cols="12">
+          <v-col sm="4" cols="6" md="4" lg="2">
             <v-autocomplete
               clearable
               :items="selected.companyFields"
@@ -32,9 +34,10 @@
               placeholder="Lĩnh vực công ty"
               label="Lĩnh vực công ty"
               solo
+              dense
             ></v-autocomplete>
           </v-col>
-          <v-col sm="2" cols="12">
+          <v-col sm="4" cols="12" md="4" lg="2">
             <v-autocomplete
               clearable
               :items="selected.city"
@@ -43,10 +46,11 @@
               placeholder="Địa điểm"
               label="Địa điểm"
               solo
+              dense
             ></v-autocomplete>
           </v-col>
-          <v-col sm="2" cols="12">
-            <v-btn class="w-100" dark depressed color="#004D40" height="48">
+          <v-col sm="12" cols="12" md="4" lg="2">
+            <v-btn class="w-100" dark depressed color="#004D40" dense>
               <v-icon>mdi-card-search</v-icon>
               <span class="ml-1">Tìm kiếm</span>
             </v-btn>
@@ -95,5 +99,9 @@ export default {
 }
 .box-search .v-text-field__details {
   min-height: 0px;
+}
+
+.no-box-shadow{
+  box-shadow: 0px 0px 0px 0px 0px !important;
 }
 </style>
