@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 //! Companies
 import Companies from '../views/Companies/Companies.vue';
+import DetailsCompanies from '../views/Companies/DetailsCompanies.vue';
 
 //! Cvs
 import CV from '../views/CVs/CV.vue';
@@ -68,6 +69,11 @@ const routes = [{
         path: '/cong-ty',
         name: 'Companies',
         component: Companies
+    },
+    {
+        path: '/cong-ty/:slug',
+        name: 'DetailsCompanies',
+        component: DetailsCompanies
     },
     //! Career Development
     {
