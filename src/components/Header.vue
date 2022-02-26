@@ -17,7 +17,7 @@
                 to="/"
               >
                 <img
-                  width="100%"
+                  width="90%"
                   height="40"
                   src="https://www.topcv.vn/v3/images/topcv-logo-4.png?v=1.0.1"
                 />
@@ -368,6 +368,7 @@ export default {
             {
               name: "TopCV Profile",
               icon: "mdi-card-account-details-star-outline",
+              link: '/profile'
             },
           ],
         },

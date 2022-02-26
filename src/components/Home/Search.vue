@@ -20,20 +20,20 @@
                 <v-row>
                   <v-col cols="12" sm="8">
                     <v-text-field
+                      dense
                       @click="isSearchAdvanced"
                       v-model="searchForm.value.key"
                       placeholder="Tên công việc, vị trí bạn muốn ứng tuyển ..."
                       prepend-inner-icon="mdi-search-web"
                       solo
-                      height="44"
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="4">
                     <v-btn
                       dark
+                      dense
                       depressed
                       color="#004D40"
-                      height="48"
                       width="100%"
                       @click="search"
                     >
@@ -47,6 +47,7 @@
                       </v-col>
                       <v-col cols="6">
                         <v-btn
+                          small
                           style="margin-top: -6px"
                           color="#0D47A1"
                           class="float-end"
@@ -60,6 +61,7 @@
                           :items="selected.careers"
                           v-model="searchForm.value.careers"
                           clearable
+                          dense
                           placeholder="Nghành nghề"
                           label="Nghành nghề"
                           solo
@@ -68,6 +70,7 @@
                       <v-col cols="6">
                         <v-autocomplete
                           clearable
+                          dense
                           :items="selected.companyFields"
                           v-model="searchForm.value.companyFields"
                           placeholder="Lĩnh vực công ty"
@@ -78,6 +81,7 @@
                       <v-col cols="6">
                         <v-autocomplete
                           clearable
+                          dense
                           :items="selected.city"
                           v-model="searchForm.value.city"
                           placeholder="Địa điểm"
@@ -88,6 +92,7 @@
                       <v-col cols="6">
                         <v-autocomplete
                           clearable
+                          dense
                           :items="selected.position"
                           v-model="searchForm.value.position"
                           placeholder="Cấp bậc"
@@ -98,6 +103,7 @@
                       <v-col cols="6">
                         <v-autocomplete
                           clearable
+                          dense
                           :items="selected.type"
                           v-model="searchForm.value.type"
                           placeholder="Hình thức làm việc"
@@ -108,6 +114,7 @@
                       <v-col cols="6">
                         <v-autocomplete
                           clearable
+                          dense
                           :items="selected.salary"
                           v-model="searchForm.value.salary"
                           placeholder="Mức lương"
@@ -141,7 +148,7 @@
           </v-col>
           <v-col cols="12" md="4">
             <v-img
-             v-if="common.imageRight"
+              v-if="common.imageRight"
               width="100%"
               src="https://www.topcv.vn/v4/image/welcome/image_topcv.png?v=1.0.0"
             ></v-img>

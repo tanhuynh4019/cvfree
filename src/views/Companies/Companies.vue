@@ -49,7 +49,7 @@
         <v-container>
           <v-row>
             <v-col md="4" sm="6" v-for="item in company" :key="item._id">
-              <v-card link>
+              <v-card link :to="'cong-ty/none'">
                 <v-img height="150px" :src="item.banner"> </v-img>
                 <v-card-title class="white--text mt-8">
                   <v-avatar size="62">

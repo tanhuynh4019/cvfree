@@ -4,9 +4,11 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 //! Companies
 import Companies from '../views/Companies/Companies.vue';
+import DetailsCompanies from '../views/Companies/DetailsCompanies.vue';
 
 //! Cvs
 import CV from '../views/CVs/CV.vue';
+import Profile from '../views/CVs/Profile.vue';
 
 //! Jobs
 import Job from '../views/Job.vue'
@@ -68,6 +70,11 @@ const routes = [{
         name: 'Companies',
         component: Companies
     },
+    {
+        path: '/cong-ty/:slug',
+        name: 'DetailsCompanies',
+        component: DetailsCompanies
+    },
     //! Career Development
     {
         path: '/trac-nghiem-tinh-cach-mbti',
@@ -100,6 +107,11 @@ const routes = [{
         path: '/mau-cv',
         name: 'CV',
         component: CV
+    },
+    {
+        path: '/profile',
+        name: 'Profile',
+        component: Profile
     },
     //! Users
     {
