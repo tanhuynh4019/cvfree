@@ -15,7 +15,7 @@
                     placeholder="Tất cả ngôn ngữ"
                     label="Tất cả ngôn ngữ"
                     solo
-                    color="#004D40"
+                    color="#6764A7"
                     sma
                   ></v-autocomplete>
                   <v-autocomplete
@@ -55,32 +55,58 @@
           </v-card>
         </v-col>
         <v-col cols="12" sm="8" md="9">
-          <h3>Danh sách mẫu CV xin việc tiếng Anh / Việt / Nhật chuẩn 2022</h3>
-          <p>
-            Các mẫu CV đuợc thiết kế theo chuẩn, theo các ngành nghề. Phù hợp
-            với sinh viên và người đi làm.
-          </p>
+          <h3 class="color-main">{{ titlePage }}</h3>
+          <p>{{ descriptionPage }}</p>
+          <v-row v-if="loading">
+            <v-col v-for="n in 6" :key="n" cols="12" sm="6" md="4">
+              <v-card>
+                <v-skeleton-loader
+                  class="mx-auto"
+                  max-width="300"
+                  type="card"
+                ></v-skeleton-loader>
+              </v-card>
+            </v-col>
+          </v-row>
+          <h5 v-if="themeCvs.length == 0">😢Hiện tại không có mẫu CV nào!</h5>
           <v-row>
-            <v-col cols="12" sm="6" md="4" v-for="n in 10" :key="n">
+            <v-col
+              cols="12"
+              sm="6"
+              md="4"
+              v-for="item in themeCvs"
+              :key="item._id"
+            >
               <v-hover v-slot="{ hover }">
                 <v-card class="w-100">
-                  <v-img
-                    height="250"
-                    src="https://www.topcv.vn/images/cv/screenshots/thumbs/cv-template-thumbnails-v1.2/chrome.png?v=1.0.3"
-                  >
+                  <v-img height="250" :src="item.image">
                     <v-expand-transition>
                       <div
                         v-if="hover"
-                        class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal text-h2 white--text"
-                        style="height: 100%"
+                        class="
+                          d-flex
+                          transition-fast-in-fast-out
+                          v-card--reveal
+                          text-h2
+                          white--text
+                        "
                       >
                         <div class="p-2">
                           <v-row>
                             <v-col cols="6" sm="12">
-                              <v-btn width="100%">Xem trước</v-btn>
+                              <v-btn width="100%" @click="clickReviewCv(item)"
+                                ><v-icon>mdi-file-eye</v-icon>&nbsp;Xem
+                                trước</v-btn
+                              >
                             </v-col>
                             <v-col cols="6" sm="12">
-                              <v-btn width="100%" :style="common.imageRight ? 'margin-top: -60px;' : ''" color="#004D40" dark
+                              <v-btn
+                                width="100%"
+                                :style="
+                                  common.imageRight ? 'margin-top: -60px;' : ''
+                                "
+                                color="#01715B"
+                                dark
                                 ><v-icon>mdi-file-document-edit</v-icon
                                 >&nbsp;Dùng mẫu này</v-btn
                               >
@@ -93,45 +119,38 @@
                   <v-card-text class="pt-6" style="position: relative">
                     <div>
                       <v-row no-gutters>
-                        <v-col cols="3" sm="6" md="6" lg="4">
+                        <v-col
+                          cols="3"
+                          sm="12"
+                          md="6"
+                          lg="6"
+                          v-for="category in item.categorys"
+                          :key="category"
+                        >
                           <div class="p-1">
                             <v-chip
-                              color="#004D40"
+                              color="#01715B"
                               dark
                               small
                               outlined
-                              class="w-100"
+                              width="100%"
                               label
-                              >Màu sắc</v-chip
-                            >
-                          </div>
-                        </v-col>
-                        <v-col cols="3" sm="6" md="6" lg="4">
-                          <div class="p-1">
-                            <v-chip
-                              color="#004D40"
-                              dark
-                              small
-                              outlined
-                              class="w-100"
-                              label
-                              >Sáng tạo</v-chip
+                              >{{ category }}</v-chip
                             >
                           </div>
                         </v-col>
                         <v-col cols="12" sm="12">
                           <div class="p-1">
-                            <h6>Mẫu CV Chrome</h6>
+                            <h6>{{ item.name }}</h6>
                             <div>
                               <v-row>
-                                <v-col cols="1" sm="1">
-                                  <v-avatar
-                                    color="primary"
-                                    size="20"
-                                  ></v-avatar>
-                                </v-col>
-                                <v-col cols="1" sm="1">
-                                  <v-avatar color="red" size="20"></v-avatar>
+                                <v-col
+                                  cols="1"
+                                  sm="1"
+                                  v-for="color in item.colors"
+                                  :key="color"
+                                >
+                                  <v-avatar :color="color" size="20"></v-avatar>
                                 </v-col>
                               </v-row>
                             </div>
@@ -147,14 +166,106 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-dialog v-model="dialogReviewCv" scrollable max-width="60%">
+      <v-card>
+        <v-card-title>{{ review.name }}</v-card-title>
+        <div style="padding: 0px 25px">
+          <form>
+            <v-row>
+              <v-col sm="3">
+                <label class="font-weight-bold color-main">Ngôn ngữ</label>
+                <v-select
+                  class="mt-2"
+                  @change="changeReviewCv(review)"
+                  color="#01715B"
+                  v-model="formTemplateTheme.value.language"
+                  :items="selected.language"
+                  hide-details
+                  outlined
+                  dense
+                ></v-select>
+              </v-col>
+              <v-col sm="3">
+                <label class="font-weight-bold color-main">Ngành nghề</label>
+                <v-autocomplete
+                  class="mt-2"
+                  v-model="formTemplateTheme.value.category"
+                  :items="selected.careers"
+                  placeholder="Nghành nghề"
+                  dense
+                  hide-details
+                  outlined
+                ></v-autocomplete>
+              </v-col>
+              <v-col sm="3">
+                <label class="font-weight-bold color-main">Font chữ</label>
+                <v-select
+                  class="mt-2"
+                  color="#01715B"
+                  v-model="formTemplateTheme.value.fontFamily"
+                  :items="selected.fontFamily"
+                  hide-details
+                  outlined
+                  dense
+                ></v-select>
+              </v-col>
+              <v-col sm="3">
+                <label class="font-weight-bold color-main">Màu sắc</label>
+                <v-item-group v-model="formTemplateTheme.value.color">
+                  <v-item
+                    v-for="color in review.colors"
+                    :key="color"
+                    v-slot="{ active, toggle }"
+                  >
+                    <v-chip
+                      :color="color"
+                      dark
+                      style="width: 50px"
+                      :input-value="active"
+                      @click="toggle"
+                    >
+                      <v-icon v-if="active">mdi-check</v-icon>
+                    </v-chip>
+                  </v-item>
+                </v-item-group>
+              </v-col>
+            </v-row>
+          </form>
+        </div>
+
+        <v-divider></v-divider>
+        <v-card-text style="padding: 0px 200px">
+          <iframe src=""></iframe>
+        </v-card-text>
+        <v-divider></v-divider>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
+import ThemeCv from "../../apis/themecv.api";
 export default {
   name: "CV",
   data() {
     return {
+      imageTheme: "",
+      select: {},
+      formTemplateTheme: {
+        value: {
+          language: "Tiếng Anh",
+          category: "",
+          fontFamily: "Roboto Condensed",
+          color: "",
+        },
+      },
+      review: {},
+      dialogReviewCv: false,
+      loading: true,
+      titlePage: "Danh sách mẫu CV xin việc tiếng Anh / Việt / Nhật chuẩn 2022",
+      descriptionPage:
+        "Các mẫu CV đuợc thiết kế theo chuẩn, theo các ngành nghề. Phù hợp với sinh viên và người đi làm.",
+      themeCvs: [],
       windowSize: {
         x: 0,
         y: 0,
@@ -166,13 +277,28 @@ export default {
         language: ["Tiếng Việt", "Tiếng Anh", "Tiếng Nhật"],
         careers: ["An toàn lao động", "Bán hàng kỷ thuật", "Bán lẻ/ bán sỉ"],
         designs: ["Thanh lịch"],
+        fontFamily: ["Roboto Condensed"],
       },
     };
   },
+  async created() {
+    this.themeCvs = await ThemeCv.getAllThemeCv();
+    this.loading = false;
+  },
   mounted() {
     this.onResize();
+    // alert(process.env.VUE_APP_BACKEND_URL);
   },
   methods: {
+    changeReviewCv(item) {
+      this.imageTheme =
+        "themecv-62219bb4a646a4212dc71b8b-ff823c-am-RobotoCondensed.ff4a03b0.png";
+    },
+    clickReviewCv(row) {
+      let that = this;
+      that.dialogReviewCv = true;
+      that.review = row;
+    },
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight };
 
@@ -203,7 +329,6 @@ export default {
   align-items: center;
   justify-content: center;
   bottom: 0;
-  opacity: 0.7;
   position: absolute;
   width: 100%;
 }

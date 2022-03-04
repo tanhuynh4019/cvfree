@@ -355,7 +355,7 @@ export default {
             {
               name: "Mẫu CV",
               icon: "mdi-account-box-outline",
-              link: "/mau-cv",
+              link: "/mau-cv#first",
             },
             {
               name: "Mẫu Cover Letter",
@@ -368,7 +368,7 @@ export default {
             {
               name: "TopCV Profile",
               icon: "mdi-card-account-details-star-outline",
-              link: '/profile'
+              link: '/profile#inspire'
             },
           ],
         },
