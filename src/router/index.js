@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
+
 //! Companies
 import Companies from '../views/Companies/Companies.vue';
 import DetailsCompanies from '../views/Companies/DetailsCompanies.vue';
@@ -9,6 +10,7 @@ import DetailsCompanies from '../views/Companies/DetailsCompanies.vue';
 //! Cvs
 import CV from '../views/CVs/CV.vue';
 import Profile from '../views/CVs/Profile.vue';
+import basic5_62219bb4a646a4212dc71b8b from '../views/CVs/Theme/basic5_62219bb4a646a4212dc71b8b.vue' 
 
 //! Jobs
 import Job from '../views/Job.vue'
@@ -112,6 +114,12 @@ const routes = [{
         path: '/profile',
         name: 'Profile',
         component: Profile
+    },
+    //? details
+    {
+        path: '/viet-cv/62219bb4a646a4212dc71b8b',
+        name: 'basic5_62219bb4a646a4212dc71b8b',
+        component: basic5_62219bb4a646a4212dc71b8b
     },
     //! Users
     {

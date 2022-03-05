@@ -105,6 +105,7 @@
                             </v-col>
                             <v-col cols="6" sm="12">
                               <v-btn
+                                :to="`/viet-cv/${item._id}`"
                                 width="100%"
                                 :style="
                                   common.imageRight ? 'margin-top: -60px;' : ''
@@ -175,6 +176,7 @@
         <v-alert
           border="top"
           colored-border
+          color="#01715B"
           type="info"
           elevation="1"
           style="border-radius: 0px 0px 0px 0px"
@@ -185,10 +187,101 @@
           thế nữa
         </v-alert>
         <v-row>
-          <v-col cols="10">
-            <iframe width="100%" height="800" :src="ifameLink"></iframe>
+          <v-col v-if="!isShowTool" cols="12" md="3" lg="2">
+            <div class="p-4">
+              <form>
+                <v-row>
+                  <v-col cols="6" sm="3">
+                    <label class="font-weight-bold color-main">Ngôn ngữ</label>
+                    <v-select
+                      class="mt-1"
+                      @change="changeReviewCv(review)"
+                      color="#01715B"
+                      v-model="formTemplateTheme.value.language"
+                      :items="selected.language"
+                      hide-details
+                      outlined
+                      dense
+                    ></v-select>
+                  </v-col>
+                  <v-col cols="6" sm="3">
+                    <label class="font-weight-bold color-main"
+                      >Nghành nghề</label
+                    >
+                    <v-autocomplete
+                      class="mt-1"
+                      v-model="formTemplateTheme.value.category"
+                      :items="selected.careers"
+                      placeholder="Nghành nghề"
+                      dense
+                      hide-details
+                      outlined
+                    ></v-autocomplete>
+                  </v-col>
+                  <v-col cols="6" sm="3">
+                    <label class="font-weight-bold color-main">Font chữ</label>
+                    <v-select
+                      class="mt-1"
+                      @change="changeReviewCv(review)"
+                      color="#01715B"
+                      v-model="formTemplateTheme.value.fontFamily"
+                      :items="selected.fontFamily"
+                      hide-details
+                      outlined
+                      dense
+                    ></v-select>
+                  </v-col>
+                  <v-col cols="6" sm="3">
+                    <label class="font-weight-bold color-main">Màu sắc</label>
+                    <v-color-picker
+                      mode="hexa"
+                      v-if="isShowTool"
+                      v-model="formTemplateTheme.value.color"
+                      @input="changeReviewCv(review)"
+                    ></v-color-picker>
+                    <p v-if="isShowTool">
+                      Màu xu hướng được xử dụng nhiều nhất?
+                    </p>
+                    <div>
+                      <v-btn
+                        icon
+                        dark
+                        v-for="color in topTools.colors"
+                        :key="color"
+                        @click="changeColor(color, review)"
+                      >
+                        <v-avatar :color="color" size="30">
+                          <v-icon v-if="color === formTemplateTheme.value.color"
+                            >mdi-check</v-icon
+                          >
+                        </v-avatar>
+                      </v-btn>
+                    </div>
+                  </v-col>
+                </v-row>
+              </form>
+            </div>
           </v-col>
-          <v-col cols="2">
+          <v-col cols="12" md="9" lg="10">
+            <div class="text-center">
+              <v-btn
+                elevation="2"
+                color="#01715B"
+                dark
+                rounded
+                x-large
+                :to="`/viet-cv/${review._id}`"
+                >Dùng mẫu này</v-btn
+              >
+            </div>
+            <iframe
+              class="mt-5"
+              width="100%"
+              height="800"
+              :src="ifameLink"
+            ></iframe>
+          </v-col>
+          <v-col v-if="isShowTool" cols="12" md="3" lg="2">
             <div class="p-4">
               <form>
                 <v-row>
@@ -236,24 +329,25 @@
                   </v-col>
                   <v-col sm="12">
                     <label class="font-weight-bold color-main">Màu sắc</label>
-                    <v-color-picker mode="hexa" v-model="formTemplateTheme.value.color" @change="changeReviewCv(review)"></v-color-picker>
-                    <v-item-group v-model="formTemplateTheme.value.color">
-                      <v-item
-                        v-for="color in review.colors"
-                        :key="color"
-                        v-slot="{ active, toggle }"
-                      >
-                        <v-chip
-                          :color="color"
-                          dark
-                          style="width: 50px"
-                          :input-value="active"
-                          @click="toggle"
+                    <v-color-picker
+                      mode="hexa"
+                      v-model="formTemplateTheme.value.color"
+                      @input="changeReviewCv(review)"
+                    ></v-color-picker>
+                    <p>Màu xu hướng được xử dụng nhiều nhất?</p>
+                    <v-btn
+                      icon
+                      dark
+                      v-for="color in topTools.colors"
+                      :key="color"
+                      @click="changeColor(color, review)"
+                    >
+                      <v-avatar :color="color" size="30">
+                        <v-icon v-if="color === formTemplateTheme.value.color"
+                          >mdi-check</v-icon
                         >
-                          <v-icon v-if="active">mdi-check</v-icon>
-                        </v-chip>
-                      </v-item>
-                    </v-item-group>
+                      </v-avatar>
+                    </v-btn>
                   </v-col>
                 </v-row>
               </form>
@@ -271,6 +365,7 @@ export default {
   name: "CV",
   data() {
     return {
+      isShowTool: true,
       ifameLink: "",
       imageTheme: "",
       select: {},
@@ -302,6 +397,9 @@ export default {
         designs: ["Thanh lịch"],
         fontFamily: ["Roboto Condensed", "Roboto", "Open Sans", "Mitr"],
       },
+      topTools: {
+        colors: ["#FF823C", "#529969", "#29282C", "#CF7C6E"],
+      },
     };
   },
   async created() {
@@ -313,6 +411,20 @@ export default {
     // alert(process.env.VUE_APP_BACKEND_URL);
   },
   methods: {
+    changeColor(color, item) {
+      let that = this;
+
+      const lang = that.changeLanguage(that.formTemplateTheme.value.language);
+      const font = that.formTemplateTheme.value.fontFamily;
+
+      that.formTemplateTheme.value.color = color;
+      that.ifameLink = `https://themecvfree.netlify.app/preview/${
+        item._id
+      }?id=${item._id}&color=${color.replace(
+        "#",
+        "%23"
+      )}&lang=${lang}&font=${font}`;
+    },
     changeReviewCv(item) {
       const that = this;
 
@@ -320,11 +432,9 @@ export default {
       const font = that.formTemplateTheme.value.fontFamily;
       const color = that.formTemplateTheme.value.color;
 
-      alert(color);
-
       that.ifameLink = `https://themecvfree.netlify.app/preview/${
         item._id
-      }?id=${item._id}&color=${item.colors[0].replace(
+      }?id=${item._id}&color=${color.replace(
         "#",
         "%23"
       )}&lang=${lang}&font=${font}`;
@@ -332,6 +442,8 @@ export default {
     clickReviewCv(row) {
       let that = this;
       const lang = that.changeLanguage(that.formTemplateTheme.value.language);
+
+      that.formTemplateTheme.value.color = that.topTools.colors[0];
       that.dialogReviewCv = true;
       that.review = row;
       that.ifameLink = `https://themecvfree.netlify.app/preview/${row._id}?id=${
@@ -343,10 +455,13 @@ export default {
 
       if (this.windowSize.x < 600) {
         this.common.imageRight = false;
+        this.isShowTool = false;
       } else if (this.windowSize.x < 960) {
         this.common.imageRight = true;
+        this.isShowTool = false;
       } else {
         this.common.imageRight = true;
+        this.isShowTool = true;
       }
     },
     changeLanguage(lang) {
