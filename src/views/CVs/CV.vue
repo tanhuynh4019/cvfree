@@ -15,7 +15,7 @@
                     placeholder="Tất cả ngôn ngữ"
                     label="Tất cả ngôn ngữ"
                     solo
-                    color="#6764A7"
+                    color="#01715B"
                     sma
                   ></v-autocomplete>
                   <v-autocomplete
@@ -26,6 +26,7 @@
                     placeholder="Tất cả nghành nghề"
                     label="Tất cả nghành nghề"
                     solo
+                    color="#01715B"
                   ></v-autocomplete>
                   <v-autocomplete
                     class="mt-2"
@@ -35,6 +36,7 @@
                     placeholder="Tất cả thiết kế"
                     label="Tất cả thiết kế"
                     solo
+                    color="#01715B"
                   ></v-autocomplete>
                 </div>
 
@@ -48,7 +50,7 @@
           </v-card>
           <v-card class="mt-5" v-if="common.imageRight">
             <img
-              src="https://www.topcv.vn/images/cv/banner_left_list_cv.png"
+              src="https://lh3.googleusercontent.com/fife/AAWUweX5jAEZpGxIdsfOELdX-2K_3W4rHZviuBTurUem1xstWuWqo8PLqjdqZAukhYfn6KI-Fuj191szPzhsvKmof93Iu761wC5TeHYeqk6cE6yGBgiMbSH3UyaurUPPLdbjv7eRM8S9_3vhq0CTI1HTZH7YoxxRwg2NDibagUD5RK7_jToCWGVIBUCBkgc3nmDIAnvhLTR3QbOrsAqwFQSCcVeJCMKmqthCBkS7UzP_NnMlm9Ve8zU1sQv7zOFMLIG2UpHfs0dacbw30DKcXbgrDpRy5n46XGYfvhjhOybDH0Ip9yNgRRLU1XBoaSHgCt3iC4Ri3op5Wlrr7kK7UEKdM1nXYWgpe51GZGgRRv-2uxDUWuxZOr8hPHGe2bMXmbv9HkzJkWIr2CEYNk8S25snJ2V9qxBKRv7cDhm_jZK2PzUAm_ZjUFk-N2uucatiG50Po7rgS4l9RHr5TgAYR6ekv5MRhF2OjE2CSO-JcCAOQvE-H4JVXGXNJDIc49sr1EwnpRf017SYQmP-t1E-PPFsyAZ-bp3cyUyu4X7N1jvvH7kkdEseqjbrlsrtJYcyBhA6y0gWoVvml6Ouqd6kEUIw26X8eJsJHlxF-pL4VheOUax1BBv2V3LDAhKW62KYvCxo2R6biDkAIPeYmD3iuvF_5k0HGhUOfB60asr1fYffR1hzJ3L13EP0Gg7KsbBb8LYTAv_pd5mrV-HCyy3x-vYiO1fNVQaSElZZzQ=w1920-h961"
               width="100%"
               height="300px"
             />
@@ -68,7 +70,9 @@
               </v-card>
             </v-col>
           </v-row>
-          <h5 v-if="themeCvs.length == 0">😢Hiện tại không có mẫu CV nào!</h5>
+          <h5 v-if="themeCvs.length == 0 && !loading">
+            😢Hiện tại không có mẫu CV nào!
+          </h5>
           <v-row>
             <v-col
               cols="12"
@@ -166,78 +170,96 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-dialog v-model="dialogReviewCv" scrollable max-width="60%">
-      <v-card>
-        <v-card-title>{{ review.name }}</v-card-title>
-        <div style="padding: 0px 25px">
-          <form>
-            <v-row>
-              <v-col sm="3">
-                <label class="font-weight-bold color-main">Ngôn ngữ</label>
-                <v-select
-                  class="mt-2"
-                  @change="changeReviewCv(review)"
-                  color="#01715B"
-                  v-model="formTemplateTheme.value.language"
-                  :items="selected.language"
-                  hide-details
-                  outlined
-                  dense
-                ></v-select>
-              </v-col>
-              <v-col sm="3">
-                <label class="font-weight-bold color-main">Ngành nghề</label>
-                <v-autocomplete
-                  class="mt-2"
-                  v-model="formTemplateTheme.value.category"
-                  :items="selected.careers"
-                  placeholder="Nghành nghề"
-                  dense
-                  hide-details
-                  outlined
-                ></v-autocomplete>
-              </v-col>
-              <v-col sm="3">
-                <label class="font-weight-bold color-main">Font chữ</label>
-                <v-select
-                  class="mt-2"
-                  color="#01715B"
-                  v-model="formTemplateTheme.value.fontFamily"
-                  :items="selected.fontFamily"
-                  hide-details
-                  outlined
-                  dense
-                ></v-select>
-              </v-col>
-              <v-col sm="3">
-                <label class="font-weight-bold color-main">Màu sắc</label>
-                <v-item-group v-model="formTemplateTheme.value.color">
-                  <v-item
-                    v-for="color in review.colors"
-                    :key="color"
-                    v-slot="{ active, toggle }"
-                  >
-                    <v-chip
-                      :color="color"
-                      dark
-                      style="width: 50px"
-                      :input-value="active"
-                      @click="toggle"
+    <v-dialog v-model="dialogReviewCv">
+      <v-card style="height: 100%; width: 100%">
+        <v-alert
+          border="top"
+          colored-border
+          type="info"
+          elevation="1"
+          style="border-radius: 0px 0px 0px 0px"
+        >
+          cvfree cung cấp cho bạn phần tạo CV bằng trí tuệ nhân tạo. Hệ thống có
+          chấm điểm mức độ ứng tuyển, xu hướng sử dụng các thành phần trong cv,
+          các từ ngữ tự động gợi ý phù hợp cho từng ngành nghề và còn nhiều hơn
+          thế nữa
+        </v-alert>
+        <v-row>
+          <v-col cols="10">
+            <iframe width="100%" height="800" :src="ifameLink"></iframe>
+          </v-col>
+          <v-col cols="2">
+            <div class="p-4">
+              <form>
+                <v-row>
+                  <v-col sm="12">
+                    <label class="font-weight-bold color-main"
+                      >Ngôn ngữ đề xuất</label
                     >
-                      <v-icon v-if="active">mdi-check</v-icon>
-                    </v-chip>
-                  </v-item>
-                </v-item-group>
-              </v-col>
-            </v-row>
-          </form>
-        </div>
-
-        <v-divider></v-divider>
-        <v-card-text style="padding: 0px 200px">
-          <iframe src=""></iframe>
-        </v-card-text>
-        <v-divider></v-divider>
+                    <v-select
+                      class="mt-1"
+                      @change="changeReviewCv(review)"
+                      color="#01715B"
+                      v-model="formTemplateTheme.value.language"
+                      :items="selected.language"
+                      hide-details
+                      outlined
+                      dense
+                    ></v-select>
+                  </v-col>
+                  <v-col sm="12">
+                    <label class="font-weight-bold color-main"
+                      >Nghành nghề ứng tuyển</label
+                    >
+                    <v-autocomplete
+                      class="mt-1"
+                      v-model="formTemplateTheme.value.category"
+                      :items="selected.careers"
+                      placeholder="Nghành nghề"
+                      dense
+                      hide-details
+                      outlined
+                    ></v-autocomplete>
+                  </v-col>
+                  <v-col sm="12">
+                    <label class="font-weight-bold color-main">Font chữ</label>
+                    <v-select
+                      class="mt-1"
+                      @change="changeReviewCv(review)"
+                      color="#01715B"
+                      v-model="formTemplateTheme.value.fontFamily"
+                      :items="selected.fontFamily"
+                      hide-details
+                      outlined
+                      dense
+                    ></v-select>
+                  </v-col>
+                  <v-col sm="12">
+                    <label class="font-weight-bold color-main">Màu sắc</label>
+                    <v-color-picker mode="hexa" v-model="formTemplateTheme.value.color" @change="changeReviewCv(review)"></v-color-picker>
+                    <v-item-group v-model="formTemplateTheme.value.color">
+                      <v-item
+                        v-for="color in review.colors"
+                        :key="color"
+                        v-slot="{ active, toggle }"
+                      >
+                        <v-chip
+                          :color="color"
+                          dark
+                          style="width: 50px"
+                          :input-value="active"
+                          @click="toggle"
+                        >
+                          <v-icon v-if="active">mdi-check</v-icon>
+                        </v-chip>
+                      </v-item>
+                    </v-item-group>
+                  </v-col>
+                </v-row>
+              </form>
+            </div>
+          </v-col>
+        </v-row>
       </v-card>
     </v-dialog>
   </div>
@@ -249,6 +271,7 @@ export default {
   name: "CV",
   data() {
     return {
+      ifameLink: "",
       imageTheme: "",
       select: {},
       formTemplateTheme: {
@@ -277,7 +300,7 @@ export default {
         language: ["Tiếng Việt", "Tiếng Anh", "Tiếng Nhật"],
         careers: ["An toàn lao động", "Bán hàng kỷ thuật", "Bán lẻ/ bán sỉ"],
         designs: ["Thanh lịch"],
-        fontFamily: ["Roboto Condensed"],
+        fontFamily: ["Roboto Condensed", "Roboto", "Open Sans", "Mitr"],
       },
     };
   },
@@ -291,13 +314,29 @@ export default {
   },
   methods: {
     changeReviewCv(item) {
-      this.imageTheme =
-        "themecv-62219bb4a646a4212dc71b8b-ff823c-am-RobotoCondensed.ff4a03b0.png";
+      const that = this;
+
+      const lang = that.changeLanguage(that.formTemplateTheme.value.language);
+      const font = that.formTemplateTheme.value.fontFamily;
+      const color = that.formTemplateTheme.value.color;
+
+      alert(color);
+
+      that.ifameLink = `https://themecvfree.netlify.app/preview/${
+        item._id
+      }?id=${item._id}&color=${item.colors[0].replace(
+        "#",
+        "%23"
+      )}&lang=${lang}&font=${font}`;
     },
     clickReviewCv(row) {
       let that = this;
+      const lang = that.changeLanguage(that.formTemplateTheme.value.language);
       that.dialogReviewCv = true;
       that.review = row;
+      that.ifameLink = `https://themecvfree.netlify.app/preview/${row._id}?id=${
+        row._id
+      }&color=${row.colors[0].replace("#", "%23")}&lang=${lang}&font=`;
     },
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight };
@@ -310,11 +349,29 @@ export default {
         this.common.imageRight = true;
       }
     },
+    changeLanguage(lang) {
+      let langCode = "";
+      switch (lang) {
+        case "Tiếng Việt":
+          langCode = "vi";
+          break;
+        case "Tiếng Anh":
+          langCode = "am";
+          break;
+        case "Tiếng Nhật":
+          langCode = "ja";
+          break;
+        default:
+          langCode = "am";
+          break;
+      }
+      return langCode;
+    },
   },
 };
 </script>
 
-<style>
+<style >
 .box-search .v-text-field.v-text-field--enclosed .v-text-field__details {
   margin-bottom: 0px !important;
 }
@@ -331,5 +388,9 @@ export default {
   bottom: 0;
   position: absolute;
   width: 100%;
+}
+
+.v-dialog {
+  overflow-y: inherit !important;
 }
 </style>
