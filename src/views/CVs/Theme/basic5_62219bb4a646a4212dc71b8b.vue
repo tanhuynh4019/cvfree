@@ -291,8 +291,8 @@
       </v-spacer>
     </v-app-bar>
     <div>
-      <v-container>
-        <v-form>
+      <v-container v-for="(item, i) in langContents" :key="i">
+        <v-form v-if="item.lang == 'vi'">
           <div>
             <v-text-field
               @input="autoSave()"
@@ -392,20 +392,112 @@
                         </div>
                       </div>
 
-                      <div>
+                      <div style="padding: 0px 10px" class="mt-2">
                         <div class="font-weight-bold mt-1">
-                          INFORMATION
-                        </div>
-                        <div
-                          class="mt-1"
-                          v-for="(info, i) in item.infomation.values"
-                          :key="i"
-                        >
-                          <v-icon size="17">{{ info.icon }}</v-icon>
-                          &nbsp;
-                          {{ info.name }}
+                          {{ item.information.title }}
                         </div>
                       </div>
+                      <div class="border-cv">
+                        <div>
+                          <v-text-field
+                            id="birth"
+                            color="#01715B"
+                            autocomplete
+                            :prepend-icon="
+                              formCvByUser.cv.infomation.birth.icon
+                            "
+                            hide-details=""
+                            @input="autoSave()"
+                            @mouseover="clickThemeCvs('birth')"
+                            v-model="formCvByUser.cv.infomation.birth.value"
+                          ></v-text-field>
+                          <div v-if="openTool.isBirth" class="mt-2">
+                            <div
+                              class="
+                                indigo--text
+                                darken-4--text
+                                font-weight-bold
+                              "
+                            >
+                              Ghi đúng họ và tên trong giấy khai sinh
+                            </div>
+                            <v-btn text x-small color="#01715B" outlined
+                              >Ngày giờ Viet Nam</v-btn
+                            >
+                            <v-btn
+                              text
+                              x-small
+                              color="#01715B"
+                              outlined
+                              class="ml-1"
+                              >Ngày giờ nước ngoài</v-btn
+                            >
+                            <v-btn
+                              text
+                              x-small
+                              color="#01715B"
+                              outlined
+                              class="ml-1"
+                              >Tắt ngày sinh</v-btn
+                            >
+                            <v-btn text x-small color="#B71C1C" outlined>
+                              <v-icon size="13">mdi-star-face</v-icon>Quy chuẩn
+                            </v-btn>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="border-cv">
+                        <div>
+                          <v-text-field
+                            id="birth"
+                            color="#01715B"
+                            autocomplete
+                            :prepend-icon="
+                              formCvByUser.cv.infomation.birth.icon
+                            "
+                            hide-details=""
+                            @input="autoSave()"
+                            @mouseover="clickThemeCvs('birth')"
+                            v-model="formCvByUser.cv.infomation.birth.value"
+                          ></v-text-field>
+                          <div v-if="openTool.isBirth" class="mt-2">
+                            <div
+                              class="
+                                indigo--text
+                                darken-4--text
+                                font-weight-bold
+                              "
+                            >
+                              Ghi đúng họ và tên trong giấy khai sinh
+                            </div>
+                            <v-btn text x-small color="#01715B" outlined
+                              >Ngày giờ Viet Nam</v-btn
+                            >
+                            <v-btn
+                              text
+                              x-small
+                              color="#01715B"
+                              outlined
+                              class="ml-1"
+                              >Ngày giờ nước ngoài</v-btn
+                            >
+                            <v-btn
+                              text
+                              x-small
+                              color="#01715B"
+                              outlined
+                              class="ml-1"
+                              >Tắt ngày sinh</v-btn
+                            >
+                            <v-btn text x-small color="#B71C1C" outlined>
+                              <v-icon size="13">mdi-star-face</v-icon>Quy chuẩn
+                            </v-btn>
+                          </div>
+                        </div>
+                      </div>
+
+                      
                     </div>
                   </div>
                 </div>
@@ -464,6 +556,10 @@ export default {
         srcBackground: "",
         cv: {
           fullName: "",
+          infomation: {
+            value: "",
+            icon: "",
+          },
         },
       },
       detailsCvByUser: {
@@ -478,6 +574,12 @@ export default {
         srcBackground: "",
         cv: {
           fullName: "",
+          infomation: {
+            birth: {
+              value: "27/12/1999",
+              icon: "mdi-calendar-account",
+            },
+          },
         },
       },
       cvs: [
@@ -670,15 +772,11 @@ export default {
       ],
       langContents: [
         {
-          lang: 'vi',
-          values: [
-            {
-              information: {
-                title: 'Thông tin cá nhân'
-              }
-            }
-          ]
-        }
+          lang: "vi",
+          information: {
+            title: "Thông tin cá nhân",
+          },
+        },
       ],
       query: {
         id: "62219bb4a646a4212dc71b8b",
@@ -732,10 +830,29 @@ export default {
             ],
           },
         },
+        {
+          key: "birth",
+          title: "Quy tắc đặt ngày sinh",
+          values: {
+            details: [
+              "Nếu CV là tiếng anh hãy để theo thứ tự Năm/Tháng/Ngày",
+              "Nếu CV là tiếng Việt hãy để theo thứ tự là Ngày/Tháng/Năm",
+            ],
+            notes: [
+              "Ngày sinh theo giấy khai sinh",
+              "Nếu là số đơn hãy bỏ số 0 phía trước <br/> VD: 2022/02/12",
+              "Số năm phải đủ 4 số, tháng phải đủ 2 số từ 1 - 12, ngày phải đủ 2 số theo lịch",
+              "Hệ thống sẽ tự động bắt lỗi nếu bạn ghi sai",
+            ],
+            yes: ["03/10/2022", "10/03/2022"],
+            no: ["3/10/2022", "10/2022", "10/03/22", "2022", "32/2/2022"],
+          },
+        },
       ],
 
       openTool: {
         isFullName: false,
+        isBirth: false,
       },
     };
   },
@@ -762,20 +879,27 @@ export default {
     clickThemeCvs(item) {
       this.keyTutorial = item;
       this.clear();
-      this.openTool.isFullName = true;
+      switch (item) {
+        case "fullName":
+          this.openTool.isFullName = true;
+          break;
+        case "birth":
+          this.openTool.isBirth = true;
+          break;
+        default:
+          break;
+      }
     },
     clear() {
       let that = this;
       that.openTool.isFullName = false;
+      that.openTool.isBirth = false;
     },
   },
 };
 </script>
 
 <style>
-.container {
-  max-width: 1000px;
-}
 
 .basic5 {
   font-size: 14px;
@@ -799,6 +923,10 @@ export default {
 #information {
   font-size: 20px !important;
   font-weight: bold;
+}
+
+#birth {
+  font-size: 13px !important;
 }
 
 .border-cv {
