@@ -1,169 +1,117 @@
 <template>
-  <div
-    v-resize="onResize"
-    style="
-      background-image: url('https://lh3.googleusercontent.com/fife/AAWUweXNzKYSC3mWJ-0sh325v91gETfpLdWBHJzC9OMYtHvOBgSvwi2Kmq23Q6T9TksHRsaIINyE6JY32Uk7RBPMgiL3Nj0OgkwN3z9KezLOgrlwCOWtdNjn_bTA5CPrG55W2uQT7PxUXwVfUPDEWFIvX93Xpi7r4aEmjH_V3eMlJG0ePMfzXMpIwb6KhWO0F5QaePw38g0wgdK_-SVmzwP9R_eUwGiJY0_uFx6j_Lh9es2vZG-TV1OM5FwBchBkKDOhGzdmMVrM_M1zkncqsL5sf6sIjmk9Vg-XfkU2hNxRZYqUkDHdc6HO7HE4ReZ_nS8YEHVW5r59yxQCFcNIwaicMcqJMtL7qH872boZapy-lnlHF4ROLYoK9UA7bNSSIE2dhgU0nMhIPzgCZIyqsvxXN1Xwel1_urQ08ilwj6ReO6jjD_qZmXIb-tt1JEoUxTWEawnuRTYsgnT31xLwDXblWqZ104z_c3HBp2xp2dVBiRaLgTCyFTA33XbLvl31Xf3YErLuU-RKi5lqnX3MQH3pVN0nlIsqYtrW5yjF0vlvHELJXKuHqgUBimIKk10Q1pD-cFYJftcqUV-kO4EWd-k60bPMbo3ZKZENP8z4YjD86964zBW3hgB0k8HErzsYZSIqCbMufNq1QqUEgrC2BBf34HyPKpu3p0iRrlREK4Er-5k8h-VrnZRU4lYGTX1fBdMCUpA4XGAF-1y5vnFixLf4EOwWHzG1BphbYQE=w1876-h863-ft');
-      background-size: 100% 100%;
-    "
-  >
-    <v-container>
-      <v-form ref="searchForm" v-model="searchForm.valid">
-        <v-row class="mt-5">
-          <v-col cols="12" md="8">
-            <h2>Tìm việc phù hợp với bạn</h2>
-            <v-card
-              elevation="1"
-              class="box-search mt-2"
-              color="hsla(0,0%,100%,.3)"
-            >
-              <div class="p-3">
-                <v-row>
-                  <v-col cols="12" sm="8">
-                    <v-text-field
-                      dense
-                      @click="isSearchAdvanced"
-                      v-model="searchForm.value.key"
-                      placeholder="Tên công việc, vị trí bạn muốn ứng tuyển ..."
-                      prepend-inner-icon="mdi-search-web"
-                      solo
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="4">
-                    <v-btn
-                      dark
-                      dense
-                      depressed
-                      color="#004D40"
-                      width="100%"
-                      @click="search"
-                    >
-                      Tìm kiếm ngay
-                    </v-btn>
-                  </v-col>
-                  <v-col sm="8" v-if="advanceSearch">
-                    <v-row>
-                      <v-col cols="6">
-                        <b>Tìm kiếm nâng cao</b>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-btn
-                          small
-                          style="margin-top: -6px"
-                          color="#0D47A1"
-                          class="float-end"
-                          text
-                          @click="isSearchAdvanced"
-                          >Thu gọn</v-btn
-                        >
-                      </v-col>
-                      <v-col cols="6">
-                        <v-autocomplete
-                          :items="selected.careers"
-                          v-model="searchForm.value.careers"
-                          clearable
-                          dense
-                          placeholder="Nghành nghề"
-                          label="Nghành nghề"
-                          solo
-                        ></v-autocomplete>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-autocomplete
-                          clearable
-                          dense
-                          :items="selected.companyFields"
-                          v-model="searchForm.value.companyFields"
-                          placeholder="Lĩnh vực công ty"
-                          label="Lĩnh vực công ty"
-                          solo
-                        ></v-autocomplete>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-autocomplete
-                          clearable
-                          dense
-                          :items="selected.city"
-                          v-model="searchForm.value.city"
-                          placeholder="Địa điểm"
-                          label="Địa điểm"
-                          solo
-                        ></v-autocomplete>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-autocomplete
-                          clearable
-                          dense
-                          :items="selected.position"
-                          v-model="searchForm.value.position"
-                          placeholder="Cấp bậc"
-                          label="Cấp bậc"
-                          solo
-                        ></v-autocomplete>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-autocomplete
-                          clearable
-                          dense
-                          :items="selected.type"
-                          v-model="searchForm.value.type"
-                          placeholder="Hình thức làm việc"
-                          label="Hình thức làm việc"
-                          solo
-                        ></v-autocomplete>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-autocomplete
-                          clearable
-                          dense
-                          :items="selected.salary"
-                          v-model="searchForm.value.salary"
-                          placeholder="Mức lương"
-                          label="Mức lương"
-                          solo
-                        ></v-autocomplete>
-                      </v-col>
-                    </v-row>
-                  </v-col>
-                </v-row>
-              </div>
-            </v-card>
-            <div class="mt-10">
-              <h6 class="font-weight-bold">
-                Các công ty tuyển dụng hàng đầu trên TopCV
-              </h6>
-              <v-row>
-                <v-col
-                  cols="3"
-                  sm="2"
-                  md="2"
-                  v-for="company in companys.top"
-                  :key="company._id"
-                >
-                  <div class="p-3">
-                    <img height="35" width="100%" :src="company.image" />
-                  </div>
-                </v-col>
-              </v-row>
-            </div>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-img
-              v-if="common.imageRight"
-              width="100%"
-              src="https://www.topcv.vn/v4/image/welcome/image_topcv.png?v=1.0.0"
-            ></v-img>
-          </v-col>
-        </v-row>
-      </v-form>
-    </v-container>
+  <div v-resize="onResize">
+    <vueper-slides
+      autoplay
+      fractions
+      :touchable="false"
+      :fixed-height="fixedHeight"
+      progress
+      :slide-content-outside="'top'"
+      :parallax-fixed-content="true"
+    >
+      <vueper-slide
+        v-for="(banner, i) in bannerVips"
+        :key="i"
+        :image="banner.image"
+      >
+        <template #content>
+          <v-container class="mt-10" :style="styleFormSearch">
+            <v-form ref="searchForm" v-model="searchForm.valid">
+              <v-card
+                elevation="1"
+                class="box-search"
+                color="hsla(9,9%,100%,.6)"
+              >
+                <div class="p-3">
+                  <h2 class="teal--text text--darken-4">
+                    Tìm việc phù hợp với bạn
+                  </h2>
+                  <v-row>
+                    <v-col cols="12" md="12" lg="6">
+                      <v-combobox
+                        @click="isSearchAdvanced"
+                        v-model="searchForm.value.key"
+                        :items="selected.vacancies"
+                        placeholder="Tên công việc, vị trí bạn muốn ứng tuyển ..."
+                        prepend-inner-icon="mdi-file-search"
+                        solo
+                      ></v-combobox>
+                    </v-col>
+                    <v-col cols="8" md="8" lg="3">
+                      <v-autocomplete
+                        clearable
+                        color="#004D40"
+                        prepend-inner-icon="mdi-map-marker"
+                        :items="selected.provinces"
+                        v-model="searchForm.value.city"
+                        placeholder="Địa điểm"
+                        label="Địa điểm"
+                        solo
+                      ></v-autocomplete>
+                    </v-col>
+                    <v-col cols="4" md="4" lg="3">
+                      <v-btn
+                        dark
+                        depressed
+                        large
+                        color="#004D40"
+                        width="100%"
+                        @click="search"
+                      >
+                        Tìm kiếm ngay
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </div>
+              </v-card>
+            </v-form>
+          </v-container>
+        </template>
+      </vueper-slide>
+    </vueper-slides>
   </div>
 </template>
 
 <script>
+import { VueperSlides, VueperSlide } from "vueperslides";
+import "vueperslides/dist/vueperslides.css";
+import Term from "../../apis/term.api";
+import Vacancies from "../../apis/vacancies.api";
 export default {
   name: "Search",
+  components: { VueperSlides, VueperSlide },
+  async created() {
+    this.selected.provinces = await Term.getAllTermStatus(2);
+    this.selected.vacancies = await Vacancies.getAllVacancies();
+  },
   data() {
     return {
+      styleFormSearch:
+        "position: absolute; top: 25%; left: 10%; z-index: 1000 !important;",
+      fixedHeight: "600px",
+      bannerVips: [
+        {
+          image:
+            "https://images.vietnamworks.com/logo/Jotun_bannerpre_113734.jpg",
+        },
+        {
+          image:
+            "https://images.vietnamworks.com/logo/Generali_hrbanner_114194.jpg",
+        },
+        {
+          image:
+            "https://images.vietnamworks.com/logo/Chailease_hrbanner_115875.jpg",
+        },
+        {
+          image: "https://images.vietnamworks.com/logo/111c_107602.jpg",
+        },
+        {
+          image:
+            "https://images.vietnamworks.com/logo/Lazada_hrbanner_115301.jpg",
+        },
+      ],
+      parallax: 1,
+      parallaxFixedContent: false,
       searchForm: {
         valid: true,
         value: {
@@ -211,10 +159,11 @@ export default {
       selected: {
         careers: ["An toàn lao động", "Bán hàng kỷ thuật", "Bán lẻ/ bán sỉ"],
         companyFields: ["Bất động sản", "Cơ khí", "Cơ quan nhà nước"],
-        city: ["Hồ Chí Minh", "Bình Dương", "Hà Nội"],
+        provinces: [],
         position: ["Nhân viên", "Trưởng nhóm", "Quản lý/ Giám sát"],
         type: ["Toàn thời gian", "Bán thời gian", "Thực tập"],
         salary: ["Dưới 3 triệu", "3 - 5 triệu", "5 - 7 triệu"],
+        vacancies: [],
       },
       windowSize: {
         x: 0,
@@ -241,10 +190,31 @@ export default {
       that.windowSize = { x: window.innerWidth, y: window.innerHeight };
       if (that.windowSize.x < 600) {
         that.common.imageRight = false;
+
+        that.styleFormSearch =
+          "position: absolute; top: 0%; left: 0%; z-index: 1000 !important;";
+        that.fixedHeight = "300px";
       } else if (that.windowSize.x < 960) {
         that.common.imageRight = false;
+        that.common.imageRight = false;
+
+        that.styleFormSearch =
+          "position: absolute; top: 10%; left: 0%; z-index: 1000 !important;";
+        that.fixedHeight = "400px";
+      } else if (that.windowSize.x < 1264) {
+        that.common.imageRight = false;
+        that.common.imageRight = false;
+
+        that.styleFormSearch =
+          "position: absolute; top: 10%; left: 0%; z-index: 1000 !important;";
+        that.fixedHeight = "400px";
       } else {
         that.common.imageRight = true;
+        that.common.imageRight = false;
+
+        that.styleFormSearch =
+          "position: absolute; top: 25%; left: 10%; z-index: 1000 !important;";
+        that.fixedHeight = "600px";
       }
     },
   },
@@ -260,5 +230,9 @@ export default {
 }
 .box-search .v-text-field__details {
   min-height: 0px;
+}
+.vueperslides__progress {
+  background: rgba(0, 0, 0, 0.25);
+  color: #004d40;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <Search />
+    <CompanyVip />
     <CreateCV />
     <div
       class="mt-10"
@@ -26,6 +27,7 @@ import Download from "../components/Home/Download.vue";
 import AboutUs from "../components/Home/AboutUs.vue";
 import AchievementAward from "../components/Home/AchievementAward.vue";
 import ListFeatureJobs from "../components/Job/ListFeatureJobs.vue";
+import CompanyVip from "../components/Home/CompanyVip.vue";
 export default {
   name: "Home",
   components: {
@@ -36,6 +38,7 @@ export default {
     AboutUs,
     AchievementAward,
     ListFeatureJobs,
+    CompanyVip
   },
 };
 </script>

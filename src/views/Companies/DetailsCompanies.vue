@@ -3,7 +3,7 @@
     <v-container>
       <div class="banner">
         <img
-          src="https://www.topcv.vn/images/default_cover/default_normal_cover.jpg"
+          :src="company.srcBanner"
           width="100%"
           height="236px"
           class="img-responsive cover-img"
@@ -13,29 +13,29 @@
         <div id="logo">
           <div class="image-logo">
             <img
-              src="https://cdn.topcv.vn/140/company_logos/qd538sCq1qBDziAW6uU5WgRXgp7ynDe4_1634182583____29194e74868900efc08563452c2dbec0.png"
+              :src="company.srcLogo"
               alt="Công ty TNHH Dịch vụ Bất động sản Địa Ốc Vàng"
-              class="img-responsive"
+              class="img-responsive w-100"
             />
           </div>
         </div>
         <div class="content">
           <h1 class="detail-name">
-            Công ty TNHH Dịch vụ Bất động sản Địa Ốc Vàng
+            {{company.name}}
           </h1>
           <div class="d-flex">
             <p class="website">
               <i class="mdi mdi-earth" style="font-size: 18px"></i>
               <a
                 class="ml-1"
-                href="https://congtydiaocvang.com/"
+                :href="company.website"
                 target="_blank"
-                >https://congtydiaocvang.com/</a
+                >{{company.website}}/</a
               >
             </p>
             <p class="size">
               <i class="mdi mdi-home-modern" style="font-size: 21px"></i>
-              <span class="ml-1">100-499 nhân viên</span>
+              <span class="ml-1">{{company.companySizeStart}}-{{company.companySizeEnd}} nhân viên</span>
             </p>
           </div>
         </div>
@@ -48,39 +48,7 @@
           <v-col cols="12" sm="8" md="8">
             <div class="company-info box-white">
               <h4 class="title">Giới thiệu công ty</h4>
-              <div class="box-body">
-                <p>
-                  Địa Ốc Vàng là Công ty chuyên về Môi giới Bất động sản thổ cư
-                  có đội ngũ thành viên có hàng chục năm kinh nghiệm về Bất động
-                  sản. Với Kho hàng lên tới hàng ngàn căn nhà chính chủ, tập
-                  trung ở các Quận chính trong nội thành Hà Nội như Ba Đình,
-                  Đống Đa, Tây Hồ, Cầu Giấy... Công ty Bất động sản Địa Ốc Vàng
-                  đã và đang góp phần cung cấp cho khách hàng những sự lựa chọn
-                  hoàn hảo cho tổ ấm của mình.
-                </p>
-                <p>
-                  Lịch sử hình thành và phát triển<br />Địa Ốc Vàng là Công ty
-                  chuyên về Môi giới Bất động sản thổ cư có đội ngũ thành viên
-                  có hàng chục năm kinh nghiệm về Bất động sản. Với Kho hàng lên
-                  tới hàng ngàn căn nhà chính chủ, pháp lý chuẩn, giá hợp lý,
-                </p>
-                <p>
-                  Tầm nhìn và sứ mệnh<br />Tầm nhìn: Trở thành Công ty Bất động
-                  sản lớn nhất và tốt nhất Việt Nam, đồng thời vươn ra thế giới
-                  trong thời gian không xa. &nbsp; Sứ mệnh: Đúng theo Slogan của
-                  Công ty "Địa Ốc Vàng - Nơi khởi nguồn hạnh phúc".
-                </p>
-                <p>
-                  Giá trị cốt lõi<br />"Đồng lòng - Trách nhiệm - Kiên trì -
-                  Chia sẻ - Tuân thủ"
-                </p>
-                <p>
-                  Triết lý kinh doanh<br />Mục tiêu hướng đến của Địa Ốc Vàng
-                  chính là sự an tâm và hài lòng của Khách hàng. Sự tin tưởng
-                  của Khách hàng chính là động lực vô cùng lớn để chúng tôi
-                  không ngừng cố gắng và vươn xa trong tương lai.
-                </p>
-              </div>
+              <div class="box-body" v-html="company.introduct"></div>
             </div>
             <div class="box-white">
               <h4 class="title">Tuyển dụng</h4>
@@ -209,7 +177,7 @@
                     class="mdi mdi-map-marker-outline"
                     style="color: #004d40; font-size: 17px"
                   ></i
-                  >58 Nguyễn Chí Thanh, Đống Đa, Hà Nội
+                  >{{company.address}}
                 </p>
                 <div class="company-map">
                   <p class="map">Bản đồ trụ sở chính :</p>
@@ -218,7 +186,7 @@
                     height="270"
                     frameborder="0"
                     style="border: 0"
-                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCVgO8KzHQ8iKcfqXgrMnUIGlD-piWiPpo&amp;q=58+Nguyen+Chi+Thanh,Dong+Da,Ha+Noi&amp;zoom=15&amp;language=vi"
+                    :src="company.srcMap"
                     allowfullscreen=""
                   >
                   </iframe>
@@ -232,7 +200,7 @@
                 <div class="box-copy">
                   <input
                     type="text"
-                    value="https://www.topcv.vn/cong-ty/cong-ty-tnhh-dich-vu-bat-dong-san-dia-oc-vang/77731.html"
+                    :value="'https://www.cvfree.com/cong-ty/' + company.slug"
                     class="url-copy"
                     readonly=""
                   />
@@ -279,8 +247,18 @@
 </template>
 
 <script>
+import Company from "../../apis/company.api";
 export default {
   name: "DetailsCompanies",
+  async created() {
+    const company = await Company.getBySlugCompany(this.$route.params.slug);
+    this.company = company;
+  },
+  data() {
+    return {
+      company: {}
+    }
+  },
 };
 </script>
 

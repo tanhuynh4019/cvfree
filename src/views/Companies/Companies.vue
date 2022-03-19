@@ -65,6 +65,27 @@
           </v-row>
         </v-container>
       </div>
+      <div class="company-body">
+        <div class="list">DANH SÁCH CÁC CÔNG TY MỚI NHẤT</div>
+        <v-container>
+          <v-row>
+            <v-col md="4" sm="6" v-for="item in companysNew" :key="item._id">
+              <v-card link :to="{name: 'DetailsCompanies', params: { slug: item.slug }}">
+                <v-img height="150px" :src="item.srcBanner"> </v-img>
+                <v-card-title class="white--text mt-8">
+                  <v-avatar size="62">
+                    <img alt="user" :src="item.srcLogo" />
+                  </v-avatar>
+                </v-card-title>
+                <v-card-text>
+                  <div class="name" v-text="item.name"></div>
+                  <p class="text-dark" v-html="item.introduct == '' ? 'Chưa giới thiệu' : `${item.introduct.substring(0, 200)}...`"></p>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
     </template>
   </div>
 </template>
@@ -72,8 +93,13 @@
 </template>
 
 <script>
+import Company from "../../apis/company.api";
 export default {
   name: "Companies",
+  async created() {
+    const companyNew = await Company.getAllCompany('new');
+    this.companysNew = companyNew;
+  },
   data() {
     return {
       common: {
@@ -115,6 +141,7 @@ export default {
             '" CMC Global ra đời từ kinh nghiệm 25 năm trong lĩnh vực ICT và hơn 10 năm kinh nghiệm trong lĩnh vực Outsourcing của Tập đoàn công nghệ CMC, với sứ mệnh trở thành đơn vị cung cấp nhân lực kỹ sư phần mềm chất lượng cao, cung cấp các giải pháp, dịch vụ CNTT cho thị trường quốc tế. Hiện CMC Global đang sở hữu đến 700++ nhân viên,..."',
         },
       ],
+      companysNew: [],
     };
   },
   mounted() {

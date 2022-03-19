@@ -1,12 +1,19 @@
 <template>
-  <div v-resize="onResize">
+  <div v-resize="onResize" style="z-index: 1100 !important">
     <v-system-bar app v-if="common.headerSub && !user">
       <v-spacer></v-spacer>
       <v-btn text x-small :to="url.login">Đăng nhập</v-btn>
       <v-btn text x-small :to="url.signup">Đăng ký</v-btn>
       <v-btn text x-small>Đăng tuyển & tìm hồ sơ</v-btn>
     </v-system-bar>
-    <v-app-bar app clipped-right flat height="78" color="white" style="border-bottom: 1px solid #dee2e6 !important;">
+    <v-app-bar
+      app
+      clipped-right
+      flat
+      height="78"
+      color="white"
+      style="border-bottom: 1px solid #dee2e6 !important"
+    >
       <v-spacer>
         <v-row>
           <v-col sm="5" cols="8" md="3" lg="2">
@@ -26,6 +33,7 @@
           </v-col>
           <v-col v-if="common.menu" md="9">
             <v-menu
+              style="z-index: 1200 !important"
               v-for="(menu, i) in menus"
               :key="i"
               open-on-hover
@@ -368,7 +376,7 @@ export default {
             {
               name: "TopCV Profile",
               icon: "mdi-card-account-details-star-outline",
-              link: '/profile#inspire'
+              link: "/profile#inspire",
             },
           ],
         },
@@ -405,7 +413,7 @@ export default {
             {
               name: "Trắc nghiệm MI",
               icon: "mdi-message-text",
-              link: '/trac-nghiem-da-tri-thong-minh-multiple-intelligences-test'
+              link: "/trac-nghiem-da-tri-thong-minh-multiple-intelligences-test",
             },
           ],
         },
@@ -426,7 +434,7 @@ export default {
             {
               name: "Mobile App TopCV",
               icon: "mdi-cellphone",
-              link: '/app'
+              link: "/app",
             },
           ],
         },
