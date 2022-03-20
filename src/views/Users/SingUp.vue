@@ -8,10 +8,11 @@
             Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự nghiệp lý
             tưởng
           </p>
-          <v-form>
+          <v-form v-model="formCandidate.valid" ref="formCandidate">
             <label>Họ và tên</label>
             <v-text-field
               class="mt-2"
+              v-model="formCandidate.value.fullname"
               prepend-inner-icon="mdi-account"
               color="#004D40"
               placeholder="Nhập họ và tên của bạn"
@@ -23,7 +24,8 @@
             <label>Email</label>
             <v-text-field
               class="mt-2"
-              prepend-inner-icon="mdi-shield-key"
+              v-model="formCandidate.value.email"
+              prepend-inner-icon="mdi-email"
               color="#004D40"
               placeholder="Nhập email của bạn"
               required
@@ -34,19 +36,23 @@
             <label>Mật khẩu</label>
             <v-text-field
               class="mt-2"
+              v-model="formCandidate.value.password"
               prepend-inner-icon="mdi-shield-key"
               color="#004D40"
               placeholder="Nhập mật khẩu"
               required
+              type="password"
               outlined
               dense
             ></v-text-field>
 
             <label>Xác nhận mật khẩu</label>
             <v-text-field
+              type="password"
               class="mt-2"
               ref="address"
-              prepend-inner-icon="mdi-shield-key"
+              v-model="formCandidate.value.passwordRepeat"
+              prepend-inner-icon="mdi-key-change"
               color="#004D40"
               placeholder="Nhập lại mật khẩu"
               required
@@ -54,10 +60,13 @@
               dense
             ></v-text-field>
             <p>
-              Bằng việc đăng ký tài khoản, bạn đã đồng ý với <a style="color: #004D40">Điều khoản dịch vụ</a>
-              và <a style="color: #004D40">Chính sách bảo mật</a> của chúng tôi
+              Bằng việc đăng ký tài khoản, bạn đã đồng ý với
+              <a style="color: #004d40">Điều khoản dịch vụ</a> và
+              <a style="color: #004d40">Chính sách bảo mật</a> của chúng tôi
             </p>
-            <v-btn class="w-100" color="#004D40" dark>Đăng ký</v-btn>
+            <v-btn class="w-100" color="#004D40" dark @click="signUp"
+              >Đăng ký</v-btn
+            >
           </v-form>
           <v-row class="mt-3">
             <v-col sm="12">
@@ -127,21 +136,78 @@
           </v-carousel>
         </v-col>
       </v-row>
+      <v-snackbar
+        style="z-index: 1300 !important"
+        top
+        v-model="snackbar"
+        :multi-line="multiLine"
+      >
+        {{ text }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="red" text v-bind="attrs" @click="snackbar = false">
+            Đóng
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-container>
   </div>
 </template>
 
 <script>
+import Candidate from "../../apis/candidate.api";
 export default {
   name: "SignUp",
   data() {
     return {
+      multiLine: true,
+      snackbar: false,
+      text: ``,
       url: {
         signUp: "/sign-up",
-        login: '/login',
+        login: "/login",
         forgotPassword: "/forgot-password",
       },
+      formCandidate: {
+        validate: true,
+        valid: false,
+        value: {
+          fullname: "",
+          password: "",
+          passwordRepeat: "",
+          email: "",
+        },
+      },
     };
+  },
+  methods: {
+    async signUp() {
+      let that = this;
+      const formData = new FormData();
+      formData.append("email", that.formCandidate.value.email);
+      formData.append("password", that.formCandidate.value.password);
+      formData.append(
+        "passwordRepeat",
+        that.formCandidate.value.passwordRepeat
+      );
+      formData.append("fullname", that.formCandidate.value.fullname);
+
+      const candidate = await Candidate.resgister(formData);
+      console.log(candidate.error);
+      if (candidate.error) {
+        that.snackbar = true;
+        that.text = candidate.message;
+      }
+
+      if (candidate.success) {
+        that.snackbar = true;
+        that.text = candidate.message;
+
+        localStorage.setItem("token_candidate", candidate.token);
+
+        window.location.href = "/viec-lam";
+      }
+    },
   },
 };
 </script>

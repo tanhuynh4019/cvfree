@@ -8,10 +8,11 @@
             Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự nghiệp lý
             tưởng
           </p>
-          <v-form>
+          <v-form v-model="formCandidate.valid" ref="formCandidate">
             <label>Email</label>
             <v-text-field
               class="mt-2"
+              v-model="formCandidate.value.email"
               ref="name"
               prepend-inner-icon="mdi-gmail"
               color="#004D40"
@@ -24,7 +25,9 @@
             <label>Mật khẩu</label>
             <v-text-field
               class="mt-2"
+              type="password"
               ref="address"
+              v-model="formCandidate.value.password"
               prepend-inner-icon="mdi-shield-key"
               color="#004D40"
               placeholder="Nhập mật khẩu"
@@ -32,7 +35,7 @@
               outlined
               dense
             ></v-text-field>
-            <v-btn class="w-100" color="#004D40" dark>Đăng nhập</v-btn>
+            <v-btn class="w-100" color="#004D40" dark @click="login">Đăng nhập</v-btn>
             <center class="mt-1">hoặc</center>
             <v-row class="mt-1">
               <v-col sm="4">
@@ -119,21 +122,68 @@
           </v-carousel>
         </v-col>
       </v-row>
+      <v-snackbar
+        style="z-index: 1300 !important"
+        top
+        v-model="snackbar"
+        :multi-line="multiLine"
+      >
+        {{ text }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="red" text v-bind="attrs" @click="snackbar = false">
+            Đóng
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-container>
   </div>
 </template>
 
 <script>
+import Candidate from "../../apis/candidate.api";
 export default {
   name: "Login",
   data() {
     return {
+      multiLine: true,
+      snackbar: false,
+      text: ``,
       url: {
         signUp: "/sign-up",
         forgotPassword: '/forgot-password'
       },
+      formCandidate: {
+        validate: {},
+        valid: true,
+        value: {
+          email: '',
+          password: ''
+        }
+      }
     };
   },
+  methods: {
+    async login()
+    {
+      let that = this;
+      const formData = new FormData();
+      formData.append("email", `${that.formCandidate.value.email}_candidate`);
+      formData.append("password", that.formCandidate.value.password);
+
+      const candidate = await Candidate.login(formData);
+      if(candidate.error)
+      { 
+        that.snackbar = true;
+        that.text = candidate.message;
+      }
+
+      if(candidate.success){
+        localStorage.setItem("token_candidate", candidate.token);
+         window.location.href = '/viec-lam'
+      }
+    }
+  }
 };
 </script>
 

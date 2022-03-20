@@ -18,6 +18,7 @@
                 link
                 style="box-shadow: 0px 0px 0px 0px"
                 class="border item-job"
+                :to="{name: 'DetailsJob', params: { slug: job.slug}}"
               >
                 <div style="padding: 30px 50px">
                   <center>
@@ -43,7 +44,7 @@
                     >
                   </div>
                   Cập nhật: Hôm nay - Bạn còn <b>27</b> ngày để ứng tuyển
-                  <div class="mt-2">
+                  <div class="mt-4">
                     <div>
                       <v-chip
                         v-if="job.salaryType == 'Trong khoảng'"
@@ -104,8 +105,5 @@ export default {
 .item-job:hover {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px !important;
-}
-.v-menu__content {
-    width: 30%;
 }
 </style>

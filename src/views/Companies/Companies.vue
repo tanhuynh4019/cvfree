@@ -70,16 +70,34 @@
         <v-container>
           <v-row>
             <v-col md="4" sm="6" v-for="item in companysNew" :key="item._id">
-              <v-card link :to="{name: 'DetailsCompanies', params: { slug: item.slug }}">
-                <v-img height="150px" :src="item.srcBanner"> </v-img>
+              <v-card
+                link
+                :to="{ name: 'DetailsCompanies', params: { slug: item.slug } }"
+              >
+                <v-img
+                  height="150px"
+                  :src="
+                    !item.srcBanner
+                      ? 'https://www.topcv.vn/images/default_cover/default_normal_cover.jpg'
+                      : item.srcBanner
+                  "
+                >
+                </v-img>
                 <v-card-title class="white--text mt-8">
-                  <v-avatar size="62">
-                    <img alt="user" :src="item.srcLogo" />
+                  <v-avatar size="62" color="white">
+                    <img alt="user" :src="item.srcLogo" class="border" />
                   </v-avatar>
                 </v-card-title>
                 <v-card-text>
                   <div class="name" v-text="item.name"></div>
-                  <p class="text-dark" v-html="item.introduct == '' ? 'Chưa giới thiệu' : `${item.introduct.substring(0, 200)}...`"></p>
+                  <p
+                    class="text-dark"
+                    v-html="
+                      item.introduct == ''
+                        ? 'Chưa giới thiệu'
+                        : `${item.introduct.substring(0, 200)}...`
+                    "
+                  ></p>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -97,7 +115,7 @@ import Company from "../../apis/company.api";
 export default {
   name: "Companies",
   async created() {
-    const companyNew = await Company.getAllCompany('new');
+    const companyNew = await Company.getAllCompany("new");
     this.companysNew = companyNew;
   },
   data() {

@@ -16,21 +16,20 @@
                   <v-img
                     width="100%"
                     height="120"
-                    src="https://cdn.topcv.vn/80/company_logos/cong-ty-tai-chinh-trach-nhiem-huu-han-mot-thanh-vien-shinhan-viet-nam-617120c606cab.jpg"
+                    :src="job.idCompany.srcLogo"
                   ></v-img>
                 </center>
               </div>
             </v-col>
             <v-col cols="7" sm="7" lg="7">
               <div class="p-2">
-                <h5>Thực Tập Sinh Tài Chính (Thu Nhập Từ 10 Triệu)</h5>
+                <h5>{{job.name}}</h5>
                 <h6>
-                  CÔNG TY TÀI CHÍNH TRÁCH NHIỆM HỮU HẠN MỘT THÀNH VIÊN SHINHAN
-                  VIỆT NAM
+                  {{job.idCompany.name}}
                 </h6>
                 <p>
                   <v-icon size="20" style="margin-top: -1px">mdi-clock</v-icon>
-                  Hạn nộp hồ sơ: 25/02/2022
+                  Hạn nộp hồ sơ: {{job.deadline}}
                 </p>
               </div>
             </v-col>
@@ -99,7 +98,7 @@
                           </v-col>
                           <v-col cols="10" sm="10">
                             <h6>Số lượng tuyển</h6>
-                            <p>10 người</p>
+                            <p>{{job.numberOfRecruitments == 0 ? 'Không giới hạn' : job.numberOfRecruitments}} người</p>
                           </v-col>
                         </v-row>
                       </v-col>
@@ -113,7 +112,7 @@
                           </v-col>
                           <v-col cols="10" sm="10">
                             <h6>Hình thức làm việc</h6>
-                            <p>Bán thời gian</p>
+                            <p>{{job.workingForm}}</p>
                           </v-col>
                         </v-row>
                       </v-col>
@@ -127,7 +126,7 @@
                           </v-col>
                           <v-col cols="10" sm="10">
                             <h6>Cấp bậc</h6>
-                            <p>Nhân viên</p>
+                            <p>{{job.level}}</p>
                           </v-col>
                         </v-row>
                       </v-col>
@@ -141,7 +140,7 @@
                           </v-col>
                           <v-col cols="10" sm="10">
                             <h6>Giới tính</h6>
-                            <p>Không yêu cầu</p>
+                            <p>{{job.gender}}</p>
                           </v-col>
                         </v-row>
                       </v-col>
@@ -155,7 +154,7 @@
                           </v-col>
                           <v-col cols="10" sm="10">
                             <h6>Kinh nghiệm</h6>
-                            <p>Không yêu cầu kinh nghiệm</p>
+                            <p>{{job.exp}}</p>
                           </v-col>
                         </v-row>
                       </v-col>
@@ -166,61 +165,24 @@
                   <div class="p-2">
                     <h6><u>Địa điểm làm việc</u></h6>
                     <p>
-                      - Khu vực: Hà Nội
+                      - Khu vực: {{job.workLocation}}
                       <br />
-                      - Toà nhà Sông Đà, 18 Phạm Hùng, Phường Mỹ Đình 1, Quận
-                      Nam Từ Liêm, Hà Nội
+                      - {{job.jobLocation}}
                     </p>
                   </div>
                 </v-card>
                 <div class="mt-5">
                   <div>
                     <h5>Mô tả công việc</h5>
-                    <p>
-                      - Tư vấn cho khách hàng về những sản phẩm của công ty theo
-                      data có sẵn do công ty cung cấp. <br />
-                      - Tiếp nhận và hỗ trợ xử lý thông tin khách hàng.
-                      <br />
-                      - Phát triển mối quan hệ khách hàng.
-                      <br />
-                      - Lập kế hoạch bán hàng, báo cáo công việc.
-                      <br />
-                      - Thực hiện các yêu cầu của Trưởng bộ phận.
-                    </p>
+                    <p v-html="job.jobDescription"></p>
                   </div>
                   <div>
                     <h5>Yêu cầu ứng viên</h5>
-                    <p>
-                      - Không yêu cầu kinh nghiệm, sẽ được đào tạo, nếu đã có
-                      kinh nghiệm sẽ là một lợi thế.
-                      <br />
-                      - Giao tiếp tốt, trung thực trong công việc.
-                      <br />
-                      - Sinh viên năm cuối sắp ra trường, ưu tiên ứng viên có
-                      năm sinh 1997 - 2000.
-                      <br />
-                      - Siêng năng, đam mê, nhiệt huyết và định hướng phát triển
-                      lâu dài.
-                    </p>
+                    <p v-html="job.candidateRequirements"></p>
                   </div>
                   <div>
                     <h5>Quyền lợi</h5>
-                    <p>
-                      - Lương cơ bản 6,2 triệu và có thêm phần Bonus (Thu nhập
-                      đảm bảo trên 10,000,000)
-                      <br />
-                      - Được đào tạo nghiệp vụ khi nhận việc.
-                      <br />
-                      - Làm việc trong môi trường năng động, chuyên nghiệp có
-                      nhiều cơ hội thăng tiến.
-                      <br />
-                      - Có cơ hội thăng tiến từ 3 đến 6 tháng 1 lần theo năng
-                      lực.
-                      <br />
-                      - Được đóng BHXH, BHYT, BHTN đẩy đủ khi ký hợp đồng.
-                      <br />
-                      - Du lịch hàng năm 1 lần trong và ngoài nước.
-                    </p>
+                    <p v-html="benefit"></p>
                   </div>
                   <div>
                     <h5>Cách thức ứng tuyển</h5>
@@ -295,9 +257,9 @@
                 </v-card>
                 <div class="mt-5">
                   <h6>Ngành nghề</h6>
-                  <v-chip>Ngân hàng/Tài chính</v-chip>
+                  <v-chip class="mt-1 ml-1" v-for="(sideProfession, i) in job.sideProfessions" :key="i">{{sideProfession}}}</v-chip>
                   <h6 class="mt-3">Khu vực</h6>
-                  <v-chip>Hà nội</v-chip>
+                  <v-chip>{{job.workLocation}}</v-chip>
                 </div>
               </v-col>
             </v-row>
@@ -310,8 +272,7 @@
             <v-row>
               <v-col cols="12" sm="9" md="10">
                 <h4>
-                  Thông tin CÔNG TY TÀI CHÍNH TRÁCH NHIỆM HỮU HẠN MỘT THÀNH VIÊN
-                  SHINHAN VIỆT NAM
+                  Thông tin {{job.idCompany.name}}
                 </h4>
               </v-col>
               <v-col cols="12" sm="3" md="2">
@@ -335,22 +296,7 @@
                   </v-col>
                   <v-col cols="10" sm="11" md="11">
                     <h6>Giới thiệu</h6>
-                    <p>
-                      Tập đoàn Tài chính Shinhan
-                      <br />
-                      Tập đoàn Tài chính Shinhan được xem như tập đoàn tiên
-                      phong về việc nắm giữ tài chính tại Hàn Quốc. Tập đoàn
-                      được thành lập trên nền tảng của Ngân hàng Shinhan, Quỹ
-                      Đầu tư Shinhan và Công ty Quản lý Đầu tư Shinhan.
-                      <br />
-                      Chiến lược kinh doanh của Tập đoàn Tài chính Shinhan là
-                      cung cấp cho khách hàng dịch vụ đa dạng, tiện lợi và thỏa
-                      đáng thông qua sự phân bố chuyên biệt và hiệu quả. Bên
-                      cạnh đó, tập đoàn luôn nỗ lực đa dạng hóa phạm vi kinh
-                      doanh, cũng như cập nhật những công nghệ tài chính mới
-                      nhất để trở thành tập đoàn tài chính dẫn đầu trên quy mô
-                      toàn cầu.
-                    </p>
+                    <p v-html="job.idCompany.introduct"></p>
                   </v-col>
                 </v-row>
               </v-col>
@@ -381,7 +327,7 @@
                   <v-col cols="10" sm="11" md="11">
                     <h6>Địa điểm</h6>
                     <p>
-                      Tầng 14 toà nhà PicoPlaza số 20 Cộng Hoà quận Tân Bình
+                      {{job.idCompany.address}}
                     </p>
                   </v-col>
                 </v-row>
@@ -557,10 +503,17 @@
 import Search from "../../components/Job/Search.vue";
 import Content from "../../components/Seo/Content.vue";
 import Categories from "../../components/Seo/Categories.vue";
+
+import Job from "../../apis/job.api";
 export default {
   name: "DetailsJob",
+  async created() {
+    const jonBySlug = await Job.getBySlugJob(this.$route.params.slug);
+    this.job = jonBySlug;
+  },
   data() {
     return {
+      job: {},
       page: 1,
       items: [
         {

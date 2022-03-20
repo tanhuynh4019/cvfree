@@ -130,6 +130,7 @@
             <v-icon color="#004D40">mdi-bell</v-icon>
           </v-btn>
           <v-menu
+            style="z-index: 1200 !important"
             open-on-hover
             :close-on-content-click="false"
             :nudge-width="100"
@@ -143,7 +144,9 @@
                     alt="John"
                   />
                 </v-avatar>
-                <h6 class="mt-2 ml-2" v-if="common.user">Tấn Huỳnh</h6>
+                <h6 class="mt-2 ml-2" v-if="common.user">
+                  {{ user.fullname }}
+                </h6>
               </v-btn>
             </template>
 
@@ -158,7 +161,7 @@
                   </v-list-item-avatar>
 
                   <v-list-item-content>
-                    <v-list-item-title>Tấn Huỳnh</v-list-item-title>
+                    <v-list-item-title>{{ user.fullname }}</v-list-item-title>
                     <v-list-item-subtitle
                       >MÃ ỨNG VIÊN: <b>#2517654</b></v-list-item-subtitle
                     >
@@ -185,6 +188,17 @@
                         :style="navMenu.style"
                         v-text="navMenu.name"
                       ></v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item link @click="logOut">
+                    <v-list-item-icon>
+                      <v-icon color="#e74c3c">mdi-arrow-collapse-left</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                      <v-list-item-title style="color: #e74c3c"
+                        >Đăng xuất</v-list-item-title
+                      >
                     </v-list-item-content>
                   </v-list-item>
                 </v-list-item-group>
@@ -261,16 +275,16 @@
 </template>
 
 <script>
+import Candidate from "../apis/candidate.api";
 export default {
   name: "Header",
   async created() {
-    this.user = {
-      fullname: "Tấn Huỳnh",
-    };
+    const user = await Candidate.secret();
+    this.user = user;
   },
   data() {
     return {
-      user: null,
+      user: {},
       navMenus: [
         {
           icon: "mdi-arrow-up-bold-hexagon-outline",
@@ -306,12 +320,6 @@ export default {
           icon: "mdi-shield-key-outline",
           name: "Đổi mật khẩu",
           link: "/tai-khoan/mat-khau",
-        },
-        {
-          icon: "mdi-arrow-collapse-left",
-          name: "Đăng xuất",
-          link: "",
-          style: "color: #e74c3c",
         },
       ],
       url: {
@@ -447,6 +455,14 @@ export default {
     this.pustMenuLogin();
   },
   methods: {
+    async logOut() {
+      let that = this;
+      const candidateLogOut = await Candidate.logOut();
+      if (candidateLogOut.success) {
+        localStorage.setItem("token_candidate", candidateLogOut.token);
+        window.location.href = '/login'
+      }
+    },
     pustMenuLogin() {
       let that = this;
       if (that.user) {

@@ -13,7 +13,7 @@ import Profile from '../views/CVs/Profile.vue';
 import basic5_62219bb4a646a4212dc71b8b from '../views/CVs/Theme/basic5_62219bb4a646a4212dc71b8b.vue' 
 
 //! Jobs
-import Job from '../views/Job.vue'
+import Job from '../views/Jobs/Job.vue';
 import DetailsJob from '../views/Jobs/DetailsJob.vue';
 import RemoteJob from '../views/Jobs/RemoteJob.vue';
 
@@ -55,7 +55,6 @@ const routes = [{
         name: 'Job',
         component: Job
     },
-
     {
         path: '/vieclam/:slug',
         name: 'DetailsJob',

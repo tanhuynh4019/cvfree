@@ -84,17 +84,17 @@
 </template>
 
 <script>
-import Search from "../components/Job/Search.vue";
-import BannerVip from "../components/Banners/BannerVip.vue";
-import BannerCenter from "../components/Banners/BannerCenter.vue";
-import BannerRight from "../components/Banners/BannerRight.vue";
-import ListFeatureJobs from "../components/Job/ListFeatureJobs.vue";
-import ListAttractiveJobs from "../components/Job/ListAttractiveJobs.vue";
-import ListStatusJobs from "../components/Job/ListStatusJobs.vue";
-import ListTopCompanies from "../components/Companies/ListTopCompanies.vue";
-import Hotline from "../components/Contact/Hotline.vue";
-import Content from "../components/Seo/Content.vue";
-import Categories from "../components/Seo/Categories.vue";
+import Search from "../../components/Job/Search.vue";
+import BannerVip from "../../components/Banners/BannerVip.vue";
+import BannerCenter from "../../components/Banners/BannerCenter.vue";
+import BannerRight from "../../components/Banners/BannerRight.vue";
+import ListFeatureJobs from "../../components/Job/ListFeatureJobs.vue";
+import ListAttractiveJobs from "../../components/Job/ListAttractiveJobs.vue";
+import ListStatusJobs from "../../components/Job/ListStatusJobs.vue";
+import ListTopCompanies from "../../components/Companies/ListTopCompanies.vue";
+import Hotline from "../../components/Contact/Hotline.vue";
+import Content from "../../components/Seo/Content.vue";
+import Categories from "../../components/Seo/Categories.vue";
 export default {
   name: "Job",
   components: {

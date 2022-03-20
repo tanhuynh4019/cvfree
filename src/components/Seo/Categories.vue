@@ -6,7 +6,6 @@
         <div style="background: #f2fbf6 0 0 no-repeat padding-box">
           <v-card outlined class="p-2" style="background: #f2fbf6 0 0 no-repeat padding-box"><b>Tìm việc làm theo ngành nghề</b> </v-card>
           <v-card
-            v-scroll.self="onScroll"
             class="overflow-y-auto"
             max-height="300"
           >
@@ -21,7 +20,6 @@
         <div>
           <v-card style="background: #f2fbf6 0 0 no-repeat padding-box" outlined class="p-2"><b>Tìm việc làm tại nhà</b> </v-card>
           <v-card
-            v-scroll.self="onScroll"
             class="overflow-y-auto"
             max-height="300"
           >
@@ -36,7 +34,6 @@
         <div>
           <v-card style="background: #f2fbf6 0 0 no-repeat padding-box" outlined class="p-2"><b>Việc làm phổ biến</b> </v-card>
           <v-card
-            v-scroll.self="onScroll"
             class="overflow-y-auto"
             max-height="300"
           >

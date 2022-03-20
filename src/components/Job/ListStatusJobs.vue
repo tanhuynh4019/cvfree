@@ -11,7 +11,6 @@
       </v-toolbar>
     </v-card>
     <v-card
-      v-scroll.self="onScroll"
       class="overflow-y-auto"
       max-height="630"
       style="border-radius: 0px 0px 0px 0px"
