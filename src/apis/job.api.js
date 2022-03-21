@@ -11,4 +11,9 @@ export default class Job {
         const res = await axios.get(`${url}/details/${slug}`);
         return res.data;
     }
+
+    static async getJobByIdCompany(idCompany) {
+        const res = await axios.get(`${url}/get-all-by-company/${idCompany}`);
+        return res.data;
+    }
 }
