@@ -35,7 +35,9 @@
               outlined
               dense
             ></v-text-field>
-            <v-btn class="w-100" color="#004D40" dark @click="login">Đăng nhập</v-btn>
+            <v-btn class="w-100" color="#004D40" dark @click="login"
+              >Đăng nhập</v-btn
+            >
             <center class="mt-1">hoặc</center>
             <v-row class="mt-1">
               <v-col sm="4">
@@ -61,9 +63,23 @@
           <v-row class="mt-3">
             <v-col sm="6">
               Bạn chưa có tài khoản?
-              <router-link style="color: #004D40" class="font-weight-bold" :to="url.signUp">Đăng ký ngay</router-link>
+              <router-link
+                style="color: #004d40"
+                class="font-weight-bold"
+                :to="url.signUp"
+                >Đăng ký ngay</router-link
+              >
             </v-col>
-            <v-col sm="6"> <div class="float-end"><router-link style="color: #004D40" class="font-weight-bold" :to="url.forgotPassword">Quên mật khẩu</router-link></div> </v-col>
+            <v-col sm="6">
+              <div class="float-end">
+                <router-link
+                  style="color: #004d40"
+                  class="font-weight-bold"
+                  :to="url.forgotPassword"
+                  >Quên mật khẩu</router-link
+                >
+              </div>
+            </v-col>
           </v-row>
           <v-divider></v-divider>
           <p class="font-weight-bold">Bạn gặp khó khăn khi tạo tài khoản?</p>
@@ -144,6 +160,12 @@
 import Candidate from "../../apis/candidate.api";
 export default {
   name: "Login",
+  async created() {
+    const candidate = await Candidate.secret();
+    if (candidate) {
+      window.location.href = '/viec-lam'
+    }
+  },
   data() {
     return {
       multiLine: true,
@@ -151,44 +173,42 @@ export default {
       text: ``,
       url: {
         signUp: "/sign-up",
-        forgotPassword: '/forgot-password'
+        forgotPassword: "/forgot-password",
       },
       formCandidate: {
         validate: {},
         valid: true,
         value: {
-          email: '',
-          password: ''
-        }
-      }
+          email: "",
+          password: "",
+        },
+      },
     };
   },
   methods: {
-    async login()
-    {
+    async login() {
       let that = this;
       const formData = new FormData();
       formData.append("email", `${that.formCandidate.value.email}_candidate`);
       formData.append("password", that.formCandidate.value.password);
 
       const candidate = await Candidate.login(formData);
-      if(candidate.error)
-      { 
+      if (candidate.error) {
         that.snackbar = true;
         that.text = candidate.message;
       }
 
-      if(candidate.success){
+      if (candidate.success) {
         localStorage.setItem("token_candidate", candidate.token);
-         window.location.href = '/viec-lam'
+        window.location.href = "/viec-lam";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-a{
+a {
   text-decoration: none;
 }
 </style>

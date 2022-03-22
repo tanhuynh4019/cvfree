@@ -140,7 +140,7 @@
               <v-btn text v-bind="attrs" v-on="on">
                 <v-avatar size="30">
                   <img
-                    src="https://cdn.vuetifyjs.com/images/john.jpg"
+                    :src="user.avatar"
                     alt="John"
                   />
                 </v-avatar>

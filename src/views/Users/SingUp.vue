@@ -158,6 +158,12 @@
 import Candidate from "../../apis/candidate.api";
 export default {
   name: "SignUp",
+  async created() {
+    const candidate = await Candidate.secret();
+    if (candidate) {
+      window.location.href = '/viec-lam'
+    }
+  },
   data() {
     return {
       multiLine: true,
@@ -205,7 +211,7 @@ export default {
 
         localStorage.setItem("token_candidate", candidate.token);
 
-        window.location.href = "/viec-lam";
+        history.back();
       }
     },
   },

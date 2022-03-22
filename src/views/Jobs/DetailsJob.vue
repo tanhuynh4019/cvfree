@@ -20,18 +20,20 @@
             </v-breadcrumbs>
             <v-card class="mt-5 border" style="box-shadow: 0px 0px 0px 0px">
               <v-row>
-                <v-col cols="4" sm="4" lg="2">
+                <v-col cols="4" sm="4" lg="3">
                   <div class="p-2">
                     <center>
-                      <img
-                        width="100%"
-                        height="120"
-                        :src="job.idCompany.srcLogo"
-                      >
+                      <div class="p-3">
+                        <img
+                          width="100%"
+                          height="100"
+                          :src="job.idCompany.srcLogo"
+                        />
+                      </div>
                     </center>
                   </div>
                 </v-col>
-                <v-col cols="7" sm="7" lg="7">
+                <v-col cols="7" sm="7" lg="6">
                   <div class="p-2">
                     <h6>{{ job.name }}</h6>
                     <router-link
@@ -479,8 +481,12 @@
                       </v-col>
                     </v-row>
                     <center>
-                      <v-btn text
-                      :to="{name: 'DetailsCompanies' , params: { slug: job.idCompany.slug}}"
+                      <v-btn
+                        text
+                        :to="{
+                          name: 'DetailsCompanies',
+                          params: { slug: job.idCompany.slug },
+                        }"
                         ><v-icon>mdi-office-building-outline</v-icon>Xem trang
                         cá nhân công ty</v-btn
                       >
@@ -492,7 +498,9 @@
                 <!--Similar Jobs-->
                 <v-card class="mt-5" style="box-shadow: 0px 0px 0px 0px">
                   <div class="p-4">
-                    <h5 v-if="jobInvolves.length == 0">Hiện tại công ty chưa có tin tuyển dụng nào!</h5>
+                    <h5 v-if="jobInvolves.length == 0">
+                      Hiện tại công ty chưa có tin tuyển dụng nào!
+                    </h5>
                     <v-row>
                       <v-col
                         cols="12"
@@ -515,10 +523,7 @@
                               link
                               style="box-shadow: 0px 0px 0px 0px"
                               class="border item-job"
-                              :to="{
-                                name: 'DetailsJob',
-                                params: { slug: job.slug },
-                              }"
+                              :href="`/vieclam/${job.slug}`"
                             >
                               <div style="padding: 30px 50px">
                                 <center>

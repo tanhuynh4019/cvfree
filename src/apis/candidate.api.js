@@ -54,4 +54,36 @@ export default class Candidate {
             return null;
         }
     }
+
+    static async changePassword(accountBody) {
+        try {
+            const res = await axios.patch(`${url}/change-password`, accountBody, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token_candidate')}`
+                }
+            });
+            return res.data;
+        } catch (error) {
+            return {
+                error: true,
+                message: error,
+            };
+        }
+    }
+
+    static async editAvatar(accountBody) {
+        try {
+            const res = await axios.patch(`${url}/change-avatar`, accountBody, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token_candidate')}`
+                }
+            });
+            return res.data;
+        } catch (error) {
+            return {
+                error: true,
+                message: error,
+            };
+        }
+    }
 }
